@@ -1,0 +1,116 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-image: url(../image/6a20ef.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: #00c3d4;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 195, 212, 0.5);
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00c3d4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #00a5b3;
+}
+
+.login-container .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-container .remember-forgot label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-container .remember-forgot input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.login-container .remember-forgot a {
+    font-size: 14px;
+    color: #00c3d4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-container .remember-forgot a:hover {
+    color: #00a5b3;
+}
+
+.tabs {
+    position: absolute;
+    top: 50%;
+    right: -50px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #e5e7eb;
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px 0 0 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.tabs a:hover {
+    background-color: #00c3d4;
+    color: white;
+}

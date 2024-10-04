@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management - Admin</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="admin.html">Add Book</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="inventery_report.html">Inventry Report</a></li>
+            <li><a href="request.html">Request</a></li>
+            <li><a href="member_report.html">Member Report</a></li>
+            <li><a href="return.html">Return</a></li>
+            <li><a href="borrowing rreport.html">Borrowing Report</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Admin Dashboard</h1>
+        </header>
+
+        <section id="book-form">
+            <h2>Add New Book</h2>
+            <form id="addBookForm">
+                <div class="form-group">
+                    <input type="text" id="bookName" placeholder="Book Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="hidden"   id="id" placeholder="Book Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="isbn" placeholder="ISBN Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="publisher" placeholder="Publisher" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="copies" placeholder="Number of Copies" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="coverUrl" placeholder="Cover Page URL" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="genre" placeholder="Genre" required>
+                </div>
+                <button type="submit">Add Book</button>
+            </form>
+        </section>
+
+        <section id="book-list">
+            <h2>Book Inventory</h2>
+            <table id="booksTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ISBN</th>
+                        <th>Publisher</th>
+                        <th>Copies</th>
+                        <th>Genre</th>
+                        <th>Cover</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Book records will be added here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="member-management">
+            <h2>Manage Members</h2>
+            <form id="addMemberForm">
+                <div class="form-group">
+                    <input type="text" id="firstName" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="nic" placeholder="NIC Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit">Add Member</button>
+            </form>
+<td></td>
+            <table id="membersTable">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>NIC</th>
+                        <th>Registered Date</th>
+                    </tr>
+                </thead>
+                <tbody id="membertablebody">
+                    <!-- Member records will be added here -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+   <script src="../javascript/admin.js"></script>
+</body>
+
+</html>

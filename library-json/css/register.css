@@ -1,0 +1,108 @@
+/* General body styling */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    background-image: url(../image/img\ 2.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Container for the form */
+form {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 340px;
+    position: relative;
+}
+
+/* Form title */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #00bcd4;
+    background-color: white;
+}
+
+/* Button styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #00bcd4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0097a7;
+}
+
+/* Tab navigation styles */
+#registerForm {
+    position: relative;
+}
+
+.tabs {
+    position: absolute;
+    right: -120px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs a {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.tabs a:hover {
+    background-color: #ddd;
+}
+
+.tabs a.active {
+    background-color: #00bcd4;
+    color: white;
+}
