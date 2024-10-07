@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "X:\\Practice\\My Project\\New folder\\library-json (2)\\library-json (2)\\UT01261-MS2-LMS\\UT01261-MS2-LMS\\library-json\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {}
+    "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {}
   },
   "projects": {
-    "X:\\Practice\\My Project\\New folder\\library-json (2)\\library-json (2)\\UT01261-MS2-LMS\\UT01261-MS2-LMS\\library-json\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {
+    "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "X:\\Practice\\My Project\\New folder\\library-json (2)\\library-json (2)\\UT01261-MS2-LMS\\UT01261-MS2-LMS\\library-json\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
+        "projectUniqueName": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
         "projectName": "Library_Management_system_API",
-        "projectPath": "X:\\Practice\\My Project\\New folder\\library-json (2)\\library-json (2)\\UT01261-MS2-LMS\\UT01261-MS2-LMS\\library-json\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
+        "projectPath": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
         "packagesPath": "C:\\Users\\UT01261\\.nuget\\packages\\",
-        "outputPath": "X:\\Practice\\My Project\\New folder\\library-json (2)\\library-json (2)\\UT01261-MS2-LMS\\UT01261-MS2-LMS\\library-json\\BAckend\\LMS_backend\\Library_Management_system_API\\obj\\",
+        "outputPath": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\UT01261\\AppData\\Roaming\\NuGet\\NuGet.Config",
