@@ -1,4 +1,5 @@
 
+using Library_Management_system_API.Repository;
 using Microsoft.AspNetCore.Cors;
 
 namespace Library_Management_system_API
@@ -26,6 +27,7 @@ namespace Library_Management_system_API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddSingleton<MemberRepository>();
 
             var app = builder.Build();
 

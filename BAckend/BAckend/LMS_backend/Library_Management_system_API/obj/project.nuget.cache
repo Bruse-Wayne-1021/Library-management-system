@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I+cZoVWfO6o=",
+  "dgSpecHash": "3gKdjNxyRQw=",
   "success": true,
-  "projectFilePath": "X:\\Practice\\My Project\\New folder\\library-json (2)\\library-json (2)\\UT01261-MS2-LMS\\UT01261-MS2-LMS\\library-json\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
+  "projectFilePath": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\UT01261\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\UT01261\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
