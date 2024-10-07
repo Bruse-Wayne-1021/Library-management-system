@@ -85,8 +85,8 @@ let displaybooks = async () => {
         });
 
     } catch (error) {
-        console.log(error)
-        alert("Error  :" + error)
+        // console.log(error)
+        // alert("Error  :" + error)
     }
 };
 
@@ -97,24 +97,34 @@ document.getElementById('addMemberForm').addEventListener('submit', async (e) =>
     const FirstName = document.getElementById('firstName').value;
     const LastName = document.getElementById('lastName').value;
     const Nic = document.getElementById('nic').value;
-    const Password = document.getElementById('password').value;
-    const ConfirmPAssword = document.getElementById('confirmPassword').value;
+    const email = document.getElementById('Email').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
 
 
-    if (Password !== ConfirmPAssword) {
-        alert("password does not matching")
-        return;
-    }
+    // if (Password !== ConfirmPAssword) {
+    //     alert("password does not matching")
+    //     return;
+    // }
 
-    const membersdata = {
+    // const membersdata = {
+    //     FirstName,
+    //     LastName,
+    //     Nic,
+    //     Password,
+    //     joinDate: new Date().toLocaleDateString()
+    // }
+
+    const membersData={
         FirstName,
         LastName,
         Nic,
-        Password,
-        joinDate: new Date().toLocaleDateString()
+        email,
+        phoneNumber
     }
 
-    const memnersurl = "http://localhost:3000/member";
+
+
+    const memnersurl = "http://localhost:5116/api/Member/add";
 
 
     try {
@@ -123,7 +133,7 @@ document.getElementById('addMemberForm').addEventListener('submit', async (e) =>
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(membersdata)
+            body: JSON.stringify(membersData)
         })
 
         if (addmember.ok) {
@@ -144,7 +154,7 @@ document.getElementById('addMemberForm').addEventListener('submit', async (e) =>
 // display members in table
 
 let dispalyamembers = async () => {
-    const memberurl = "http://localhost:3000/member";
+    const memberurl = "http://localhost:5116/api/Member/get-all-members";
     const MemTablebody = document.getElementById('membertablebody');
 
     try {
@@ -156,15 +166,18 @@ let dispalyamembers = async () => {
             }
         })
         const members = await memberdata.json();
+        console.log(members);
 
         MemTablebody.innerHTML = ""
         members.forEach(member => {
             const row = document.createElement('tr');
             row.innerHTML = `
-              <td>${member.FirstName}</td>
-              <td>${member.LastName}</td>
-              <td>${member.Nic}</td>
-              <td>${member.joinDate}</td>
+              <td>${member.id }</td>
+              <td>${member. firstName}</td>
+              <td>${member.lastName}</td>
+              <td>${member. nic}</td>
+              <td>${member.email}</td>
+              <td>${member. phoneNumber}</td>
             `
             MemTablebody.appendChild(row);
         })
@@ -293,13 +306,13 @@ const Deletebook = async (index) => {
 };
 
 
-row.innerHTML = `
-    <td>${book.BookName}</td>
-    <td>${book.Isbn}</td>
-    <td>${book.publisher}</td>
-    <td>${book.copies}</td>
-    <td>${book.genre}</td>
-    <td><img src="${book.coverUrl}" alt="Book cover" style="width:50px; height:75px;"></td>
-    <td><button onclick="EditBookDetails(${index})">Edit</button></td>
-    <td><button onclick="Deletebook(${index})">Delete</button></td>
-`;
+// row.innerHTML = `
+//     <td>${book.BookName}</td>
+//     <td>${book.Isbn}</td>
+//     <td>${book.publisher}</td>
+//     <td>${book.copies}</td>
+//     <td>${book.genre}</td>
+//     <td><img src="${book.coverUrl}" alt="Book cover" style="width:50px; height:75px;"></td>
+//     <td><button onclick="EditBookDetails(${index})">Edit</button></td>
+//     <td><button onclick="Deletebook(${index})">Delete</button></td>
+// `;

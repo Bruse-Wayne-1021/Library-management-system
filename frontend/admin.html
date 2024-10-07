@@ -34,7 +34,7 @@
                     <input type="text" id="bookName" placeholder="Book Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="hidden"   id="id" placeholder="Book Name" required>
+                    <input type="hidden" id="id" placeholder="Book Name" required>
                 </div>
                 <div class="form-group">
                     <input type="text" id="isbn" placeholder="ISBN Number" required>
@@ -89,21 +89,23 @@
                     <input type="text" id="nic" placeholder="NIC Number" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="email" id="Email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <input type="number" id="phoneNumber" placeholder="phone Number" required>
                 </div>
                 <button type="submit">Add Member</button>
             </form>
-<td></td>
+
             <table id="membersTable">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>NIC</th>
-                        <th>Registered Date</th>
+                        <th>Email</th>
+                        <th>PhoneNumber</th>
                     </tr>
                 </thead>
                 <tbody id="membertablebody">
@@ -113,7 +115,7 @@
         </section>
     </div>
 
-   <script src="../javascript/admin.js"></script>
+    <script src="../javascript/admin.js"></script>
 </body>
 
 </html>
