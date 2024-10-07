@@ -17,9 +17,9 @@ namespace Library_Management_system_API.Repository
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand(
-                    "INSERT INTO Member (FirstName, LastName, Nic, Email, PhoneNumber, ) " +
+                    "INSERT INTO Member (FirstName, LastName, Nic, Email, PhoneNumber) " +
                     "OUTPUT INSERTED.Id " +
-                    "VALUES (@FirstName, @LastName, @Nic, @Email, @PhoneNumber, )",
+                    "VALUES (@FirstName, @LastName, @Nic, @Email, @PhoneNumber)",
                     sqlConnection);
 
                 sqlCommand.Parameters.AddWithValue("@FirstName", member.FirstName);
