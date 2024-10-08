@@ -1,6 +1,8 @@
-﻿namespace Library_Management_system_API.Models
+﻿using Library_Management_system_API.Models;
+
+namespace Library_Management_system_API.Model.ResponseModel
 {
-    public class BookImage
+    public class BookImageResponse
     {
         public int BookId { get; set; }
         public string? Title { get; set; }
@@ -8,6 +10,6 @@
         public int BookCopies { get; set; }
         public int Isbn { get; set; }
 
-        public List<Image>BookImages { get; set; }
+        public List<Image> BookImages { get; set; }
     }
 }

@@ -33,6 +33,21 @@ namespace Library_Management_system_API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("Get-all-books")]
+        public async Task<IActionResult> GetAllbooks()
+        {
+            var book=await _bookRepository.GetallBookAsync();
+            return Ok(book);
+        }
+
+        [HttpGet("get-all-books-with-images")]
+        public async Task<IActionResult> GetAllBookWithImages()
+        {
+            var bookwithImages=await _bookRepository.GetAllBooksWithIMgAsync();
+            return Ok(bookwithImages);
+        }
+
         
     }
 }
