@@ -15,7 +15,7 @@ namespace Library_Management_system_API.Controllers
         {
             _memberRepository = memberRepository;
         }
-
+        //add new member
         [HttpPost("add")]
         public async Task<IActionResult> AddMember([FromBody] Member member)
         {
@@ -34,7 +34,7 @@ namespace Library_Management_system_API.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-
+        //get memeber by id
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMemberById(int id)
         {
@@ -46,12 +46,40 @@ namespace Library_Management_system_API.Controllers
             return Ok(member);
         }
 
-        [HttpGet("get-all-members")]
 
+        //get all members
+        [HttpGet("get-all-members")]
         public async Task<IActionResult> GetAllMember()
         {
             var member=await _memberRepository.GetAllMembersAsync();
             return Ok(member);
+        }
+
+        //delete member by id
+
+        [HttpDelete("{id}")]
+
+        public async Task<IActionResult>DeleteMember(int id)
+        {
+            var result=await _memberRepository.DeleteMembersAsync(id);
+            if (!result)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
+
+        //update member
+
+        [HttpPut("id")]
+
+        public async Task<IActionResult>UpdateMembers(int id, Member member)
+        {
+
+              var update=await _memberRepository.UpdateMemebrAsync(member);
+            var updatedmember = await _memberRepository.GetMemberByIdAsync(id);
+            return Ok(updatedmember);
+
         }
     }
 }
