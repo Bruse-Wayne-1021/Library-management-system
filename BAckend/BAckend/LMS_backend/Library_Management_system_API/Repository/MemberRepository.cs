@@ -12,6 +12,8 @@ namespace Library_Management_system_API.Repository
             _connectionString = configuration.GetConnectionString("DBConnection");
         }
 
+
+        //create new members
         public async Task<int> CreateMemberAsync(Member member) 
         {
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
@@ -34,6 +36,8 @@ namespace Library_Management_system_API.Repository
                 return Convert.ToInt32(id);
             }
         }
+
+        //get members by id
 
         public async Task<Member> GetMemberByIdAsync(int id)
         {
@@ -61,7 +65,7 @@ namespace Library_Management_system_API.Repository
             }
         }
 
-
+        //get all members
         public async Task<List<Member>> GetAllMembersAsync()
         {
 
@@ -87,6 +91,41 @@ namespace Library_Management_system_API.Repository
                 return member;
             }
         }
+        //delete member
+        public async Task<bool>DeleteMembersAsync(int id)
+        {
+            using SqlConnection sqlConnection = new SqlConnection(_connectionString);
+            {
+                SqlCommand sqlCommand = new SqlCommand("DELETE FROM Member WHERE Id = @Id", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@Id",id);
+
+                await sqlConnection.OpenAsync();
+                var result=await sqlCommand.ExecuteNonQueryAsync();
+                return result > 0;
+            }
+
+        }
+
+        //update user details 
+
+        public async Task<bool>UpdateMemebrAsync(Member member)
+        {
+            using SqlConnection sqlConnection=new SqlConnection(_connectionString);
+            {
+                SqlCommand sqlCommand = new SqlCommand("UPDATE Member SET FirstName=@FirstName,LastName=@LastName,Email=@Email,PhoneNumber=@PhoneNumber WHERE Id = @Id", sqlConnection);
+                
+                    sqlCommand.Parameters.AddWithValue("@FirstName", member.FirstName);
+                    sqlCommand.Parameters.AddWithValue("@LastName",member.LastName);
+                    sqlCommand.Parameters.AddWithValue("@Email",member.Email);
+                    sqlCommand.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
+
+                    await sqlConnection.OpenAsync();
+                    var result= await sqlCommand.ExecuteNonQueryAsync();
+                    return result > 0;
+            }
+        }
+
+
 
     }
 }
