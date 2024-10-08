@@ -28,6 +28,8 @@ namespace Library_Management_system_API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddSingleton<MemberRepository>();
+            builder.Services.AddSingleton<BookRepository>();
+            builder.Services.AddSingleton<BookImageRepository>();
 
             var app = builder.Build();
 
