@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="imageInput" />
+<div>Select an image file, please.</div>
+<img id="imageDisplay" />
+</body>
+
+<script>
+    let img="";
+     document.getElementById('imageInput').addEventListener('change', function(event) {
+
+
+    const file = event.target.files[0];
+    const reader = new FileReader();
+     reader.readAsDataURL(file);
+    reader.onloadend = function(e) {
+     let dis= document.getElementById('imageDisplay');
+
+
+
+    // dis.src.e.target.result;
+
+        
+   
+   console.log(e.target.result);
+
+    };
+
+    
+  });
+</script>
+</html>

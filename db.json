@@ -86,6 +86,16 @@
       "coverUrl": "https://th.bing.com/th/id/OIP.vNXv7f5TvEY7Bcj2Vc1mqAHaLH?w=125&h=187&c=7&r=0&o=5&pid=1.7",
       "genre": "10",
       "bookaddedDate": "9/20/2024"
+    },
+    {
+      "id": "9282",
+      "BookName": "hfhhf",
+      "Isbn": "kjoj",
+      "publisher": "ojoj",
+      "copies": "666",
+      "image": "",
+      "genre": "77",
+      "bookaddedDate": "10/12/2024"
     }
   ],
   "BookRequest": [
