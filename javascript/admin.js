@@ -1,21 +1,38 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    document.getElementById('addBookForm').addEventListener('submit', async (e) => {
+
+     document.getElementById('addBookForm').addEventListener('submit', async (e) => {
         e.preventDefault();
+
+     
+        document.getElementById('imageInput').addEventListener('change', function(event) {
+   
+   
+       const file = event.target.files[0];
+       const reader = new FileReader();
+        reader.readAsDataURL(file);
+       reader.onloadend = function(e) {
+        let dis= document.getElementById('imageDisplay');
+   
+        let image=e.target.result
+        console.log(image);
+       // dis.src.e.target.result;
+       };
+          });
         const BookName = document.getElementById('bookName').value;
         const Isbn = document.getElementById('isbn').value;
         const publisher = document.getElementById('publisher').value;
         const copies = document.getElementById('copies').value;
-        const coverUrl = document.getElementById('coverUrl').value;
+      //  const coverUrl = document.getElementById('coverUrl').value;
         const genre = document.getElementById('genre').value;
 
         const bookurl = "http://localhost:3000/book";
-
+        
         const bookDetails = {
             BookName,
             Isbn,
             publisher,
             copies,
-            coverUrl,
+            image,
             genre,
             bookaddedDate: new Date().toLocaleDateString()
         }
@@ -65,6 +82,7 @@ let displaybooks = async () => {
             }
         })
         const books = await booksdata.json();
+        console.log(books);
 
         BooktableBdy.innerHTML = "";
         books.forEach((book, index) => {
@@ -165,6 +183,8 @@ let dispalyamembers = async () => {
                 "Content-Type": "application/json"
             }
         })
+
+
         const members = await memberdata.json();
         console.log(members);
 
@@ -188,87 +208,87 @@ let dispalyamembers = async () => {
 
 };
 // Fetch and populate the selected book's details into the form for editing
-const EditBookDetails = async (index) => {
-    const bookApi = "http://localhost:3000/book";
+// const EditBookDetails = async (index) => {
+//     const bookApi = "http://localhost:3000/book";
 
-    try {
-        // Fetch book data from the server
-        const response = await fetch(bookApi);
-        const books = await response.json();
+//     try {
+//         // Fetch book data from the server
+//         const response = await fetch(bookApi);
+//         const books = await response.json();
         
-        // Find the selected book using the index--
-        const selectedBook = books[index];
+//         // Find the selected book using the index--
+//         const selectedBook = books[index];
         
-        // If the book exists, populate the form fields with its details
-        if (selectedBook) {
-            document.getElementById('bookName').value = selectedBook.BookName;
-            document.getElementById('isbn').value = selectedBook.Isbn;
-            document.getElementById('publisher').value = selectedBook.publisher;
-            document.getElementById('copies').value = selectedBook.copies;
-            document.getElementById('coverUrl').value = selectedBook.coverUrl;
-            document.getElementById('genre').value = selectedBook.genre;
+//         // If the book exists, populate the form fields with its details
+//         if (selectedBook) {
+//             document.getElementById('bookName').value = selectedBook.BookName;
+//             document.getElementById('isbn').value = selectedBook.Isbn;
+//             document.getElementById('publisher').value = selectedBook.publisher;
+//             document.getElementById('copies').value = selectedBook.copies;
+//             document.getElementById('coverUrl').value = selectedBook.coverUrl;
+//             document.getElementById('genre').value = selectedBook.genre;
             
-            // Store the selected book's id for later use during the update
-            document.getElementById('bookId').value = selectedBook.id;
-        } else {
-            throw new Error("Book not found");
-        }
-    } catch (error) {
-        console.error("Error fetching book details:", error);
-        alert("Error fetching book details: " + error.message);
-    }
-};
+//             // Store the selected book's id for later use during the update
+//             document.getElementById('bookId').value = selectedBook.id;
+//         } else {
+//             throw new Error("Book not found");
+//         }
+//     } catch (error) {
+//         console.error("Error fetching book details:", error);
+//         alert("Error fetching book details: " + error.message);
+//     }
+// };
 
-// On form submit, handle both adding a new book and updating an existing one
-document.getElementById('addBookForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+// // On form submit, handle both adding a new book and updating an existing one
+// document.getElementById('addBookForm').addEventListener('submit', async (e) => {
+//     e.preventDefault();
 
-    const bookApi = "http://localhost:3000/book";
+//     const bookApi = "http://localhost:3000/book";
     
-    // Capture the book details from the form
-    const bookData = {
-        BookName: document.getElementById('bookName').value,
-        Isbn: document.getElementById('isbn').value,
-        publisher: document.getElementById('publisher').value,
-        copies: document.getElementById('copies').value,
-        coverUrl: document.getElementById('coverUrl').value,
-        genre: document.getElementById('genre').value
-    };
+//     // Capture the book details from the form
+//     const bookData = {
+//         BookName: document.getElementById('bookName').value,
+//         Isbn: document.getElementById('isbn').value,
+//         publisher: document.getElementById('publisher').value,
+//         copies: document.getElementById('copies').value,
+//         coverUrl: document.getElementById('coverUrl').value,
+//         genre: document.getElementById('genre').value
+//     };
 
-    // Get the bookId from the hidden input field (if editing an existing book)
-    const bookId = document.getElementById('bookId').value;
+//     // Get the bookId from the hidden input field (if editing an existing book)
+//     const bookId = document.getElementById('bookId').value;
 
-    try {
-        if (bookId) {
-            // Update existing book (PUT request)
-            await fetch(`${bookApi}/${bookId}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(bookData)
-            });
-            alert("Book updated successfully");
-        } else {
-            // Add a new book (POST request)
-            await fetch(bookApi, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(bookData)
-            });
-            alert("Book added successfully");
-        }
+//     try {
+//         if (bookId) {
+//             // Update existing book (PUT request)
+//             await fetch(`${bookApi}/${bookId}`, {
+//                 method: "PUT",
+//                 headers: {
+//                     "Content-Type": "application/json"
+//                 },
+//                 body: JSON.stringify(bookData)
+//             });
+//             alert("Book updated successfully");
+//         } else {
+//             // Add a new book (POST request)
+//             await fetch(bookApi, {
+//                 method: "POST",
+//                 headers: {
+//                     "Content-Type": "application/json"
+//                 },
+//                 body: JSON.stringify(bookData)
+//             });
+//             alert("Book added successfully");
+//         }
 
-        // Reload the book display
-        await displaybooks();
-    } catch (error) {
-        console.error("Error saving book:", error);
-        alert("Error saving book: " + error.message);
-    }
+//         // Reload the book display
+//         await displaybooks();
+//     } catch (error) {
+//         console.error("Error saving book:", error);
+//         alert("Error saving book: " + error.message);
+//     }
     
-});
+// });
 
 
 
@@ -316,3 +336,65 @@ const Deletebook = async (index) => {
 //     <td><button onclick="EditBookDetails(${index})">Edit</button></td>
 //     <td><button onclick="Deletebook(${index})">Delete</button></td>
 // `;
+
+
+
+// document.addEventListener('DOMContentLoaded', async () => {
+//     let image = ''; // Declare image variable in the outer scope
+
+//     document.getElementById('imageInput').addEventListener('change', function(event) {
+//         const file = event.target.files[0];
+//         const reader = new FileReader();
+//         reader.readAsDataURL(file);
+//         reader.onloadend = function(e) {
+//             image = e.target.result; // Set the image variable
+//             console.log(image);
+//             document.getElementById('imageDisplay').src = image; // Set image source to display
+//         };
+//     });
+
+//     document.getElementById('addBookForm').addEventListener('submit', async (e) => {
+//         e.preventDefault();
+
+//         const BookName = document.getElementById('bookName').value;
+//         const Isbn = document.getElementById('isbn').value;
+//         const publisher = document.getElementById('publisher').value;
+//         const copies = document.getElementById('copies').value;
+//         const genre = document.getElementById('genre').value;
+
+//         const bookurl = "http://localhost:3000/book";
+
+//         const bookDetails = {
+//             BookName,
+//             Isbn,
+//             publisher,
+//             copies,
+//             image, // Use the image from the outer scope
+//             genre,
+//             bookaddedDate: new Date().toLocaleDateString()
+//         };
+
+//         try {
+//             const response = await fetch(bookurl, {
+//                 method: "POST",
+//                 headers: {
+//                     "Content-Type": "application/json"
+//                 },
+//                 body: JSON.stringify(bookDetails)
+//             });
+//             if (response.ok) {
+//                 alert("Book added successfully");
+//                 await displaybooks();
+//             } else {
+//                 throw new Error("Failed to add book");
+//             }
+//         } catch (error) {
+//             console.log(error);
+//             alert("Error: " + error);
+//         }
+//     });
+
+//     await displaybooks();
+//     await dispalyamembers();
+// });
+
