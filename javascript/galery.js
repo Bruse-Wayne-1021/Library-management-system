@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         })
         const books = await bookresponse.json();
         gallyDiv.innerHTML = ""
-        books.forEach(book => {
+        books.forEach(book  => {
             const card = document.createElement('div');
             card.classList.add('book-card')
             card.innerHTML = `
