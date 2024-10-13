@@ -22,7 +22,7 @@ namespace Library_Management_system_API.Repository
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("INSERT INTO books (Title,Publisher,BookCopies,Isbn) " +
+                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Books (Title,Publisher,BookCopies,Isbn) " +
                     "VALUES(@Title,@Publisher,@BookCopies,@Isbn)SELECT SCOPE_IDENTITY();", connection);
 
                 sqlCommand.Parameters.AddWithValue("@Title", book.Title);
@@ -45,7 +45,7 @@ namespace Library_Management_system_API.Repository
             var books = new List<Book>();
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM books", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Books", sqlConnection);
                 await sqlConnection.OpenAsync();
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read())
@@ -71,7 +71,7 @@ namespace Library_Management_system_API.Repository
             using SqlConnection sqlConnection = new SqlConnection(_connectionString);
 
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM books INNER JOIN Images  on books.Id = Images.BookId;", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Books INNER JOIN Images  on books.Id = Images.BookId;", sqlConnection);
                 await sqlConnection.OpenAsync();
                 SqlDataReader reader = await sqlCommand.ExecuteReaderAsync();
                 while (reader.Read())
@@ -100,7 +100,7 @@ namespace Library_Management_system_API.Repository
             var images= new List<BookImageResponse>();
             using (SqlConnection SQLconnection = new SqlConnection(_connectionString))
             {
-                SqlCommand _sqlCommand = new SqlCommand("SELECT * FROM books INNER JOIN Images  on books.Id = Images.BookId;", SQLconnection);
+                SqlCommand _sqlCommand = new SqlCommand("SELECT * FROM Books INNER JOIN Images  on Books.Id = Images.BookId;", SQLconnection);
                 await SQLconnection.OpenAsync();
                 SqlDataReader sqlDataReader = await _sqlCommand.ExecuteReaderAsync();
                 if (sqlDataReader.Read())
