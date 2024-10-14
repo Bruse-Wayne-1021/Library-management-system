@@ -1,30 +1,25 @@
+/* gallery.css */
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f6fa;
-    color: #333;
     margin: 0;
     padding: 0;
-    display: flex;
-    background-image: url(../image/bg.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #f4f4f4;
 }
 
 .sidebar {
-    width: 250px;
-    background-color: #1a1a2e;
+    width: 200px;
     height: 100vh;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .sidebar h2 {
-    color: #fff;
     text-align: center;
-    margin-bottom: 30px;
 }
 
 .sidebar ul {
@@ -33,35 +28,30 @@ body {
 }
 
 .sidebar ul li {
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .sidebar ul li a {
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
     display: block;
     padding: 10px;
+    background-color: #444;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    text-align: center;
 }
 
 .sidebar ul li a:hover {
-    background-color: #0f3460;
-}
-
-.sidebar .bottom-links {
-    margin-top: auto;
+    background-color: #555;
 }
 
 .container {
-    flex: 1;
-    max-width: calc(100% - 250px);
-    margin-left: 250px;
+    margin-left: 220px;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
 }
 
 .search-sort-bar {
@@ -71,11 +61,10 @@ body {
 }
 
 .search-bar input {
+    width: 300px;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .sort-options {
@@ -89,53 +78,174 @@ body {
 
 .sort-options select {
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 #gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
-.book-card {
-    background-color: #ffffff;
-    border: 1px solid #e1e4e8;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
+#gallery .book {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
 }
 
-.book-card img {
+#gallery .book img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 15px;
-}
-
-.book-card h3 {
-    font-size: 18px;
+    display: block;
     margin-bottom: 10px;
 }
 
-.book-card p {
+#gallery .book h3 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+#gallery .book p {
+    margin: 0;
+    color: #666;
+}
+
+
+
+/* Simple CSS for Library Gallery Page */
+
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin-left: 250px; /* Offset content for the sidebar */
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    overflow-y: auto; /* Ensure sidebar is scrollable if content overflows */
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #34495e;
+}
+
+/* Container styling */
+.container {
+    padding: 20px;
+    margin-left: 270px; /* Offset content for the sidebar */
+}
+
+.container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Search and Sort Bar styling */
+.search-sort-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+}
+
+.sort-options label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.sort-options select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Gallery styling */
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.gallery-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: calc(25% - 20px); /* Four items per row with spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.gallery-item h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.gallery-item p {
     font-size: 14px;
     color: #666;
-    margin: 5px 0;
-}
-
-.book-card button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.book-card button:hover {
-    background-color: #0056b3;
 }
