@@ -9,6 +9,8 @@
         public DateOnly RequestedDate { get; set; }
         public int UserNicNumber { get; set; }
         public string Bookname { get; set; }
+        
+        public bool Status { get; set; }
 
 
     }

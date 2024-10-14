@@ -1,90 +1,114 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\",
+  "WorkspaceRootPath": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\bookrequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\bookrequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\borrowedhistoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\borrowedhistoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\model\\requestmodel\\bookrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\requestmodel\\bookrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\model\\responsemodel\\bookrequestresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\responsemodel\\bookrequestresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\bookimagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\bookimagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\bookrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\bookrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\model\\requestmodel\\imagerequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\requestmodel\\imagerequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\model\\responsemodel\\bookimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\responsemodel\\bookimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\controllers\\bookrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\controllers\\bookrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\controllers\\bookimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\controllers\\bookimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\borrowedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\borrowedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\borrowedbooks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\borrowedbooks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\memberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\memberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\model\\requestmodel\\historyrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\requestmodel\\historyrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\updated lms\\test-files\\backend\\backend\\lms_backend\\library_management_system_api\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\borrowedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\borrowedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\bookrequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\bookrequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\controllers\\bookrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\controllers\\bookrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\borrowedbooksrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\borrowedbooksrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\bookimagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\bookimagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\model\\requestmodel\\bookrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\requestmodel\\bookrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\bookrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\bookrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\borrowedbooks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\borrowedbooks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\repository\\memberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\repository\\memberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\model\\requestmodel\\borrowedbookrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\requestmodel\\borrowedbookrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\model\\requestmodel\\imagerequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\requestmodel\\imagerequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\model\\responsemodel\\bookrequestresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\responsemodel\\bookrequestresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\controllers\\borrowedbookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\controllers\\borrowedbookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\model\\responsemodel\\borrowedbooksresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\responsemodel\\borrowedbooksresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\controllers\\bookimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\controllers\\bookimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\model\\responsemodel\\bookimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\model\\responsemodel\\bookimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\entity\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\entity\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|x:\\ut01261_ms1_library management system\\library-management-system\\backend\\backend\\lms_backend\\library_management_system_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2DF94BD6-C8BC-4E5A-9F2E-F0BBA96669A4}|Library_Management_system_API\\Library_Management_system_API.csproj|solutionrelative:library_management_system_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -94,54 +118,197 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BookRequestResponseModel.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BookRequestResponseModel.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\ResponseModel\\BookRequestResponseModel.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BookRequestResponseModel.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Model\\ResponseModel\\BookRequestResponseModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAuAAAA",
+              "DocumentIndex": 2,
+              "Title": "HistoryRequestModel.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\HistoryRequestModel.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\RequestModel\\HistoryRequestModel.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\HistoryRequestModel.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Model\\RequestModel\\HistoryRequestModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T13:17:13.15Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BookRequestController.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookRequestController.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Controllers\\BookRequestController.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookRequestController.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Controllers\\BookRequestController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T12:58:09.012Z",
+              "WhenOpened": "2024-10-14T13:18:40.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "BorrowedHistoryRepository.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BorrowedHistoryRepository.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Repository\\BorrowedHistoryRepository.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BorrowedHistoryRepository.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Repository\\BorrowedHistoryRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T13:16:25.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "BookRequestRepository.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookRequestRepository.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookRequestRepository.cs",
               "RelativeDocumentMoniker": "Library_Management_system_API\\Repository\\BookRequestRepository.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookRequestRepository.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookRequestRepository.cs",
               "RelativeToolTip": "Library_Management_system_API\\Repository\\BookRequestRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAJAAAA",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAiwFEAAACMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-13T13:01:36.103Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BookRepository.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookRepository.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Repository\\BookRepository.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookRepository.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Repository\\BookRepository.cs",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAIwHoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T05:38:13.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "BorrowedBooksRepository.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BorrowedBooksRepository.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Repository\\BorrowedBooksRepository.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BorrowedBooksRepository.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Repository\\BorrowedBooksRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T10:27:59.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookRequestController.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookRequestController.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Controllers\\BookRequestController.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookRequestController.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Controllers\\BookRequestController.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAA1wCcAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T12:58:09.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BorrowedHistory.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BorrowedHistory.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\BorrowedHistory.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BorrowedHistory.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Entity\\BorrowedHistory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T06:30:40.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\appsettings.json",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\appsettings.json",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\appsettings.json",
+              "RelativeToolTip": "Library_Management_system_API\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-04T05:28:09.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BookRequest.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BookRequest.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\BookRequest.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BookRequest.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Entity\\BookRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T06:31:42.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BorrowedBooks.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BorrowedBooks.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\BorrowedBooks.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BorrowedBooks.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Entity\\BorrowedBooks.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T06:30:03.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MemberRepository.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\MemberRepository.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Repository\\MemberRepository.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\MemberRepository.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Repository\\MemberRepository.cs",
+              "ViewState": "AQIAAGcAAAAAAAAAAAAcwH4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T06:42:00.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BookRequestModel.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\BookRequestModel.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\RequestModel\\BookRequestModel.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\BookRequestModel.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Model\\RequestModel\\BookRequestModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T12:24:14.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BookImageRepository.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookImageRepository.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Repository\\BookImageRepository.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookImageRepository.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Repository\\BookImageRepository.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowCEAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T09:43:58.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BorrowedBookRequestModel.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\BorrowedBookRequestModel.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\RequestModel\\BorrowedBookRequestModel.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\BorrowedBookRequestModel.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Model\\RequestModel\\BorrowedBookRequestModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T10:45:52.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "ImageRequestModel.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\ImageRequestModel.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\ImageRequestModel.cs",
               "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\RequestModel\\ImageRequestModel.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\ImageRequestModel.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\ImageRequestModel.cs",
               "RelativeToolTip": "Library_Management_system_API\\Model\\RequestModel\\ImageRequestModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -150,128 +317,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BookRequestModel.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\BookRequestModel.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\RequestModel\\BookRequestModel.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\RequestModel\\BookRequestModel.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Model\\RequestModel\\BookRequestModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T12:24:14.514Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BookRequest.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BookRequest.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\BookRequest.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BookRequest.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Entity\\BookRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T06:31:42.145Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BookRepository.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookRepository.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Repository\\BookRepository.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookRepository.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Repository\\BookRepository.cs",
-              "ViewState": "AQIAAFYAAAAAAAAAAAAIwDMAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T05:38:13.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BookImageRepository.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookImageRepository.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Repository\\BookImageRepository.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\BookImageRepository.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Repository\\BookImageRepository.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAowCEAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T09:43:58.473Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BookimageController.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookimageController.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Controllers\\BookimageController.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookimageController.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Controllers\\BookimageController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T11:13:41.706Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Image.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Image.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\Image.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Image.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Entity\\Image.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T06:04:14.59Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Member.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Member.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\Member.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Member.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Entity\\Member.cs",
+              "DocumentIndex": 15,
+              "Title": "BookRequestResponseModel.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BookRequestResponseModel.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\ResponseModel\\BookRequestResponseModel.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BookRequestResponseModel.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Model\\ResponseModel\\BookRequestResponseModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T05:06:27.523Z",
+              "WhenOpened": "2024-10-13T13:17:13.15Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "BorrowedHistory.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BorrowedHistory.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\BorrowedHistory.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BorrowedHistory.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Entity\\BorrowedHistory.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T06:30:40.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "BorrowedBooks.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BorrowedBooks.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\BorrowedBooks.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\BorrowedBooks.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Entity\\BorrowedBooks.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T06:30:03.145Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Book.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Book.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Book.cs",
               "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\Book.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Book.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Book.cs",
               "RelativeToolTip": "Library_Management_system_API\\Entity\\Book.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -280,42 +343,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BookImageResponse.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BookImageResponse.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\ResponseModel\\BookImageResponse.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BookImageResponse.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Model\\ResponseModel\\BookImageResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "DocumentIndex": 17,
+              "Title": "Image.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Image.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\Image.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Image.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Entity\\Image.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T10:46:36.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-08T06:04:14.59Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Admin.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Admin.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\Admin.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Admin.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Entity\\Admin.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "DocumentIndex": 18,
+              "Title": "BorrowedBookController.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BorrowedBookController.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Controllers\\BorrowedBookController.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BorrowedBookController.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Controllers\\BorrowedBookController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T06:30:51.653Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-14T10:57:10.036Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "MemberRepository.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\MemberRepository.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Repository\\MemberRepository.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Repository\\MemberRepository.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Repository\\MemberRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
+              "DocumentIndex": 19,
+              "Title": "BorrowedBooksResponseModel.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BorrowedBooksResponseModel.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\ResponseModel\\BorrowedBooksResponseModel.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BorrowedBooksResponseModel.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Model\\ResponseModel\\BorrowedBooksResponseModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T06:42:00.123Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-14T12:01:52.757Z"
             },
             {
               "$type": "Bookmark",
@@ -323,54 +383,87 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
+              "Title": "BookimageController.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookimageController.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Controllers\\BookimageController.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookimageController.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Controllers\\BookimageController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T11:13:41.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "BookController.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookController.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookController.cs",
               "RelativeDocumentMoniker": "Library_Management_system_API\\Controllers\\BookController.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookController.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\BookController.cs",
               "RelativeToolTip": "Library_Management_system_API\\Controllers\\BookController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T06:37:27.014Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\appsettings.json",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\appsettings.json",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\appsettings.json",
-              "RelativeToolTip": "Library_Management_system_API\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-04T05:28:09.042Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Program.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Program.cs",
-              "RelativeDocumentMoniker": "Library_Management_system_API\\Program.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Program.cs",
-              "RelativeToolTip": "Library_Management_system_API\\Program.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwCAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T05:01:59.267Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-08T06:37:27.014Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 20,
               "Title": "MemberController.cs",
-              "DocumentMoniker": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\MemberController.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\MemberController.cs",
               "RelativeDocumentMoniker": "Library_Management_system_API\\Controllers\\MemberController.cs",
-              "ToolTip": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\MemberController.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Controllers\\MemberController.cs",
               "RelativeToolTip": "Library_Management_system_API\\Controllers\\MemberController.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAwwB4AAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-07T06:10:28.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Member.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Member.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\Member.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Member.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Entity\\Member.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T05:06:27.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "BookImageResponse.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BookImageResponse.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Model\\ResponseModel\\BookImageResponse.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Model\\ResponseModel\\BookImageResponse.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Model\\ResponseModel\\BookImageResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T10:46:36.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Admin.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Entity\\Admin.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Entity\\Admin.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Entity\\Admin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T06:30:51.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Program.cs",
+              "DocumentMoniker": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Program.cs",
+              "RelativeDocumentMoniker": "Library_Management_system_API\\Program.cs",
+              "ToolTip": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Program.cs",
+              "RelativeToolTip": "Library_Management_system_API\\Program.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwCAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T05:01:59.267Z"
             }
           ]
         }

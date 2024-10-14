@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {}
+    "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {}
   },
   "projects": {
-    "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {
+    "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
+        "projectUniqueName": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
         "projectName": "Library_Management_system_API",
-        "projectPath": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
+        "projectPath": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
         "packagesPath": "C:\\Users\\UT01261\\.nuget\\packages\\",
-        "outputPath": "X:\\Updated LMS\\test-files\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\obj\\",
+        "outputPath": "X:\\UT01261_MS1_library management system\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\UT01261\\AppData\\Roaming\\NuGet\\NuGet.Config",
