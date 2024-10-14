@@ -21,8 +21,25 @@ namespace Library_Management_system_API.Controllers
 
         public async Task<IActionResult>AddNewRequest(BookRequestModel bookRequestModel)
         {
-            var data=await _BookRequestRepository.BookRequestAsync(bookRequestModel);
+            var data=await _BookRequestRepository.AddnewBookRequestAsync(bookRequestModel);
             return Ok(data);
         }
+
+        [HttpGet("get-all-request")]
+        public async Task<IActionResult> getAllRequest()
+        {
+            var data = await _BookRequestRepository.GetBookRequestsAsync();
+            return Ok(data);
+        }
+
+
+        [HttpPut("Accecpt-request")]
+        //public async Task<IActionResult>UpdateStatus(int id)
+        //{
+        //    var data=await _BookRequestRepository.UpdateStatusAsync(id);
+        //    return Ok(data);
+        //}
+
+
     }
 }
