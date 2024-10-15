@@ -1,4 +1,6 @@
-﻿namespace Library_Management_system_API.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace Library_Management_system_API.Models
 {
     public class Member
     {
@@ -8,6 +10,8 @@
         public int? Nic {  get; set; }
         public string? Email { get; set; }
         public int PhoneNumber {  get; set; }
-        //public DateOnly JoinDate { get; set; }
+        public DateOnly JoinDate { get; set; }
+
+        public string password { get; set; }
     }
 }

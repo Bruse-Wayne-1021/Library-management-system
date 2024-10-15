@@ -33,7 +33,7 @@ namespace Library_Management_system_API.Controllers
         }
 
 
-        [HttpPut("Accecpt-request")]
+        
         //public async Task<IActionResult>UpdateStatus(int id)
         //{
         //    var data=await _BookRequestRepository.UpdateStatusAsync(id);
