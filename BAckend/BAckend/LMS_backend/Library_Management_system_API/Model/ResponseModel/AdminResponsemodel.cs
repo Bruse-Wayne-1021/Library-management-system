@@ -1,8 +1,8 @@
-﻿namespace Library_Management_system_API.Models
+﻿namespace Library_Management_system_API.Model.ResponseModel
 {
-    public class Admin
+    public class AdminResponsemodel
     {
-        public int AdminId {  get; set; }
+        public int AdminId { get; set; }
         public string AdminName { get; set; }
         public string Password { get; set; }
 

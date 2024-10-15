@@ -37,8 +37,23 @@ namespace Library_Management_system_API.DbInitializer
                         Isbn NVARCHAR(50)
                     );
                 END
+                    
+                IF NOT EXISTS ( 
+                        SELECT * FROM sys.tables t  
+                        JOIN sys.schemas s ON t.schema_id = s.schema_id 
+                     WHERE s.name = 'dbo' AND t.name = 'Admin' 
+                        )
+                            BEGIN 
+                    CREATE TABLE Admin 
+                        (
+                        AdminId INT PRIMARY KEY IDENTITY(1,1), -- Added missing comma here
+                         AdminName NVARCHAR(50) NOT NULL,
+                      NIC NVARCHAR(50) NOT NULL,
+                      Password NVARCHAR(50) NOT NULL
+                      );
+                    END
 
-                -- Images table creation
+              
                 IF NOT EXISTS (
                     SELECT * FROM sys.tables t 
                     JOIN sys.schemas s ON t.schema_id = s.schema_id
@@ -54,7 +69,7 @@ namespace Library_Management_system_API.DbInitializer
                     );
                 END
 
-                -- Member table creation
+              
                 IF NOT EXISTS (
                     SELECT * FROM sys.tables t 
                     JOIN sys.schemas s ON t.schema_id = s.schema_id
@@ -73,7 +88,7 @@ namespace Library_Management_system_API.DbInitializer
                     );
                 END
 
-                -- BookRequest table creation
+         
                 IF NOT EXISTS (
                     SELECT * FROM sys.tables t 
                     JOIN sys.schemas s ON t.schema_id = s.schema_id
