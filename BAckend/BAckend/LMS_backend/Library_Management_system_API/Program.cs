@@ -39,6 +39,7 @@ namespace Library_Management_system_API
             builder.Services.AddSingleton<BookImageRepository>();
             builder.Services.AddSingleton<BookRequestRepository>();
             builder.Services.AddSingleton<BorrowedBooksRepository>();
+            builder.Services.AddSingleton<AdminRepository>();
             builder.Services.AddSingleton<BorrowedHistoryRepository>();
 
 
