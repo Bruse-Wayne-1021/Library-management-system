@@ -1,4 +1,5 @@
-﻿using Library_Management_system_API.Models;
+﻿using Library_Management_system_API.Model.ResponseModel;
+using Library_Management_system_API.Models;
 using Library_Management_system_API.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +11,12 @@ namespace Library_Management_system_API.Controllers
     public class BookController : Controller
     {
         private readonly BookRepository _bookRepository;
+        private readonly BookImageRepository _bookImageRepository;
 
-        public BookController(BookRepository bookRepository)
+        public BookController(BookRepository bookRepository, BookImageRepository bookImageRepository)
         {
             _bookRepository = bookRepository;
+            _bookImageRepository = bookImageRepository;
         }
         //add book
         [HttpPost("add-new -book")]
@@ -25,7 +28,7 @@ namespace Library_Management_system_API.Controllers
             }
             try
             {
-                var bookid = await _bookRepository.AddnewBookAsync(book);
+                var bookid = await _bookRepository.AddNewBookAsync(book);
                 return Ok(new { Id = bookid, Message = "Book added successfully" });
 
             }catch(Exception ex)
@@ -44,10 +47,23 @@ namespace Library_Management_system_API.Controllers
         [HttpGet("get-all-books-with-images")]
         public async Task<IActionResult> GetAllBookWithImages()
         {
-            var bookwithImages=await _bookRepository.GetAllBooksWithIMgAsync();
+            var bookwithImages=await _bookRepository.GetAllBooksWithImagesAsync();
             return Ok(bookwithImages);
         }
 
-        
+
+        [HttpGet]
+        public async Task<ActionResult<List<BookImageResponse>>> GetAllBooksWithImages()
+        {
+            var booksWithImages = await _bookRepository.GetAllBooksWithImagesAsync();
+            return Ok(booksWithImages);
+        }
+
+
+
+
+
+
+
     }
 }

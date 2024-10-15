@@ -16,14 +16,15 @@ namespace Library_Management_system_API.Repository
             _bookImageRepository = bookImageRepository;
         }
 
-        
+
         //ADD NEW BOOK
-        public async Task<int> AddnewBookAsync(Book book)
+        public async Task<int> AddNewBookAsync(Book book)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Books (Title,Publisher,BookCopies,Isbn) " +
-                    "VALUES(@Title,@Publisher,@BookCopies,@Isbn)SELECT SCOPE_IDENTITY();", connection);
+                SqlCommand sqlCommand = new SqlCommand(
+                    "INSERT INTO Books (Title, Publisher, BookCopies, Isbn) " +
+                    "VALUES(@Title, @Publisher, @BookCopies, @Isbn); SELECT SCOPE_IDENTITY();", connection);
 
                 sqlCommand.Parameters.AddWithValue("@Title", book.Title);
                 sqlCommand.Parameters.AddWithValue("@Publisher", book.Publisher);
@@ -33,10 +34,9 @@ namespace Library_Management_system_API.Repository
                 await connection.OpenAsync();
                 var id = await sqlCommand.ExecuteScalarAsync();
                 return Convert.ToInt32(id);
-
             }
-
         }
+
 
         //get all books
 
@@ -65,60 +65,57 @@ namespace Library_Management_system_API.Repository
 
         //get all bike with images
 
-        public async Task<List<BookImageResponse>> GetAllBooksWithIMgAsync()
+        public async Task<List<BookImageResponse>> GetAllBooksWithImagesAsync()
         {
             var booksImage = new List<BookImageResponse>();
-            using SqlConnection sqlConnection = new SqlConnection(_connectionString);
-
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Books INNER JOIN Images  on books.Id = Images.BookId;", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(
+                    "SELECT Books.*, Images.ImagePath FROM Books " +
+                    "INNER JOIN Images ON Books.Isbn = Images.Isbn;", sqlConnection);
+
                 await sqlConnection.OpenAsync();
                 SqlDataReader reader = await sqlCommand.ExecuteReaderAsync();
+
                 while (reader.Read())
                 {
-
-                    var bookimage = await _bookImageRepository.GetImageByidAsync((int)reader["Id"]);
                     booksImage.Add(new BookImageResponse
                     {
                         Title = reader["Title"].ToString(),
                         Publisher = reader["Publisher"].ToString(),
                         BookCopies = (int)reader["BookCopies"],
                         Isbn = (int)reader["Isbn"],
-                        BookImages = bookimage
-
+                        Images = new List<string> { reader["ImagePath"].ToString() }
                     });
-
                 }
             }
             return booksImage;
-
         }
-
         // get books with images by id
-        public async Task<BookImageResponse> GetBookImagesByid(int id)
-        {
-            var images= new List<BookImageResponse>();
-            using (SqlConnection SQLconnection = new SqlConnection(_connectionString))
-            {
-                SqlCommand _sqlCommand = new SqlCommand("SELECT * FROM Books INNER JOIN Images  on Books.Id = Images.BookId;", SQLconnection);
-                await SQLconnection.OpenAsync();
-                SqlDataReader sqlDataReader = await _sqlCommand.ExecuteReaderAsync();
-                if (sqlDataReader.Read())
-                {
-                    var bookimage=await _bookImageRepository.GetImageByidAsync(id);
-                    return new BookImageResponse
-                    {
-                        Title = sqlDataReader["Title"].ToString(),
-                        Publisher = sqlDataReader["Publisher"].ToString(),
-                        BookCopies = (int)sqlDataReader["BookCopies"],
-                        Isbn = (int)sqlDataReader["Isbn"],
-                        BookImages = bookimage
-                    };
-                }
-                return null;
+        //public async Task<BookImageResponse> GetBookImagesByid(int id)
+        //{
+        //    var images= new List<BookImageResponse>();
+        //    using (SqlConnection SQLconnection = new SqlConnection(_connectionString))
+        //    {
+        //        SqlCommand _sqlCommand = new SqlCommand("SELECT * FROM Books INNER JOIN Images  on Books.Id = Images.BookId;", SQLconnection);
+        //        await SQLconnection.OpenAsync();
+        //        SqlDataReader sqlDataReader = await _sqlCommand.ExecuteReaderAsync();
+        //        if (sqlDataReader.Read())
+        //        {
+        //            var bookimage=await _bookImageRepository.GetImageByidAsync(id);
+        //            return new BookImageResponse
+        //            {
+        //                Title = sqlDataReader["Title"].ToString(),
+        //                Publisher = sqlDataReader["Publisher"].ToString(),
+        //                BookCopies = (int)sqlDataReader["BookCopies"],
+        //                Isbn = (int)sqlDataReader["Isbn"],
+        //                Images = bookimage
+        //            };
+        //        }
+        //        return null;
                 
-            }
-        }
+        //    }
+        //}
 
 
 

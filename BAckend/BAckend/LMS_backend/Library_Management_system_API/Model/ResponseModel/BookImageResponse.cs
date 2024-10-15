@@ -10,6 +10,6 @@ namespace Library_Management_system_API.Model.ResponseModel
         public int BookCopies { get; set; }
         public int Isbn { get; set; }
 
-        public List<Image> BookImages { get; set; }
+         public List<string> Images { get; set; }
     }
 }

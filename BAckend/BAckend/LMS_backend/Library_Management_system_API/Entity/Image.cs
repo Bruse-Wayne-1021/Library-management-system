@@ -4,6 +4,6 @@
     {
         public int ImageId { get; set; }
         public string ImagePath { get; set; } // For storage
-        public int BookId { get; set; }
+        public int Isbn { get; set; }
     }
 }

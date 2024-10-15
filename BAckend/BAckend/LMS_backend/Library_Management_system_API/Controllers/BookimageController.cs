@@ -19,11 +19,31 @@ namespace Library_Management_system_API.Controllers
 
         //add new book image
         [HttpPost]
-        public async Task<IActionResult> addNewBookimage(ImageRequestModel imageRequest)
+        public async Task<IActionResult> AddBookImage([FromBody] ImageRequestModel imageRequestModel)
         {
-            var data=await _bookImageRepository.AddNewBookImgAsync(imageRequest);
-            return View(data);
+            // Log the incoming request for debugging
+            Console.WriteLine($"Received ImagePath: {imageRequestModel?.ImagePath}, Isbn: {imageRequestModel?.Isbn}");
+
+            if (imageRequestModel == null ||
+                string.IsNullOrWhiteSpace(imageRequestModel.ImagePath) ||
+                imageRequestModel.Isbn <= 0)
+            {
+                return BadRequest("Invalid image data.");
+            }
+
+            try
+            {
+                await _bookImageRepository.AddNewBookImgAsync(imageRequestModel);
+                return Ok("Image added successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (not shown here for brevity)
+                return StatusCode(500, "An error occurred while adding the image: " + ex.Message);
+            }
         }
+
+
 
     }
 }

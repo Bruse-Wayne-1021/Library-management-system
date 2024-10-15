@@ -19,10 +19,11 @@ namespace Library_Management_system_API.Repository
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand(
-                    "INSERT INTO Member (FirstName, LastName, Nic, Email, PhoneNumber) " +
+                    "INSERT INTO Member (FirstName, LastName, Nic, Email, PhoneNumber,password) " +
                     "OUTPUT INSERTED.Id " +
-                    "VALUES (@FirstName, @LastName, @Nic, @Email, @PhoneNumber)",
+                    "VALUES (@FirstName, @LastName, @Nic, @Email, @PhoneNumber,@password)",
                     sqlConnection);
+
 
                 sqlCommand.Parameters.AddWithValue("@FirstName", member.FirstName);
                 sqlCommand.Parameters.AddWithValue("@LastName", member.LastName);
@@ -30,6 +31,7 @@ namespace Library_Management_system_API.Repository
                 sqlCommand.Parameters.AddWithValue("@Email", member.Email);
                 sqlCommand.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
                 //sqlCommand.Parameters.AddWithValue("@JoinDate", member.JoinDate);
+                sqlCommand.Parameters.AddWithValue("@password",member.password);
 
                 await sqlConnection.OpenAsync();
                 var id = await sqlCommand.ExecuteScalarAsync();
@@ -55,9 +57,9 @@ namespace Library_Management_system_API.Repository
                         Id = (int)reader["Id"],
                         FirstName = reader["FirstName"].ToString(),
                         LastName = reader["LastName"].ToString(),
-                        Nic = reader["Nic"] != DBNull.Value ? (int)reader["Nic"] : null,
+                        Nic = reader["Nic"] .ToString(),
                         Email = reader["Email"].ToString(),
-                        PhoneNumber = (int)reader["PhoneNumber"],
+                        PhoneNumber = reader["PhoneNumber"].ToString()
                         //JoinDate = DateOnly.FromDateTime((DateTime)reader["JoinDate"])
                     };
                 }
@@ -82,9 +84,9 @@ namespace Library_Management_system_API.Repository
                         Id = (int)reader["Id"],
                         FirstName = reader["FirstName"].ToString(),
                         LastName = reader["LastName"].ToString(),
-                        Nic = reader["Nic"] != DBNull.Value ? (int)reader["Nic"] : null,
+                        Nic = reader["Nic"].ToString(),
                         Email = reader["Email"].ToString(),
-                        PhoneNumber = (int)reader["PhoneNumber"],
+                        PhoneNumber = reader["PhoneNumber"].ToString()
 
                     });
                 }
@@ -108,17 +110,19 @@ namespace Library_Management_system_API.Repository
 
         //update user details 
 
-        public async Task<bool>UpdateMemebrAsync(Member member)
+        public async Task<bool>UpdateMemebrAsync( int id ,Member member)
         {
             using SqlConnection sqlConnection=new SqlConnection(_connectionString);
             {
-                SqlCommand sqlCommand = new SqlCommand("UPDATE Member SET FirstName=@FirstName,LastName=@LastName,Email=@Email,PhoneNumber=@PhoneNumber WHERE Id = @Id", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("UPDATE Member SET FirstName=@FirstName,LastName=@LastName,Email=@Email,PhoneNumber=@PhoneNumber,password=@password WHERE Id = @Id", sqlConnection);
                 
                     sqlCommand.Parameters.AddWithValue("@FirstName", member.FirstName);
                     sqlCommand.Parameters.AddWithValue("@LastName",member.LastName);
                     sqlCommand.Parameters.AddWithValue("@Email",member.Email);
                     sqlCommand.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
-
+                    sqlCommand.Parameters.AddWithValue("@password",member.password);
+                     sqlCommand.Parameters.AddWithValue("@Id", id);
+                    
                     await sqlConnection.OpenAsync();
                     var result= await sqlCommand.ExecuteNonQueryAsync();
                     return result > 0;
