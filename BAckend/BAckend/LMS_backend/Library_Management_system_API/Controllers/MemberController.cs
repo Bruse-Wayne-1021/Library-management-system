@@ -25,7 +25,7 @@ namespace Library_Management_system_API.Controllers
             }
 
             try
-            {
+                            {
                 var memberId = await _memberRepository.CreateMemberAsync(member);
                 return Ok(new { Id = memberId, Message = "Member added successfully" });
             }
@@ -73,13 +73,33 @@ namespace Library_Management_system_API.Controllers
 
         [HttpPut("id")]
 
-        public async Task<IActionResult>UpdateMembers(int id, Member member)
+        public async Task<IActionResult> UpdateMembers(int id, Member member)
         {
+            try
+            {
+                // First, check if the member exists
+                var existingMember = await _memberRepository.GetMemberByIdAsync(id);
+                if (existingMember == null)
+                {
+                    return NotFound("Member not found.");
+                }
 
-              var update=await _memberRepository.UpdateMemebrAsync(member);
-            var updatedmember = await _memberRepository.GetMemberByIdAsync(id);
-            return Ok(updatedmember);
-
+                // If member exists, perform the update
+                var userUpdate = await _memberRepository.UpdateMemebrAsync(id, member);
+                if (userUpdate)
+                {
+                    return Ok("Member updated successfully.");
+                }
+                else
+                {
+                    return BadRequest("Member update failed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
+
     }
 }

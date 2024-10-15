@@ -78,12 +78,13 @@ namespace Library_Management_system_API.DbInitializer
                 BEGIN
                     CREATE TABLE Member
                     (
+                         
                         Nic NVARCHAR(50) PRIMARY KEY NOT NULL,
+                        Id int IDENTITY(1,1),
                         FirstName NVARCHAR(50) NOT NULL,
                         LastName NVARCHAR(50) NOT NULL,
                         Email NVARCHAR(50),
                         PhoneNumber NVARCHAR(15) NOT NULL,
-                        JoinDate DATE NOT NULL,
                         Password NVARCHAR(50) NOT NULL
                     );
                 END
@@ -108,7 +109,12 @@ namespace Library_Management_system_API.DbInitializer
                         FOREIGN KEY (UserNicNumber) REFERENCES Member(Nic),
                         FOREIGN KEY (BookId) REFERENCES Books(BookId)
                     );
-                END", connection);
+                END
+"
+
+
+
+                , connection);
 
                 await connection.OpenAsync();
                 try
@@ -143,3 +149,7 @@ namespace Library_Management_system_API.DbInitializer
 
     
 }
+
+
+//JoinDate DATE NOT NULL,
+//                    Password NVARCHAR(50) NOT NULL

@@ -18,7 +18,7 @@ namespace Library_Management_system_API.Repository
             {
                 using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Admin WHERE AdminId = @AdminId", sqlConnection))
                 {
-                    // Add the parameter for AdminId
+                  
                     sqlCommand.Parameters.AddWithValue("@AdminId", id);
 
                     await sqlConnection.OpenAsync();
@@ -30,13 +30,13 @@ namespace Library_Management_system_API.Repository
                         return new AdminResponsemodel
                         {
                             AdminId = (int)reader["AdminId"],
-                            AdminName = reader["AdminName"] != DBNull.Value ? reader["AdminName"].ToString() : string.Empty,  // Fix column name
+                            AdminName = reader["AdminName"] != DBNull.Value ? reader["AdminName"].ToString() : string.Empty,  
                             NIC = reader["NIC"] != DBNull.Value ? reader["NIC"].ToString() : string.Empty,
                             Password = reader["Password"] != DBNull.Value ? reader["Password"].ToString() : string.Empty
                         };
                     }
 
-                    // If no rows are found, return null
+                  
                     return null;
                 }
             }
