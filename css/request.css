@@ -16,7 +16,6 @@ body {
     height: 100vh;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -57,7 +56,7 @@ body {
 .container {
     flex: 1;
     max-width: calc(100% - 250px);
-    margin-left: 250px;
+    /* margin-left: 0px; */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
