@@ -3,7 +3,7 @@
     public class ImageRequestModel
     {
         public string ImagePath { get; set; }
-        public int BookId { get; set; }
+        public int Isbn { get; set; }
 
     }
 }

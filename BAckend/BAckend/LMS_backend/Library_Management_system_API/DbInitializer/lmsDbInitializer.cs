@@ -34,7 +34,7 @@ namespace Library_Management_system_API.DbInitializer
                         Title NVARCHAR(50) NOT NULL,
                         Publisher NVARCHAR(50) NOT NULL,
                         BookCopies INT,
-                        Isbn NVARCHAR(50)
+                        Isbn int NOT NULL UNIQUE
                     );
                 END
                     
@@ -46,8 +46,8 @@ namespace Library_Management_system_API.DbInitializer
                             BEGIN 
                     CREATE TABLE Admin 
                         (
-                        AdminId INT PRIMARY KEY IDENTITY(1,1), -- Added missing comma here
-                         AdminName NVARCHAR(50) NOT NULL,
+                      AdminId INT PRIMARY KEY IDENTITY(1,1),
+                      AdminName NVARCHAR(50) NOT NULL,
                       NIC NVARCHAR(50) NOT NULL,
                       Password NVARCHAR(50) NOT NULL
                       );
@@ -60,12 +60,11 @@ namespace Library_Management_system_API.DbInitializer
                     WHERE s.name = 'dbo' AND t.name = 'Images'
                 )
                 BEGIN
-                    CREATE TABLE Images
-                    (
-                        ImageId INT PRIMARY KEY IDENTITY(1,1),
-                        ImagePath NVARCHAR(MAX) NOT NULL,
-                        BookId INT NOT NULL,
-                        FOREIGN KEY (BookId) REFERENCES Books(BookId)
+                   CREATE TABLE Images (
+                    ImageId INT IDENTITY(1,1) PRIMARY KEY, 
+                    ImagePath NVARCHAR(MAX) NOT NULL,      
+                    Isbn INT NOT NULL,                      
+                    FOREIGN KEY (Isbn) REFERENCES Books(Isbn) 
                     );
                 END
 
@@ -85,7 +84,8 @@ namespace Library_Management_system_API.DbInitializer
                         LastName NVARCHAR(50) NOT NULL,
                         Email NVARCHAR(50),
                         PhoneNumber NVARCHAR(15) NOT NULL,
-                        Password NVARCHAR(50) NOT NULL
+                        Password NVARCHAR(50) NOT NULL,
+                        JoinDate DATE NOT NULL,
                     );
                 END
 
@@ -110,6 +110,9 @@ namespace Library_Management_system_API.DbInitializer
                         FOREIGN KEY (BookId) REFERENCES Books(BookId)
                     );
                 END
+
+               
+                     
 "
 
 
@@ -151,5 +154,5 @@ namespace Library_Management_system_API.DbInitializer
 }
 
 
-//JoinDate DATE NOT NULL,
+
 //                    Password NVARCHAR(50) NOT NULL

@@ -5,7 +5,7 @@
         public int UserNicNumber { get; set; }
         public string Bookname { get; set; }
         public int bookIsbn { get; set; }
-        public DateOnly BorrowedDate { get; set; }
-        public DateOnly duedate { get; set; }
+        public DateTime BorrowedDate { get; set; }
+        public DateTime duedate { get; set; }
     }
 }

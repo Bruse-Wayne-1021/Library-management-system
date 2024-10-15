@@ -1,79 +1,93 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded',  async () => {
+    let base64Image = "";
 
-     document.getElementById('addBookForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-     
-        document.getElementById('imageInput').addEventListener('change', function(event) {
    
-   
-       const file = event.target.files[0];
-       const reader = new FileReader();
+    document.getElementById('coverUrl').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
         reader.readAsDataURL(file);
-       reader.onloadend = function(e) {
-        let dis= document.getElementById('imageDisplay');
-   
-        let image=e.target.result
-        console.log(image);
-       // dis.src.e.target.result;
-       };
-          });
-        const BookName = document.getElementById('bookName').value;
-        const Isbn = document.getElementById('isbn').value;
+        reader.onloadend = function(e) {
+            base64Image = e.target.result; 
+            document.getElementById('imageDisplay').src = base64Image;
+            document.getElementById('imageDisplay').style.display = "block";  // Show image preview
+        };
+    });
+
+  
+    document.getElementById('addBookForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const bookName = document.getElementById('bookName').value;
+        const isbn = document.getElementById('isbn').value;
         const publisher = document.getElementById('publisher').value;
         const copies = document.getElementById('copies').value;
-      //  const coverUrl = document.getElementById('coverUrl').value;
         const genre = document.getElementById('genre').value;
 
-        const bookurl = "http://localhost:3000/book";
-        
         const bookDetails = {
-            BookName,
-            Isbn,
-            publisher,
-            copies,
-            image,
-            genre,
-            bookaddedDate: new Date().toLocaleDateString()
+            Title: bookName,
+            Isbn: isbn,
+            Publisher: publisher,
+            BookCopies: copies,
+            Genre: genre,
+          
+        };
+
+        const image={
+            Image: base64Image,
+            Isbn:isbn
         }
 
+      
+
         try {
-            // Using post method to add books to server
-            const response = await fetch(bookurl, {
+            const response = await fetch('http://localhost:3000/book', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(bookDetails)
             });
-            // checking book loaded in server  if loaded succuss display books 
+
             if (response.ok) {
-                alert("book added succesfuly")
+               try {
+               
+                const response =await fetch("http://localhost:3000/imageurl",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(image)
 
-                await displaybooks();
+                })
+                if(response.ok){
+                    console.log("image add ")
+                }
+               } catch (error) {
+                alert(`Error is :  ${error}`)
+               }
             } else {
-                throw new Error("failed to add book");
-
+                throw new Error("Failed to add book");
             }
-
         } catch (error) {
-            console.log(error)
-            alert("error :" + error)
+            console.error(error);
+            alert("Error: " + error.message);
         }
-
-
     });
+
     await displaybooks();
     await dispalyamembers();
-})
-// display books in table
-// fetch books from server using get method
+});
+
 let displaybooks = async () => {
 
     const bookurl = "http://localhost:3000/book";
+    const imagerl="http://localhost:3000/imageurl";
     const BooktableBdy = document.querySelector('tbody');
 
     try {
+
+        const image=await fetch(imagerl);
+        const img=await image.json();
 
         const booksdata = await fetch(bookurl, {
             method: "GET",
@@ -93,7 +107,7 @@ let displaybooks = async () => {
              <td>${book.publisher}</td>
              <td>${book.copies}</td>
              <td>${book.genre}</td>
-             <td><img src="${book.coverUrl}" alt="Book cover" style="width:50px; height:75px;"></td>
+             <td><img src="${book.Image}" alt="Book cover" style="width:50px; height:75px;"></td>
              <td><button onclick="EditBookDetails(${index})">Edit</button></td>
              <td><button onclick="Deletebook(${index})">Delete</button></td>
              `
