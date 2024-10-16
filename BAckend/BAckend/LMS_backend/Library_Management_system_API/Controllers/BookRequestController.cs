@@ -1,7 +1,7 @@
-﻿using Library_Management_system_API.Model.RequestModel;
+﻿using Library_Management_system_API.Models;
 using Library_Management_system_API.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Library_Management_system_API.Controllers
 {
@@ -9,37 +9,44 @@ namespace Library_Management_system_API.Controllers
     [ApiController]
     public class BookRequestController : ControllerBase
     {
-        private readonly BookRequestRepository _BookRequestRepository;
+        private readonly BookRequestRepository _bookRequestRepository;
 
         public BookRequestController(BookRequestRepository bookRequestRepository)
         {
-            _BookRequestRepository=bookRequestRepository;
+            _bookRequestRepository = bookRequestRepository;
         }
-
 
         [HttpPost]
-
-        public async Task<IActionResult>AddNewRequest(BookRequestModel bookRequestModel)
+        public async Task<IActionResult> RequestBook([FromBody] BookRequest bookRequest)
         {
-            var data=await _BookRequestRepository.AddnewBookRequestAsync(bookRequestModel);
-            return Ok(data);
+            if (bookRequest == null)
+            {
+                return BadRequest("Invalid book request.");
+            }
+
+            bookRequest.RequestedDate = DateTime.Now; // Set requested date to now
+
+            var id = await _bookRequestRepository.AddNewBookRequestAsync(bookRequest);
+            return CreatedAtAction(nameof(RequestBook), new { id }, bookRequest);
         }
 
-        [HttpGet("get-all-request")]
-        public async Task<IActionResult> getAllRequest()
+        [HttpGet]
+        public async Task<IActionResult> GetBookRequests()
         {
-            var data = await _BookRequestRepository.GetBookRequestsAsync();
-            return Ok(data);
+            var requests = await _bookRequestRepository.GetBookRequestsAsync();
+            return Ok(requests);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateStatus(int id)
+        {
+            var result = await _bookRequestRepository.UpdateStatusAsync(id);
+            if (result)
+            {
+                return NoContent();
+            }
 
-        
-        //public async Task<IActionResult>UpdateStatus(int id)
-        //{
-        //    var data=await _BookRequestRepository.UpdateStatusAsync(id);
-        //    return Ok(data);
-        //}
-
-
+            return NotFound();
+        }
     }
 }

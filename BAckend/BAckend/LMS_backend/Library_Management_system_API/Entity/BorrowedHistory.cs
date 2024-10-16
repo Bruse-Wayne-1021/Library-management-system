@@ -4,10 +4,14 @@
     {
         public int Id { get; set; }
         public  int UserNicNumber { get; set; }
+        public String UserFirstName { get; set; }
+        public string UserLastName { get; set; }
         public string Bookname { get; set; }
         public int bookIsbn { get; set; }
         public DateTime BorrowedDate { get; set; }
         public DateTime ReturnedDate { get; set; }
+
+
 
     }
 }
