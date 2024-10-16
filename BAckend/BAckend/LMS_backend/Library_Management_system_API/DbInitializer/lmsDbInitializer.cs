@@ -34,7 +34,8 @@ namespace Library_Management_system_API.DbInitializer
                         Title NVARCHAR(50) NOT NULL,
                         Publisher NVARCHAR(50) NOT NULL,
                         BookCopies INT,
-                        Isbn int NOT NULL UNIQUE
+                        Isbn int NOT NULL UNIQUE,
+                        
                     );
                 END
                     
@@ -103,15 +104,33 @@ namespace Library_Management_system_API.DbInitializer
                         UserNicNumber NVARCHAR(50) NOT NULL,
                         UserLastName NVARCHAR(50) NOT NULL,
                         RequestedDate DATE NOT NULL,
-                        BookId INT NOT NULL,
+                        Isbn INT NOT NULL,
                         BookName NVARCHAR(50) NOT NULL,
                         Status BIT NOT NULL,
                         FOREIGN KEY (UserNicNumber) REFERENCES Member(Nic),
-                        FOREIGN KEY (BookId) REFERENCES Books(BookId)
+                        FOREIGN KEY (Isbn) REFERENCES Books(Isbn)
                     );
                 END
-
-               
+                
+                IF NOT EXISTS (
+                    SELECT * FROM sys.tables t 
+                    JOIN sys.schemas s ON t.schema_id = s.schema_id
+                    WHERE s.name = 'dbo' AND t.name = 'BorrowedHistory'
+                )
+                 BEGIN
+                    CREATE TABLE BorrowedHistory
+                     (
+                      Id INT PRIMARY KEY IDENTITY (1,1),
+                      UserNicNumber NVARCHAR(50) NOT NULL,
+                      UserLastName NVARCHAR(50) NOT NULL,
+                      UserLastName NVARCHAR(50) NOT NULL,
+                      BorrowedDate DATE NOT NULL,
+                      RETURNEDDate DATE NOT NULL,
+                      Isbn INT NOT NULL,
+                      BookName NVARCHAR(50) NOT NULL,
+                     )
+                END
+                        
                      
 "
 

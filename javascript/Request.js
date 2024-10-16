@@ -2,10 +2,10 @@
 // const { json } = require("stream/consumers");
 
 
-document.addEventListener('DOMContentLoaded', async (e) => {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', async () => {
+    
 
-    const BookRequestApiurl = "http://localhost:3000/BookRequest";
+    const BookRequestApiurl = "ht";
 
     const response = await fetch(BookRequestApiurl, {
         method: "GET",
@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         alert("Book request fetch sucess")
     }
     const Requestes = await response.json();
+    console.log(Requestes);
+    
 
     const requestTable = document.querySelector('tbody');
     requestTable.innerHTML = "";

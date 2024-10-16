@@ -2,7 +2,7 @@
 {
     public class BookRequestModel
     {
-        public int UserID { get; set; }
+        public int Bookid { get; set; }
         public string UserFirstName { get; set; }
         public string UserLastName { get; set; }
         public DateTime RequestedDate { get; set; }
@@ -10,6 +10,5 @@
         public string Bookname { get; set; }
 
         public bool Status { get; set; }
-
     }
 }

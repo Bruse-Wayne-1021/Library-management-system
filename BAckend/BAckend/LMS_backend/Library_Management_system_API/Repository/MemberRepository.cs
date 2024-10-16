@@ -19,9 +19,9 @@ namespace Library_Management_system_API.Repository
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand(
-                    "INSERT INTO Member (FirstName, LastName, Nic, Email, PhoneNumber,password) " +
+                    "INSERT INTO Member (FirstName, LastName, Nic, Email, PhoneNumber,JoinDate,password) " +
                     "OUTPUT INSERTED.Id " +
-                    "VALUES (@FirstName, @LastName, @Nic, @Email, @PhoneNumber,@password)",
+                    "VALUES (@FirstName, @LastName, @Nic, @Email, @PhoneNumber,@JoinDate,@password)",
                     sqlConnection);
 
 
@@ -30,7 +30,7 @@ namespace Library_Management_system_API.Repository
                 sqlCommand.Parameters.AddWithValue("@Nic", member.Nic);
                 sqlCommand.Parameters.AddWithValue("@Email", member.Email);
                 sqlCommand.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
-                //sqlCommand.Parameters.AddWithValue("@JoinDate", member.JoinDate);
+                sqlCommand.Parameters.AddWithValue("@JoinDate", member.JoinDate);
                 sqlCommand.Parameters.AddWithValue("@password",member.password);
 
                 await sqlConnection.OpenAsync();
@@ -59,8 +59,8 @@ namespace Library_Management_system_API.Repository
                         LastName = reader["LastName"].ToString(),
                         Nic = reader["Nic"] .ToString(),
                         Email = reader["Email"].ToString(),
-                        PhoneNumber = reader["PhoneNumber"].ToString()
-                        //JoinDate = DateOnly.FromDateTime((DateTime)reader["JoinDate"])
+                        PhoneNumber = reader["PhoneNumber"].ToString(),
+                        JoinDate = ((DateTime)reader["JoinDate"])
                     };
                 }
                 return null;

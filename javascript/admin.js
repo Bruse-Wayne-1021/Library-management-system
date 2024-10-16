@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded',  async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     let base64Image = "";
 
-   
+    // Image upload event
     document.getElementById('coverUrl').addEventListener('change', function(event) {
         const file = event.target.files[0];
         const reader = new FileReader();
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded',  async () => {
         };
     });
 
-  
+    // Form submission for adding a new book
     document.getElementById('addBookForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -29,18 +29,16 @@ document.addEventListener('DOMContentLoaded',  async () => {
             Publisher: publisher,
             BookCopies: copies,
             Genre: genre,
-          
         };
 
-        const image={
-            Image: base64Image,
-            Isbn:isbn
-        }
-
-      
+        const image = {
+            ImagePath: base64Image,
+            Isbn: isbn
+        };
 
         try {
-            const response = await fetch('http://localhost:3000/book', {
+            // Add book request
+            const bookResponse = await fetch('http://localhost:5116/api/Book/add-new-book', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -48,23 +46,21 @@ document.addEventListener('DOMContentLoaded',  async () => {
                 body: JSON.stringify(bookDetails)
             });
 
-            if (response.ok) {
-               try {
-               
-                const response =await fetch("http://localhost:3000/imageurl",{
+            if (bookResponse.ok) {
+                // Add image request
+                const imageResponse = await fetch("http://localhost:5116/api/Bookimage", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(image)
+                });
 
-                })
-                if(response.ok){
-                    console.log("image add ")
+                if (imageResponse.ok) {
+                    alert("Book and image added successfully!");
+                } else {
+                    throw new Error("Failed to add book image");
                 }
-               } catch (error) {
-                alert(`Error is :  ${error}`)
-               }
             } else {
                 throw new Error("Failed to add book");
             }
@@ -75,20 +71,20 @@ document.addEventListener('DOMContentLoaded',  async () => {
     });
 
     await displaybooks();
-    await dispalyamembers();
+    await displaymembers();
 });
+
+
 
 let displaybooks = async () => {
 
-    const bookurl = "http://localhost:3000/book";
-    const imagerl="http://localhost:3000/imageurl";
+    const bookurl = "http://localhost:5116/api/Book/get-all-books-with-images";
+    
     const BooktableBdy = document.querySelector('tbody');
 
     try {
 
-        const image=await fetch(imagerl);
-        const img=await image.json();
-
+     
         const booksdata = await fetch(bookurl, {
             method: "GET",
             headers: {
@@ -102,12 +98,12 @@ let displaybooks = async () => {
         books.forEach((book, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-             <td>${book.BookName}</td>
-             <td>${book.Isbn}</td>
+             <td>${book.title}</td>
+             <td>${book.isbn}</td>
              <td>${book.publisher}</td>
-             <td>${book.copies}</td>
+             <td>${book.bookCopies}</td>
              <td>${book.genre}</td>
-             <td><img src="${book.Image}" alt="Book cover" style="width:50px; height:75px;"></td>
+             <td><img src="${book.images}" alt="Book cover" style="width:50px; height:75px;"></td>
              <td><button onclick="EditBookDetails(${index})">Edit</button></td>
              <td><button onclick="Deletebook(${index})">Delete</button></td>
              `

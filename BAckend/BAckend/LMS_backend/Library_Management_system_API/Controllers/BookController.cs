@@ -19,7 +19,7 @@ namespace Library_Management_system_API.Controllers
             _bookImageRepository = bookImageRepository;
         }
         //add book
-        [HttpPost("add-new -book")]
+        [HttpPost("add-new-book")]
         public async Task<IActionResult> CreateNewMember([FromBody]Book book)
         {
             if(!ModelState.IsValid)

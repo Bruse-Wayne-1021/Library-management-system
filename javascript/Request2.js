@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
 
-    const BookRequestApiurl = "http://localhost:3000/BookRequest";
+    const BookRequestApiurl = "http://localhost:5116/api/BookRequest";
 
     const response = await fetch(BookRequestApiurl, {
         method: "GET",
@@ -16,16 +16,20 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     }
 
     const Requests = await response.json();
+    console.log(Requests);
+    
     const requestTable = document.querySelector('tbody');
     requestTable.innerHTML = "";
 
     Requests.forEach((Request, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-        <td>${Request.UserNicNumber}</td>
-        <td>${Request.UserID}</td>
-        <td>${Request.UserFirstName}</td>
-        <td>${Request.Bookname}</td>
+        <td>${Request.userNicNumber}</td>
+        <td>${Request.userFirstName}</td>
+        <td>${Request.userLastName}</td>
+        <td>${Request.isbn}</td>
+        <td>${Request.bookName}</td>
+        <td>${Request.requestedDate}</td>
         <td>
             <button onclick="AcceptRequest(${index})">Accept</button>
             <button onclick="RejectRequest(${index})" class="Rejectbtn">Reject</button>
