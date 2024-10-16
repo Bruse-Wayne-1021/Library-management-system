@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     await displaybooks();
-    await displaymembers();
+    await dispalyamembers();
 });
 
 
@@ -122,33 +122,37 @@ let displaybooks = async () => {
 document.getElementById('addMemberForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const nic = document.getElementById('nic').value;
-    const email = document.getElementById('Email').value;
-    const phoneNumber = document.getElementById('phoneNumber').value;
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+    
+    const FirstName = document.getElementById('firstName').value;
+    const LastName = document.getElementById('lastName').value;
+    const Nic = document.getElementById('nic').value;
+    const Email = document.getElementById('Email').value;
+    const PhoneNumber = document.getElementById('phoneNumber').value;
+    //const confirmPassword=document.getElementById("password").value;
+    const Password = document.getElementById('confirmPassword').value; 
 
-    if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return;
-    }
-
+    // Validate required fields
+    // if (Password !== confirmPassword) {
+    //     alert("Passwords do not match");
+    //     return;
+    // }
+    
     const membersData = {
-        Nic: nic,
-        FirstName: firstName,
-        LastName: lastName,
-        Email: email,
-        PhoneNumber: phoneNumber,
-        Password: password,
-        JoinDate: new Date().toLocaleDateString()
+        Nic,
+        FirstName,
+        LastName,
+        Email,
+        PhoneNumber,
+        Password,
+        JoinDate: new Date().toISOString().split('T')[0]
     };
 
-    const membersUrl = "http://localhost:5116/api/Member";
+    console.log(membersData); 
+
+    const memnersurl = "http://localhost:5116/api/Member";
 
     try {
-        const addMember = await fetch(membersUrl, {
+        const addmember = await fetch(memnersurl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -156,14 +160,18 @@ document.getElementById('addMemberForm').addEventListener('submit', async (e) =>
             body: JSON.stringify(membersData)
         });
 
-        if (addMember.ok) {
-            alert("Member registered successfully");
-            await displayMembers(); // Ensure this function exists if you're displaying the members afterward.
+        if (addmember.ok) {
+            alert("Member registered successfully!");
+            
+            
         } else {
-            throw new Error("Error in member registration, please try again later.");
+            const errorMessage = await addmember.text(); 
+            console.error("Error response:", errorMessage);
+            throw new Error(`Failed to register member: ${errorMessage}`);
         }
     } catch (error) {
-        alert("Error: " + error);
+        console.error("Error occurred:", error); 
+        alert("An error occurred: " + error.message);
     }
 });
 
@@ -196,6 +204,7 @@ let dispalyamembers = async () => {
               <td>${member. nic}</td>
               <td>${member.email}</td>
               <td>${member. phoneNumber}</td>
+              <td>${member. joinDate}</td>
             `
             MemTablebody.appendChild(row);
         })

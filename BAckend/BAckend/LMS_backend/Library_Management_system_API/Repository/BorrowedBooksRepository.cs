@@ -1,5 +1,6 @@
 ﻿using Library_Management_system_API.Model.RequestModel;
 using Library_Management_system_API.Model.ResponseModel;
+using Library_Management_system_API.Models;
 using Microsoft.Data.SqlClient;
 
 namespace Library_Management_system_API.Repository
@@ -13,19 +14,21 @@ namespace Library_Management_system_API.Repository
             _ConnectionString = configuration.GetConnectionString("DBConnection");
         }
 
-        public async Task<int>AddBorrowedBooksAsync(BorrowedBookRequestModel borrowedBookRequestModel)
+        public async Task<int> AddNewBorrowedBookAsync(BorrowedBookRequestModel borrowedBookRequestModel)
         {
-            using(SqlConnection sqlConnection=new SqlConnection(_ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
             {
-              
-                using(SqlCommand sqlCommand=new SqlCommand("INSERT into BorrowedBooks (UserNicNumber,Bookname,bookIsbn,BorrowedDate,duedate) " +
-                    "values(@UserNicNumber,@Bookname,@bookIsbn,@BorrowedDate,@duedate)",sqlConnection))
+                string query = "INSERT INTO BorrowedBooks (UserNicNumber, Bookname, bookIsbn, BorrowedDate, duedate) " +
+                               "VALUES (@UserNicNumber, @Bookname, @bookIsbn, @BorrowedDate, @duedate); " +
+                               "SELECT SCOPE_IDENTITY();";
+
+                using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
                 {
-                    sqlCommand.Parameters.AddWithValue("@UserNicNumber",borrowedBookRequestModel.UserNicNumber);
-                    sqlCommand.Parameters.AddWithValue("@Bookname",borrowedBookRequestModel.Bookname);
-                    sqlCommand.Parameters.AddWithValue("@bookIsbn",borrowedBookRequestModel.bookIsbn);
-                    sqlCommand.Parameters.AddWithValue("@BorrowedDate",borrowedBookRequestModel.BorrowedDate);
-                    sqlCommand.Parameters.AddWithValue("@duedate",borrowedBookRequestModel.duedate);
+                    sqlCommand.Parameters.AddWithValue("@UserNicNumber", borrowedBookRequestModel.UserNicNumber);
+                    sqlCommand.Parameters.AddWithValue("@Bookname", borrowedBookRequestModel.Bookname);
+                    sqlCommand.Parameters.AddWithValue("@bookIsbn", borrowedBookRequestModel.bookIsbn);
+                    sqlCommand.Parameters.AddWithValue("@BorrowedDate", borrowedBookRequestModel.BorrowedDate);
+                    sqlCommand.Parameters.AddWithValue("@duedate", borrowedBookRequestModel.duedate);
 
                     sqlConnection.Open();
                     var id = await sqlCommand.ExecuteScalarAsync();
@@ -49,11 +52,11 @@ namespace Library_Management_system_API.Repository
                         var book = new BorrowedBooksResponseModel
                         {
                             Id = (int)reader[""],
-                            UserNicNumber = (int)reader["UserNicNumber"],
+                            UserNicNumber =reader["UserNicNumber"].ToString(),
                             Bookname = reader["Bookname"].ToString(),
-                            bookIsbn = reader["bookIsbn"].ToString(),
-                            BorrowedDate = (DateOnly)reader["BorrowedDate"],
-                            duedate = (DateOnly)reader["BorrowedDate"]
+                            bookIsbn = (int)reader["bookIsbn"],
+                            BorrowedDate = (DateTime)reader["BorrowedDate"],
+                            duedate = (DateTime)reader["BorrowedDate"]
                         };
                         borrowedBooksDetails.Add(book);
                     }

@@ -14,16 +14,15 @@ namespace Library_Management_system_API.Repository
 
 
         //create new members
-        public async Task<int> CreateMemberAsync(Member member) 
+        public async Task<int> CreateMemberAsync(Member member)
         {
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand(
-                    "INSERT INTO Member (FirstName, LastName, Nic, Email, PhoneNumber,JoinDate,password) " +
+                    "INSERT INTO Member (FirstName, LastName, Nic, Email, PhoneNumber, JoinDate, Password) " +
                     "OUTPUT INSERTED.Id " +
-                    "VALUES (@FirstName, @LastName, @Nic, @Email, @PhoneNumber,@JoinDate,@password)",
+                    "VALUES (@FirstName, @LastName, @Nic, @Email, @PhoneNumber, @JoinDate, @Password)",
                     sqlConnection);
-
 
                 sqlCommand.Parameters.AddWithValue("@FirstName", member.FirstName);
                 sqlCommand.Parameters.AddWithValue("@LastName", member.LastName);
@@ -31,13 +30,14 @@ namespace Library_Management_system_API.Repository
                 sqlCommand.Parameters.AddWithValue("@Email", member.Email);
                 sqlCommand.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
                 sqlCommand.Parameters.AddWithValue("@JoinDate", member.JoinDate);
-                sqlCommand.Parameters.AddWithValue("@password",member.password);
+                sqlCommand.Parameters.AddWithValue("@Password", member.Password); // Fixed capitalization
 
                 await sqlConnection.OpenAsync();
                 var id = await sqlCommand.ExecuteScalarAsync();
                 return Convert.ToInt32(id);
             }
         }
+
 
         //get members by id
 
@@ -120,7 +120,7 @@ namespace Library_Management_system_API.Repository
                     sqlCommand.Parameters.AddWithValue("@LastName",member.LastName);
                     sqlCommand.Parameters.AddWithValue("@Email",member.Email);
                     sqlCommand.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
-                    sqlCommand.Parameters.AddWithValue("@password",member.password);
+                    sqlCommand.Parameters.AddWithValue("@password",member.Password);
                      sqlCommand.Parameters.AddWithValue("@Id", id);
                     
                     await sqlConnection.OpenAsync();

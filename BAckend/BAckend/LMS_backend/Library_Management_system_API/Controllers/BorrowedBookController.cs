@@ -1,4 +1,5 @@
 ﻿using Library_Management_system_API.Model.RequestModel;
+using Library_Management_system_API.Model.ResponseModel;
 using Library_Management_system_API.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +18,16 @@ namespace Library_Management_system_API.Controllers
         }
 
 
-        [HttpPost("add-new-BorrowedBook")]
-        public async Task<IActionResult> AddBorrowedBook(BorrowedBookRequestModel borrowedBookRequestModel)
+        [HttpPost]
+        public async Task<IActionResult> AddBorrowedBook([FromBody] BorrowedBookRequestModel borrowedBookRequestModel)
         {
-            var data=await _borrowedBooksRepository.AddBorrowedBooksAsync(borrowedBookRequestModel);
-            return Ok(data);
+            if (borrowedBookRequestModel == null)
+            {
+                return BadRequest("Invalid book request.");
+            }
+
+            var id = await _borrowedBooksRepository.AddNewBorrowedBookAsync(borrowedBookRequestModel);
+            return CreatedAtAction(nameof(AddBorrowedBook), new { id }, borrowedBookRequestModel);
         }
     }
 }

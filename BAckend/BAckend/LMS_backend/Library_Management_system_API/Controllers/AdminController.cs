@@ -16,16 +16,16 @@ namespace Library_Management_system_API.Controllers
         }
 
 
-        [HttpGet("get-admin-by-id")]
-        public async Task<IActionResult>GetadminDetails(int id)
-        {
-            var data=await _adminRepository.GetAdminByIdAsync(id);
-            if (data == null)
-            {
-                return NotFound();
-            }
-            return Ok(data);
-        }
+        //[HttpGet("get-admin-by-id")]
+        //public async Task<IActionResult>GetadminDetails()
+        //{
+        //    var data=await _adminRepository.GetAdminByIdAsync();
+        //    if (data == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(data);
+        //}
 
     }
 

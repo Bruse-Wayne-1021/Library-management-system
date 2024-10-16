@@ -2,7 +2,7 @@
 {
     public class BorrowedBookRequestModel
     {
-        public int UserNicNumber { get; set; }
+        public string UserNicNumber { get; set; }
         public string Bookname { get; set; }
         public int bookIsbn { get; set; }
         public DateTime BorrowedDate { get; set; }
