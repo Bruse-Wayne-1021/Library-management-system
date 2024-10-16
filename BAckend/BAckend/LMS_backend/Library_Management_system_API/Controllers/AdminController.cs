@@ -26,7 +26,13 @@ namespace Library_Management_system_API.Controllers
         //    }
         //    return Ok(data);
         //}
+        [HttpGet]
 
+        public async Task<IActionResult> GetAdmin()
+        {
+            var data = await _adminRepository.GetAdminAsync();
+            return Ok(data);
+        }
     }
 
 

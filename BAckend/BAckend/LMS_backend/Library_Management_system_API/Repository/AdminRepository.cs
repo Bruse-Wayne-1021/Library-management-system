@@ -1,4 +1,5 @@
 ﻿using Library_Management_system_API.Model.ResponseModel;
+using Library_Management_system_API.Models;
 using Microsoft.Data.SqlClient;
 
 namespace Library_Management_system_API.Repository
@@ -39,6 +40,30 @@ namespace Library_Management_system_API.Repository
                   
                     return null;
                 }
+            }
+        }
+
+
+        public async Task<List<Admin>> GetAdminAsync()
+        {
+
+            var admin = new List<Admin>();
+            using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Admin", sqlConnection);
+                await sqlConnection.OpenAsync();
+                SqlDataReader reader = await sqlCommand.ExecuteReaderAsync();
+                while (reader.Read())
+                {
+                    admin.Add(new Admin
+                    {
+                        AdminId = (int)reader["AdminId"],
+                        AdminName = reader["AdminName"].ToString(),
+                        NIC = reader["NIC"].ToString(),
+                        Password = reader["Password"].ToString()
+                    });
+                }
+                return admin;
             }
         }
 
