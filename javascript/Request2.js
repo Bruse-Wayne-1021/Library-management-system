@@ -70,7 +70,7 @@ const AcceptRequest = async (index) => {
     const borrowedBooks = await borrowedBooksResponse.json();
     console.log(borrowedBooks);
     
-
+    
     // Check if the member borrowed more than 2 books
     const memberBorrowedBooks = borrowedBooks.filter(b => b.UserNicNumber === SelectedRequest.UserNicNumber);
     if (memberBorrowedBooks.length >= 2) {

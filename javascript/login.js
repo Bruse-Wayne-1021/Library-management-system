@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     try {
         const apiurl = (Userrole === "admin")
-            ? `http://localhost:3000/admin?Nic=${Nicnumber}&Password=${LgnPassword}`
+            ? `http://localhost:5116/api/Admin?nic=${Nicnumber}&password=${LgnPassword}`
             : `http://localhost:5116/api/Member/get-all-members?nic=${Nicnumber}&password=${LgnPassword}`;
 
         const response = await fetch(apiurl);
