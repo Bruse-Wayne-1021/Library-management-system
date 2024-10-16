@@ -1,7 +1,6 @@
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-
     const Userrole = document.getElementById('role').value;
     const Nicnumber = document.getElementById('loginNic').value;
     const LgnPassword = document.getElementById('loginPassword').value;
@@ -9,84 +8,53 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     try {
         const apiurl = (Userrole === "admin")
             ? `http://localhost:3000/admin?Nic=${Nicnumber}&Password=${LgnPassword}`
-            : `http://localhost:3000/member?Nic=${Nicnumber}&Password=${LgnPassword}`
+            : `http://localhost:5116/api/Member/get-all-members?nic=${Nicnumber}&password=${LgnPassword}`;
 
         const response = await fetch(apiurl);
+
+        
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+
         const userdata = await response.json();
 
-
-        // const getdata = await fetch(apiurl, {
-        //     method: "GET",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     }
-        // });
-
-        // const logindata = await getdata.json();
-
-        if (userdata.length > 0) {
-
+        
+        if (userdata && userdata.length > 0) {  
             const user = userdata[0];
+            console.log(user);
+            
 
-            // const memberData= user.member;
-            // console.log(memberData);
-            // console.log(user);
-            // store current login user daa
             if (user) {
-                try {
-                    // const logedinUserapi = "http://localhost:3000/logedInUser";
+                const userdataToStore = {
+                    FirstName: user.firstName,
+                    LastName: user.lastName,
+                    Nic: user.nic,
+                    joinDate: user.joinDate,
+                    id: user.id,
+                    userRole: user.userRole
+                };
 
-                    // const response = await fetch(logedinUserapi, {
-                    //     method: "POST",
-                    //     headers: {
-                    //         "Content-type": "application/json"
-                    //     },
-                    //     body: JSON.stringify(user)
+                
+                localStorage.setItem('logedInUser', JSON.stringify(userdataToStore));
 
-                    // })
-                    const userdata={
-                        FirstName:user.FirstName,
-                        LastName:user.LastName,
-                        Nic:user.Nic,
-                        joinDate:user.joinDate,
-                        id:user.id,
-                        userRole: user.userRole
-                    }
+                alert("Login success");
 
-
-
-                    // let loginuser=JSON.parse(localStorage.getItem('logedInUser'))||[];
-                    // loginuser.push(userdata);
-                    localStorage.setItem('logedInUser',JSON.stringify(userdata));
-                    
-                   
-
-                   
-                } catch (error) {
-                    console.log("some issuess in store data to logeinuser" + error)
-                    // alert("some issuess in store data to logeduser" + error)
+            
+                if (Userrole === "admin") {
+                    window.location.href = "admin.html";
+                } else {
+                    window.location.href = "gallery.html";
                 }
             } else {
-                alert("loged in data dose not store")
-            }
-
-            alert("login success")
-
-
-            if (Userrole === "admin") {
-                window.location.href = "admin.html";
-
-            } else {
-                window.location.href = "gallery.html"
+                alert("Failed to store login data");
             }
         } else {
-            alert("invalid user data , please try again later")
+            alert("Invalid user data, please try again later");
         }
 
     } catch (error) {
-        console.log(error);
-        alert("some issues in login ,please try again later ");
-
+        console.log("Error during login:", error);
+        alert("Some issues occurred during login, please try again later.");
     }
-
-})
+});

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Library_Management_system_API.Models;
 using Library_Management_system_API.Repository;
+using Microsoft.Data.SqlClient;
 
 namespace Library_Management_system_API.Controllers
 {
@@ -16,24 +17,32 @@ namespace Library_Management_system_API.Controllers
             _memberRepository = memberRepository;
         }
         //add new member
-        [HttpPost("add")]
+        [HttpPost]
         public async Task<IActionResult> AddMember([FromBody] Member member)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(ModelState); // This will return detailed validation error info
             }
 
             try
-                            {
+            {
                 var memberId = await _memberRepository.CreateMemberAsync(member);
                 return Ok(new { Id = memberId, Message = "Member added successfully" });
             }
+            catch (SqlException sqlEx)
+            {
+                // Log sqlEx for database-specific errors
+                return StatusCode(500, $"Database error: {sqlEx.Message}");
+            }
             catch (Exception ex)
             {
+                // Log ex for general server errors
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+
         //get memeber by id
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMemberById(int id)

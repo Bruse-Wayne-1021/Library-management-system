@@ -16,7 +16,7 @@ namespace Library_Management_system_API.Repository
         {
             using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
             {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Admin WHERE AdminId = @AdminId", sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Admin ", sqlConnection))
                 {
                   
                     sqlCommand.Parameters.AddWithValue("@AdminId", id);

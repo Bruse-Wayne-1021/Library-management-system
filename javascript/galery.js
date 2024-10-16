@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             }
         });
 
-
         const books = await bookresponse.json();
         console.log(books);
         gallyDiv.innerHTML = "";
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
                 <p>Publisher: ${book.publisher}</p>
                 <p>Genre: ${book.genre}</p>
                 <p>Copies: ${book.bookCopies}</p>
-                <button onclick="request('${book.isbn}', '${book.title}')">Request</button>
+                <button onclick="requestBook('${book.isbn}', '${book.title}')">Request</button>
             `;
             gallyDiv.appendChild(card);
         });
@@ -40,30 +39,45 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     displayName.textContent = "Welcome, " + loggedinUserData.FirstName + " " + loggedinUserData.LastName;
 });
 
-let request = async (isbn, bookName) => {
+let requestBook = async (isbn, bookName) => {
     let loggedinUserData = JSON.parse(localStorage.getItem('logedInUser'));
+
+    if (!loggedinUserData) {
+        alert("You must be logged in to request a book.");
+        return;
+    }
+
     let RequestData = {
         UserFirstName: loggedinUserData.FirstName,
         UserLastName: loggedinUserData.LastName,
         UserNicNumber: loggedinUserData.Nic,
-        BookId: isbn, // Assuming ISBN is passed instead of BookId. Change accordingly if needed.
+        RequestedDate: new Date().toISOString(),  // Send in ISO format for DateTime
+        Isbn: parseInt(isbn),  // Convert ISBN to integer if it isn't already
         BookName: bookName
     };
 
-    const BookRequestApiUrl = "http://localhost:5116/api/BookRequest"; // Ensure this is the correct API URL
+    console.log("Requesting Book:", RequestData);
 
-    const request = await fetch(BookRequestApiUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(RequestData)
-    });
-    console.log(RequestData)
+    const BookRequestApiUrl = "http://localhost:5116/api/BookRequest";
 
-    if (request.ok) {
-        alert("Book requested successfully");
-    } else {
-        alert("Failed to request book");
+    try {
+        const response = await fetch(BookRequestApiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(RequestData)
+        });
+
+        if (response.ok) {
+            alert("Book requested successfully");
+        } else {
+            const errorData = await response.json();
+            console.error("Error response:", errorData);
+            alert("Failed to request book: " + (errorData.message || "Unknown error"));
+        }
+    } catch (error) {
+        console.error("Fetch error:", error);
+        alert("Failed to request book. Please try again later.");
     }
 };

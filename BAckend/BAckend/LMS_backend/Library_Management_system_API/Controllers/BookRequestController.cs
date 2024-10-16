@@ -24,11 +24,13 @@ namespace Library_Management_system_API.Controllers
                 return BadRequest("Invalid book request.");
             }
 
-            bookRequest.RequestedDate = DateTime.Now; // Set requested date to now
+            // Enforce correct RequestedDate on server side
+            bookRequest.RequestedDate = DateTime.Now;
 
             var id = await _bookRequestRepository.AddNewBookRequestAsync(bookRequest);
             return CreatedAtAction(nameof(RequestBook), new { id }, bookRequest);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetBookRequests()

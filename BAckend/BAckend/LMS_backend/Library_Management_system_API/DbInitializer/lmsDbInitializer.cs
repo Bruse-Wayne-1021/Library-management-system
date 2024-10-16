@@ -112,25 +112,44 @@ namespace Library_Management_system_API.DbInitializer
                     );
                 END
                 
-                IF NOT EXISTS (
+               IF NOT EXISTS (
                     SELECT * FROM sys.tables t 
                     JOIN sys.schemas s ON t.schema_id = s.schema_id
                     WHERE s.name = 'dbo' AND t.name = 'BorrowedHistory'
                 )
-                 BEGIN
+                BEGIN
                     CREATE TABLE BorrowedHistory
-                     (
-                      Id INT PRIMARY KEY IDENTITY (1,1),
-                      UserNicNumber NVARCHAR(50) NOT NULL,
-                      UserLastName NVARCHAR(50) NOT NULL,
-                      UserLastName NVARCHAR(50) NOT NULL,
+                    (
+                        Id INT PRIMARY KEY IDENTITY (1,1),
+                        UserNicNumber NVARCHAR(50) NOT NULL,
+                        UserFirstName NVARCHAR(50) NOT NULL,
+                        UserLastName NVARCHAR(50) NOT NULL,
+                        BorrowedDate DATE NOT NULL,
+                        ReturnedDate DATE NOT NULL,
+                        I INT NOT NULL,
+                        BookName NVARCHAR(50) NOT NULL
+                    );
+                END;
+                IF NOT EXISTS (
+                 SELECT * 
+                 FROM sys.tables t 
+                 JOIN sys.schemas s ON t.schema_id = s.schema_id
+                 WHERE s.name = 'dbo' AND t.name = 'BorrowedBooks'
+                )
+                BEGIN
+                 CREATE TABLE BorrowedBooks
+                 (
+                     Id INT PRIMARY KEY IDENTITY (1,1),
+                     UserNicNumber NVARCHAR(50) NOT NULL,
+                      Bookname NVARCHAR(50) NOT NULL,
+                      bookIsbn INT NOT NULL,
                       BorrowedDate DATE NOT NULL,
-                      RETURNEDDate DATE NOT NULL,
-                      Isbn INT NOT NULL,
-                      BookName NVARCHAR(50) NOT NULL,
-                     )
-                END
-                        
+                     duedate DATE NOT NULL,
+                     FOREIGN KEY (UserNicNumber) REFERENCES Member(Nic),
+                     FOREIGN KEY (bookIsbn) REFERENCES Books(Isbn) 
+                     );
+                    END
+
                      
 "
 

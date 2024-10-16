@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 
 const AcceptRequest = async (index) => {
-    const BookRequestApiurl = "http://localhost:3000/BookRequest";
-    const BorrowedBooksApiUrl = "http://localhost:3000/borrowedBooks";                                                              // Accept request function
+    const BookRequestApiurl = "http://localhost:5116/api/BookRequest";
+    const BorrowedBooksApiUrl = "http://localhost:5116/api/BorrowedBook";                                                             
     const BookApiUrl = "http://localhost:3000/book";
     const BorrowedBookhistory = "http://localhost:3000/Borrwedbookshistory ";
 
@@ -53,7 +53,10 @@ const AcceptRequest = async (index) => {
             "Content-Type": "application/json"                                                                                      // Fetch all book requests
         }
     });
+
     const Requests = await response.json();
+    console.log(Requests);
+    
     const SelectedRequest = Requests[index];
 
     // Fetch borrowed books
@@ -63,11 +66,15 @@ const AcceptRequest = async (index) => {
             "Content-Type": "application/json"
         }
     });
+
     const borrowedBooks = await borrowedBooksResponse.json();
+    console.log(borrowedBooks);
+    
 
     // Check if the member borrowed more than 2 books
     const memberBorrowedBooks = borrowedBooks.filter(b => b.UserNicNumber === SelectedRequest.UserNicNumber);
     if (memberBorrowedBooks.length >= 2) {
+        
         alert("Member cannot borrow more than 2 books at once.");
         return;
     }
