@@ -137,7 +137,7 @@ body {
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #2c3e50;
+    background-color: #1a1a2e;
     color: #ecf0f1;
     position: fixed;
     top: 0;
@@ -248,4 +248,36 @@ body {
 .gallery-item p {
     font-size: 14px;
     color: #666;
+}
+
+
+button[type="submit"] {
+    padding: 12px 20px;
+    background-color: #1a1a2e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+button[type="reset"] {
+    padding: 12px 20px;
+    background-color: #1a1a2e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+button[type="reset"]:hover {
+    background-color: #311c3b;
+}
+
+button[type="submit"]:hover {
+    background-color: #311c3b;
 }
