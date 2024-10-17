@@ -5,6 +5,14 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const Nicnumber = document.getElementById('loginNic').value;
     const LgnPassword = document.getElementById('loginPassword').value;
 
+    const Admin=await fetch('http://localhost:5116/api/Admin');
+    const Adminresponse=await Admin.json();
+    console.log(Adminresponse);
+
+    const response=await fetch('http://localhost:5116/api/Member/get-all-members');
+    const member=await response.json();
+    console.log(member);
+
     try {
         const apiurl = (Userrole === "admin")
             ? `http://localhost:5116/api/Admin?nic=${Nicnumber}&password=${LgnPassword}`
@@ -18,6 +26,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         }
 
         const userdata = await response.json();
+
 
         
         if (userdata && userdata.length > 0) {  
@@ -44,7 +53,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
                 if (Userrole === "admin") {
                     window.location.href = "admin.html";
                 } else {
-                    window.location.href = "gallery.html";
+                   // window.location.href = "gallery.html";
                 }
             } else {
                 alert("Failed to store login data");

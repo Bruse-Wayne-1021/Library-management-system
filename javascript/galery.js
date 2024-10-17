@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", async (e) => {
     e.preventDefault();
 
+    let books = []; // Array to hold all books
+    const gallyDiv = document.getElementById('gallery');
+    const searchInput = document.getElementById('searchInput');
+    const sortOptions = document.getElementById('sortOptions');
+
     try {
         const bookurl = "http://localhost:5116/api/Book/get-all-books-with-images";
-
-        let gallyDiv = document.getElementById('gallery');
         const bookresponse = await fetch(bookurl, {
             method: "GET",
             headers: {
@@ -12,10 +15,36 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             }
         });
 
-        const books = await bookresponse.json();
+        books = await bookresponse.json();
         console.log(books);
-        gallyDiv.innerHTML = "";
-        books.forEach(book => {
+        displayBooks(books); // Display all books initially
+    } catch (error) {
+        console.error(error);
+        alert("Some issues occurred: " + error);
+    }
+
+    // Display welcome message
+    let loggedinUserData = JSON.parse(localStorage.getItem('logedInUser'));
+    if (loggedinUserData) {
+        let displayName = document.getElementById('UserNames');
+        displayName.textContent = "Welcome, " + loggedinUserData.FirstName + " " + loggedinUserData.LastName;
+    }
+
+    // Add search functionality
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredBooks = books.filter(book => 
+            book.title.toLowerCase().includes(searchTerm) || 
+            book.author.toLowerCase().includes(searchTerm) || 
+            book.genre.toLowerCase().includes(searchTerm)
+        );
+        displayBooks(filteredBooks);
+    });
+
+    // Function to display books in the gallery
+    function displayBooks(booksToDisplay) {
+        gallyDiv.innerHTML = ""; // Clear existing content
+        booksToDisplay.forEach(book => {
             const card = document.createElement('div');
             card.classList.add('book-card');
             card.innerHTML = `
@@ -29,16 +58,10 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             `;
             gallyDiv.appendChild(card);
         });
-    } catch (error) {
-        console.error(error);
-        alert("Some issues occurred: " + error);
     }
-
-    let loggedinUserData = JSON.parse(localStorage.getItem('logedInUser'));
-    let displayName = document.getElementById('UserNames');
-    displayName.textContent = "Welcome, " + loggedinUserData.FirstName + " " + loggedinUserData.LastName;
 });
 
+// Request book function remains unchanged
 let requestBook = async (isbn, bookName) => {
     let loggedinUserData = JSON.parse(localStorage.getItem('logedInUser'));
 

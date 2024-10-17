@@ -126,11 +126,12 @@ namespace Library_Management_system_API.DbInitializer
                         UserLastName NVARCHAR(50) NOT NULL,
                         BorrowedDate DATE NOT NULL,
                         ReturnedDate DATE NOT NULL,
-                        I INT NOT NULL,
-                        BookName NVARCHAR(50) NOT NULL
+                        
+                        BookName NVARCHAR(50) NOT NULL,
+                        BookIsbn INT NOT NULL
                     );
                 END;
-                IF NOT EXISTS (
+                IF NOT EXISTS (+
                  SELECT * 
                  FROM sys.tables t 
                  JOIN sys.schemas s ON t.schema_id = s.schema_id

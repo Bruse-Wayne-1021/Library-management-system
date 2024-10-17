@@ -5,16 +5,12 @@ document.addEventListener('DOMContentLoaded', async (e) => {
        
         let LoggedInUser = JSON.parse(localStorage.getItem('logedInUser'));
 
-        let BorrowedBooksApiUrl = "http://localhost:3000/borrowedBooks";
-        let bookApiurl = "http://localhost:3000/book";
-
+        let BorrowedBooksApiUrl = "http://localhost:5116/api/BorrowedBook";
+        let bookApiurl = "http://localhost:5116/api/Book/get-all-books-with-images";
+      
      
-        const BookResponse = await fetch(BorrowedBooksApiUrl, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
+        const BookResponse = await fetch(BorrowedBooksApiUrl)
+         
         // console.log(booksResponse);
 
         if (!BookResponse.ok) {
@@ -23,14 +19,11 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         }
 
         const BorrowedBooks = await BookResponse.json();
+        console.log(BorrowedBooks);
         
         
-        const booksResponse = await fetch(bookApiurl, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
+        const booksResponse = await fetch(bookApiurl)
+           
 
         if (!booksResponse.ok) {
             alert("Can't fetch books details");
@@ -38,6 +31,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         }
 
         const books = await booksResponse.json();
+        console.log(books);
 
         
         const tableView = document.getElementById('borrowedBooksTable');
@@ -45,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         BorrowedBooks.filter(b => b.UserNicNumber === LoggedInUser.Nic)
         .forEach(borrowedBook => {
          
-            const bookData = books.find(book => book.BookName === borrowedBook.Bookname);
+            const bookData = books.find(book => book.bookName === borrowedBook.bookName);
 
             if (bookData) {
                 
