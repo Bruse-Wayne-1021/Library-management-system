@@ -3,34 +3,22 @@
 document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
 
-    const borrowedBooksApiUrl = "http://localhost:3000/borrowedBooks";
-    const booksApiUrl = "http://localhost:3000/book";
-    const membersApiurl = "http://localhost:3000/member";
-
+    const borrowedBooksApiUrl = "http://localhost:5116/api/BorrowedBook";
+    const booksApiUrl = "http://localhost:5116/api/Book/get-all-books-with-images";
+  
     const tableBody = document.querySelector('tbody');
 
     try {
-        const BorrowedBooksResponse = await fetch(borrowedBooksApiUrl, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        const BorrowedBooksResponse = await fetch(borrowedBooksApiUrl)
+           
         if (!BorrowedBooksResponse.ok) {
             console.log("can't fetch from borrowed books");
         }
         const BrrowedBooks = await BorrowedBooksResponse.json();
         console.log(BrrowedBooks);
 
-
-        // get data from book
-
-        const BookResponse = await fetch(booksApiUrl, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        const BookResponse = await fetch(booksApiUrl)
+        
         if (!BookResponse.ok) {
             console.log("Can't fetch data from books ");
 
@@ -39,39 +27,28 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         console.log(Books);
 
 
-        // get data from member api
+       
 
-        const memberResponse = await fetch(membersApiurl, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-
-        })
-        if (!memberResponse.ok) {
-            console.log("can't fetch data from member");
-
-        }
-        const members = await memberResponse.json();
-        console.log(members);
 
 
         tableBody.innerHTML = "";
 
         BrrowedBooks.forEach((borrow, index) => {
-            const bookDetails = Books.find(b1 => b1.BookName === borrow.Bookname);
-            const memberDetails = members.find(m1 => m1.Nic === borrow.UserNicNumber);
+            const bookDetails = Books.find(b1 => b1.bookIsbn === borrow.isbn);
+            //const memberDetails = members.find(m1 => m1.Nic === borrow.UserNicNumber);
             // console.log(bookDetails);
             // console.log(memberDetails);
 
 
             let row = document.createElement('tr');
             row.innerHTML = `
-              <td>${memberDetails.FirstName}</td>
-            <td>${memberDetails.Nic}</td>
-            <td>${bookDetails.BookName}</td>
-            <td>${bookDetails.Isbn}</td>
-            <td><img src="${bookDetails.coverUrl}" alt="${borrow.bookName}" style="width: 100px; height: auto;"></td>
+            <td>${borrow.id}</td>
+            <td>${borrow.userNicNumber}</td>
+            <td>${borrow.bookname}</td>
+            <td>${borrow.bookIsbn}</td>
+            <td>${borrow.borrowDate}</td>
+            <td>${borrow.duedate}</td>
+            <td><img src="${bookDetails.images}" alt="${borrow.bookName}" style="width: 100px; height: auto;"></td>
             <td><button onclick="processReturn(${index})">Process Return</button></td>
             `;
             tableBody.appendChild(row);

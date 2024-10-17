@@ -29,5 +29,12 @@ namespace Library_Management_system_API.Controllers
             var id = await _borrowedBooksRepository.AddNewBorrowedBookAsync(borrowedBookRequestModel);
             return CreatedAtAction(nameof(AddBorrowedBook), new { id }, borrowedBookRequestModel);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllDetails()
+        {
+            var data= await _borrowedBooksRepository.getAllBorrowedBooksDetailsAsync();
+            return Ok(data);
+        }
     }
 }

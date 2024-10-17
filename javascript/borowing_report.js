@@ -52,67 +52,52 @@
 // window.onload=DisplayBorrowingReport;
 
 
-const DisplayBookHistory=async()=>{
+const DisplayBookHistory = async () => {
     try {
-        const Historyapi="http://localhost:3000/Borrwedbookshistory";
-        const Memberapi="http://localhost:3000/member";
+        const Historyapi = "http://localhost:5116/api/Record";
+        const Memberapi = "http://localhost:3000/member";
         // const bookapi="http://localhost:3000/book";
+
+        const HistoryTable = document.getElementById('tablebody');
+        HistoryTable.innerHTML = "";
+
+   
+        const HistoryResponse = await fetch(Historyapi);
+        if (!HistoryResponse.ok) {
+            alert("Some issue occurred while fetching data from history API");
+            return; 
+        }
+
+        const BookHistory = await HistoryResponse.json();
+        console.log(BookHistory);
+
         
-
-        const HistoryTable=document.getElementById('tablebody');
-        HistoryTable.innerHTML="";
-
-
-        // fetch data from history api
-        const HistoryResponse=await fetch(Historyapi);
-        if(!HistoryResponse.ok){
-            alert("some issue in while fetching data from history table")
-        }
-        const BookHistory=await HistoryResponse.json();
-
-        // fetch data from  
-
-        const MemberResponse=await fetch(Memberapi);
-
-        if(!MemberResponse .ok){
-            alert("some error in fetch data from member api")
-        }
-        const member=await MemberResponse.json();
-
-        // fetch data from book api
-
-        // const Bookresponse=await fetch(bookapi);
-        // if(!Bookresponse.ok){
-        //     alert("somme error in fetching data from api")
-        // }
-
-        // const books=await Bookresponse.json()
-
-
         BookHistory.forEach(BkHistory => {
-            
-            const memInfo=member.find(mem => mem.Nic===BkHistory.UserNicNumber)
+            // Make sure the fields exist in BkHistory object
+            console.log("BkHistory object:", BkHistory);
 
-            // const bookInfo=books.find(bkinfo=>)
+            const row = document.createElement('tr');
 
-            const row=document.createElement('tr')
-            row.innerHTML=`
-            <td>${BkHistory.UserNicNumber}</td>
-            <td>${memInfo.FirstName}</td>
-            <td>${memInfo.LastName}</td>
-            <td>${BkHistory.Bookname}</td>
-            <td>${BkHistory.BorrowedDate}</td>
+          
+            //  const borrowedDate = new Date(BkHistory.borrowedDate).toLocaleDateString();
+            // const returnedDate = BkHistory.returnedDate ? new Date(BkHistory.returnedDate).toLocaleDateString() : 'N/A';
 
-            `
-            HistoryTable.appendChild(row)
-            
+            row.innerHTML = `
+                <td>${BkHistory.userNicNumber || 'N/A'}</td>
+                <td>${BkHistory.userFirstName || 'N/A'}</td>
+                <td>${BkHistory.userLastName || 'N/A'}</td>
+                <td>${BkHistory.bookName || 'N/A'}</td>
+                <td>${BkHistory.bookIsbn || 'N/A'}</td>
+                <td>${BkHistory.borrowedDate}</td>
+                <td>${BkHistory.returnedDate}</td>
+            `;
+
+            HistoryTable.appendChild(row);
         });
 
-
     } catch (error) {
-        alert("Some error in display books table :"+error)
+        alert("Some error occurred while displaying the books table: " + error);
     }
+};
 
-
-}
-window.onload=DisplayBookHistory;
+window.onload = DisplayBookHistory;

@@ -37,34 +37,40 @@ namespace Library_Management_system_API.Repository
             }
         }
 
-        public async Task<List<BorrowedBooksResponseModel>> gelAllBorrowedBooksDetailsAsync()
+        public async Task<List<BorrowedBooksResponseModel>> getAllBorrowedBooksDetailsAsync()
         {
-            var borrowedBooksDetails =new List<BorrowedBooksResponseModel>();
+            var borrowedBooksDetails = new List<BorrowedBooksResponseModel>();
 
-            using (SqlConnection sqlConnection=new SqlConnection(_ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
             {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM BorrowedBooks",sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM BorrowedBooks", sqlConnection))
                 {
                     sqlConnection.Open();
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
-                    while (reader.Read())
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
-                        var book = new BorrowedBooksResponseModel
+                        while (reader.Read())
                         {
-                            Id = (int)reader[""],
-                            UserNicNumber =reader["UserNicNumber"].ToString(),
-                            Bookname = reader["Bookname"].ToString(),
-                            bookIsbn = (int)reader["bookIsbn"],
-                            BorrowedDate = (DateTime)reader["BorrowedDate"],
-                            duedate = (DateTime)reader["BorrowedDate"]
-                        };
-                        borrowedBooksDetails.Add(book);
+                            var book = new BorrowedBooksResponseModel
+                            {
+                                Id = (int)reader["Id"],  // Correct column name for Id
+                                UserNicNumber = reader["UserNicNumber"].ToString(),
+                                Bookname = reader["Bookname"].ToString(),
+                                bookIsbn = (int)reader["bookIsbn"],
+                                BorrowedDate = (DateTime)reader["BorrowedDate"],
+                                duedate = (DateTime)reader["duedate"] // Use the correct column name for the due date
+                            };
+                            borrowedBooksDetails.Add(book);
+                        }
                     }
                 }
-                return borrowedBooksDetails;
             }
+            return borrowedBooksDetails;
         }
 
 
+
     }
+
+
 }
+

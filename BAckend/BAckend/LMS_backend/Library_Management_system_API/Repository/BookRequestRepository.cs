@@ -86,5 +86,22 @@ namespace Library_Management_system_API.Repository
                 }
             }
         }
+
+
+        public async Task<bool>DeleteRequestAsync(int id)
+        {
+            using (SqlConnection sqlConnection =new SqlConnection(_ConnectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("DELETE  FROM BookRequest WHERE Id=@Id", sqlConnection))
+                {
+                    sqlCommand.Parameters.AddWithValue("Id", id);
+
+
+                    await sqlConnection.OpenAsync();
+                    var result = await sqlCommand.ExecuteNonQueryAsync();
+                    return result > 0;
+                }
+            }
+        }
     }
 }

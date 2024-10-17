@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
 
     try {
-        const borrowedBooksApi = "http://localhost:3000/borrowedBooks";
+        const borrowedBooksApi = "http://localhost:5116/api/BorrowedBook";
         const memberApi = "http://localhost:3000/member";
         const books = "http://localhost:3000/book";
         const TableView=document.querySelector('tbody');
@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 "Content-Type": "application/json"
             }
         })
+
         const BorroedBooks = await Response.json();
         console.log(BorroedBooks);
         
-        // fetch data from member url
+        
 
         const Response2 = await fetch(memberApi, {
             method: "GET",

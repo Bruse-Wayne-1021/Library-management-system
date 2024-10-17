@@ -59,7 +59,7 @@ namespace Library_Management_system_API.Repository
                             BookName = reader["BookName"].ToString(),             
                             BookIsbn = (int)reader["BookIsbn"],                  
                             BorrowedDate = (DateTime)reader["BorrowedDate"],
-                            ReturnedDate =(DateTime) reader["ReturnedDate"] 
+                          //  ReturnedDate =(DateTime) reader["ReturnedDate"] 
                                
                         });
                     }

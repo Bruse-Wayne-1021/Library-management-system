@@ -50,5 +50,13 @@ namespace Library_Management_system_API.Controllers
 
             return NotFound();
         }
+
+        [HttpDelete("{id}")]
+
+        public async Task<IActionResult>DeleteRequest(int id)
+        {
+            var data= await _bookRequestRepository.DeleteRequestAsync(id);
+            return Ok(data);
+        }
     }
 }
