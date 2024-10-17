@@ -68,6 +68,21 @@ namespace Library_Management_system_API.Repository
         }
 
 
+        public async Task<bool>DeleteBorrowBookAsync(int id)
+        {
+            using(SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+            {
+                using(SqlCommand sqlCommand = new SqlCommand("Delete From BorrowedBooks WHERE Id =@Id  ", sqlConnection))
+                {
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@Id",id);
+                    var result = await sqlCommand.ExecuteNonQueryAsync();
+                    return result > 0;
+
+                }
+            }
+        }
+
 
     }
 

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded',async(e)=>{
     e.preventDefault();
 
     try {
-        const bookapiurl="http://localhost:3000/book";
+        const bookapiurl="http://localhost:5116/api/Book/Get-all-books";
 
         const Response=await fetch(bookapiurl,{
             method:"GET",
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded',async(e)=>{
         books.forEach(book => {
             let row =document.createElement('tr');
             row.innerHTML=`
-             <td>${book.BookName}</td>
-             <td>${book.Isbn}</td>
+             <td>${book.title}</td>
+             <td>${book.isbn}</td>
              <td>${book.publisher}</td>
              <td>${book.genre}</td>
-             <td>${book.copies}</td>
+             <td>${book.bookCopies}</td>
             
             `;
             ViewTable.appendChild(row)

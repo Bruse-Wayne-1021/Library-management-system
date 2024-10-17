@@ -59,6 +59,20 @@ namespace Library_Management_system_API.Controllers
             return Ok(booksWithImages);
         }
 
+        [HttpPut("{isbn}")]
+        public async Task<IActionResult> UpdateCopies(int isbn, [FromBody] int bookCopies)
+        {
+            var success = await _bookRepository.UpdateCopiesAsync(isbn, bookCopies);
+
+            if (success)
+            {
+                return Ok(new { message = "Book copies updated successfully." });
+            }
+
+            return BadRequest(new { message = "Failed to update book copies." });
+        }
+
+
 
 
 
