@@ -113,10 +113,25 @@ namespace Library_Management_system_API.Repository
         //            };
         //        }
         //        return null;
-                
+
         //    }
         //}
 
+        public async Task<bool> UpdateCopiesAsync(int isbn, int bookCopies)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("UPDATE Books SET BookCopies = @BookCopies WHERE Isbn = @Isbn", sqlConnection))
+                {
+                    sqlCommand.Parameters.AddWithValue("@BookCopies", bookCopies);
+                    sqlCommand.Parameters.AddWithValue("@Isbn", isbn);
+
+                    await sqlConnection.OpenAsync();
+                    var result = await sqlCommand.ExecuteNonQueryAsync();
+                    return result > 0; // Return true if the update was successful
+                }
+            }
+        }
 
 
 

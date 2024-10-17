@@ -36,5 +36,13 @@ namespace Library_Management_system_API.Controllers
             var data= await _borrowedBooksRepository.getAllBorrowedBooksDetailsAsync();
             return Ok(data);
         }
+
+
+        [HttpDelete ("id")]
+        public async Task<IActionResult>DeleteBorrowBooks(int id)
+        {
+            var data=await _borrowedBooksRepository .DeleteBorrowBookAsync(id);
+            return Ok(data);
+        }
     }
 }

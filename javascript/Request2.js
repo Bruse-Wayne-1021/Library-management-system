@@ -133,6 +133,78 @@ const AcceptRequest = async (index) => {
 
         if (addBorrowedResponse.ok) {
 
+
+            try {
+
+                const bookurl = "http://localhost:5116/api/Book/Get-all-books"
+                const bookResponse = await fetch(bookurl, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+        
+                if (!bookResponse.ok) {
+                    alert("Failed to fetch books.");
+                    return; // Stop further execution if GET fails
+                }
+        
+                const books = await bookResponse.json();
+                console.log(books);
+        
+        
+                const SelectedRequest = Requests[index];
+                const updatedBook = books.find(book => book.isbn === SelectedRequest.isbn && book.BookCopies > 0);
+                console.log(updatedBook);
+                if (updatedBook) {
+                    updatedBook.BookCopies--;
+                    
+                    const UpdateUrl="http://localhost:5116/api/Book"
+                    const updateResponse = await fetch(`${UpdateUrl}/${updatedBook.isbn}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(updatedBook)
+                    });
+        
+                    if (updateResponse.ok) {
+                        alert("Book copies decremented and updated in database.");
+                    } else {
+                        alert("Failed to update book copies in the database.");
+                    }
+                } else {
+                    alert("Book not found or no copies left.");
+                }
+        
+            } catch (error) {
+                console.log(error);
+                alert("Some issue in updating book stock: " + error);
+            }
+            try {
+                Requests.splice(index, 1);
+
+                const DeleteApiUrl = "http://localhost:5116/api/BookRequest";
+                const deleteRequestResponse = await fetch(`${DeleteApiUrl}/${SelectedRequest.id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                console.log(deleteRequestResponse);
+
+                if (deleteRequestResponse.ok) {
+                    alert("Book request removed.");
+                } else {
+                    alert("Failed to remove the book request.");
+                    return;
+                }
+            } catch (error) {
+                console.log(error);
+                alert("Some issue in Delete method: " + error);
+            }
+
+
             const createHistoryResponse = await fetch(BorrowedBookhistory, {
                 method: "POST",
                 headers: {
@@ -142,7 +214,7 @@ const AcceptRequest = async (index) => {
             });
 
             if (createHistoryResponse.ok) {
-                alert("Successfully added to history.");
+                alert("ok")
             } else {
                 throw new Error(`Failed to add to history. Status: ${createHistoryResponse.status}`);
             }
@@ -157,80 +229,13 @@ const AcceptRequest = async (index) => {
 
     //  Remove the accepted request
 
-    try {
-        const SelectedRequest = Requests[index];
-        console.log(SelectedRequest.id);
 
 
-        Requests.splice(index, 1);
 
-        const DeleteApiUrl = "http://localhost:5116/api/BookRequest";
-        const deleteRequestResponse = await fetch(`${DeleteApiUrl}/${SelectedRequest.id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
 
-        if (deleteRequestResponse.ok) {
-            alert("Book request removed.");
-        } else {
-            alert("Failed to remove the book request.");
-            return;
-        }
-    } catch (error) {
-        console.log(error);
-        alert("Some issue in Delete method: " + error);
-    }
+   
+
 };
-
-
-// try {
-//     const bookResponse = await fetch(BookApiUrl, {
-//         method: "GET",
-//         headers: {
-//             "Content-Type": "application/json"
-//         }
-//     });
-
-//     if (!bookResponse.ok) {
-//         alert("Failed to fetch books.");
-//         return; // Stop further execution if GET fails
-//     }
-
-//     const books = await bookResponse.json();
-//     console.log(books);
-
-
-//     const updatedBook = books.find(book => book.BookName === SelectedRequest.Bookname && book.copies > 0);
-
-//     if (updatedBook) {
-//         updatedBook.copies--;
-
-
-//         const updateResponse = await fetch(`${BookApiUrl}/${updatedBook.id}`, {
-//             method: "PUT", 
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify(updatedBook)
-//         });
-
-//         if (updateResponse.ok) {
-//             alert("Book copies decremented and updated in database.");
-//         } else {
-//             alert("Failed to update book copies in the database.");
-//         }
-//     } else {
-//         alert("Book not found or no copies left.");
-//     }
-
-// } catch (error) {
-//     console.log(error);
-//     alert("Some issue in updating book stock: " + error);
-// }
-
-
 
 
 
