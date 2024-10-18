@@ -4,40 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/gallery.css">
+    <title>Library Gallery</title>
 </head>
 
 <body>
-    <div class="sidebar">
-        <h2>Library</h2>
-        <ul>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="./member_login.html"> NEXT</a>
-            <li>
-        </ul>
-
-    </div>
-
-    <div class="container">
-        <h1>Library Gallery</h1>
-        <div class="search-sort-bar">
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search for books...">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Library</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./borrowebbooks.html">My books</a>
+                    </li>
+                </ul>
             </div>
-            <div class="sort-options">
-                <label for="sortOptions">Sort by:</label>
-                <select id="sortOptions">
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center">Library Gallery</h1>
+        <div class="row mb-3">
+            <!-- <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search for books...">
+            </div> -->
+            <!-- <div class="col-md-6 d-flex justify-content-end">
+                <label for="sortOptions" class="me-2">Sort by:</label>
+                <select id="sortOptions" class="form-select w-auto">
                     <option value="name">Name</option>
                     <option value="author">Author</option>
                     <option value="genre">Genre</option>
                 </select>
-
-                <p id="UserNames"></p>
-            </div>
+            </div> -->
         </div>
-        <div id="gallery"></div>
+
+        <p id="UserNames" class="text-center"></p>
+
+        <div id="gallery" class="row row-cols-1 row-cols-md-3 g-4"></div>
     </div>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../javascript/galery.js"></script>
 
 </body>

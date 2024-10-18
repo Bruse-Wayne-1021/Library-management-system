@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Page</title>
-   <link rel="stylesheet" href="../css/request.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
 </head>
-<body>
-    <div class="sidebar">
-        <h2>Library</h2>
-        <ul>
-            <li><a href="admin.html">Add Book</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="inventery_report.html">Inventry Report</a></li>
-            <li><a href="request.html">Request</a></li>
-            <li><a href="member_report.html">Member Report</a></li>
-            <li><a href="return.html">Return</a></li>
-            <li><a href="borrowing rreport.html">Borrowing Report</a></li>
-        </ul>
-        
-    </div>
 
-    <div class="container">
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Library</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="admin.html">Add Book</a></li>
+                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="inventery_report.html">Inventory Report</a></li>
+                <li class="nav-item"><a class="nav-link" href="request.html">Request</a></li>
+                <li class="nav-item"><a class="nav-link" href="member_report.html">Member Report</a></li>
+                <li class="nav-item"><a class="nav-link" href="return.html">Return</a></li>
+                <li class="nav-item"><a class="nav-link" href="borrowing rreport.html">Borrowing Record</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
         <h1>Book Requests</h1>
-        <table id="requestTable">
+        <table id="requestTable" class="table table-striped">
             <thead>
                 <tr>
                     <th>Member NIC</th>
@@ -35,9 +44,17 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                <!-- Table data will be inserted here -->
+            </tbody>
         </table>
     </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../javascript/Request2.js"></script>
 </body>
+
 </html>

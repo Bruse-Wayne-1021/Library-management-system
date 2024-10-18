@@ -5,18 +5,10 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const Nicnumber = document.getElementById('loginNic').value;
     const LgnPassword = document.getElementById('loginPassword').value;
 
-    const Admin=await fetch('http://localhost:5116/api/Admin');
-    const Adminresponse=await Admin.json();
-    console.log(Adminresponse);
-
-    const response=await fetch('http://localhost:5116/api/Member/get-all-members');
-    const member=await response.json();
-    console.log(member);
-
     try {
         const apiurl = (Userrole === "admin")
-            ? `http://localhost:5116/api/Admin?nic=${Nicnumber}&password=${LgnPassword}`
-            : `http://localhost:5116/api/Member/get-all-members?nic=${Nicnumber}&password=${LgnPassword}`;
+        ? `http://localhost:5116/api/Admin/LOGIN?nic=${Nicnumber}&password=${LgnPassword}`
+        : `http://localhost:5116/api/Member/login?nic=${Nicnumber}&password=${LgnPassword}`;
 
         const response = await fetch(apiurl);
 
@@ -26,14 +18,16 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         }
 
         const userdata = await response.json();
-
+        console.log(userdata);
+        
 
         
-        if (userdata && userdata.length > 0) {  
-            const user = userdata[0];
-            console.log(user);
+        if (userdata) {  
             
-
+            const user = Array.isArray(userdata) ? userdata[0] : userdata;
+            
+            console.log(user); 
+        
             if (user) {
                 const userdataToStore = {
                     FirstName: user.firstName,
@@ -43,17 +37,15 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
                     id: user.id,
                     userRole: user.userRole
                 };
-
-                
+        
                 localStorage.setItem('logedInUser', JSON.stringify(userdataToStore));
-
+        
                 alert("Login success");
-
-            
+        
                 if (Userrole === "admin") {
                     window.location.href = "admin.html";
                 } else {
-                   // window.location.href = "gallery.html";
+                    window.location.href = "gallery.html";
                 }
             } else {
                 alert("Failed to store login data");
@@ -61,6 +53,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         } else {
             alert("Invalid user data, please try again later");
         }
+        
 
     } catch (error) {
         console.log("Error during login:", error);
