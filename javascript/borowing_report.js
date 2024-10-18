@@ -73,7 +73,7 @@ const DisplayBookHistory = async () => {
 
         
         BookHistory.forEach(BkHistory => {
-            // Make sure the fields exist in BkHistory object
+            
             console.log("BkHistory object:", BkHistory);
 
             const row = document.createElement('tr');

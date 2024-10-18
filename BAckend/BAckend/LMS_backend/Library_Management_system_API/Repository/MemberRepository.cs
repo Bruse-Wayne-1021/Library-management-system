@@ -57,7 +57,7 @@ namespace Library_Management_system_API.Repository
                         Id = (int)reader["Id"],
                         FirstName = reader["FirstName"].ToString(),
                         LastName = reader["LastName"].ToString(),
-                        Nic = reader["Nic"] .ToString(),
+                        Nic = reader["Nic"].ToString(),
                         Email = reader["Email"].ToString(),
                         PhoneNumber = reader["PhoneNumber"].ToString(),
                         JoinDate = ((DateTime)reader["JoinDate"])
@@ -71,12 +71,12 @@ namespace Library_Management_system_API.Repository
         public async Task<List<Member>> GetAllMembersAsync()
         {
 
-            var member= new List<Member>();
+            var member = new List<Member>();
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand =new SqlCommand("SELECT * FROM Member",sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Member", sqlConnection);
                 await sqlConnection.OpenAsync();
-                SqlDataReader reader=await sqlCommand.ExecuteReaderAsync();
+                SqlDataReader reader = await sqlCommand.ExecuteReaderAsync();
                 while (reader.Read())
                 {
                     member.Add(new Member
@@ -94,15 +94,15 @@ namespace Library_Management_system_API.Repository
             }
         }
         //delete member
-        public async Task<bool>DeleteMembersAsync(int id)
+        public async Task<bool> DeleteMembersAsync(int id)
         {
             using SqlConnection sqlConnection = new SqlConnection(_connectionString);
             {
                 SqlCommand sqlCommand = new SqlCommand("DELETE FROM Member WHERE Id = @Id", sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@Id",id);
+                sqlCommand.Parameters.AddWithValue("@Id", id);
 
                 await sqlConnection.OpenAsync();
-                var result=await sqlCommand.ExecuteNonQueryAsync();
+                var result = await sqlCommand.ExecuteNonQueryAsync();
                 return result > 0;
             }
 
@@ -110,22 +110,59 @@ namespace Library_Management_system_API.Repository
 
         //update user details 
 
-        public async Task<bool>UpdateMemebrAsync( int id ,Member member)
+        public async Task<bool> UpdateMemebrAsync(int id, Member member)
         {
-            using SqlConnection sqlConnection=new SqlConnection(_connectionString);
+            using SqlConnection sqlConnection = new SqlConnection(_connectionString);
             {
                 SqlCommand sqlCommand = new SqlCommand("UPDATE Member SET FirstName=@FirstName,LastName=@LastName,Email=@Email,PhoneNumber=@PhoneNumber,password=@password WHERE Id = @Id", sqlConnection);
-                
-                    sqlCommand.Parameters.AddWithValue("@FirstName", member.FirstName);
-                    sqlCommand.Parameters.AddWithValue("@LastName",member.LastName);
-                    sqlCommand.Parameters.AddWithValue("@Email",member.Email);
-                    sqlCommand.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
-                    sqlCommand.Parameters.AddWithValue("@password",member.Password);
-                     sqlCommand.Parameters.AddWithValue("@Id", id);
-                    
+
+                sqlCommand.Parameters.AddWithValue("@FirstName", member.FirstName);
+                sqlCommand.Parameters.AddWithValue("@LastName", member.LastName);
+                sqlCommand.Parameters.AddWithValue("@Email", member.Email);
+                sqlCommand.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
+                sqlCommand.Parameters.AddWithValue("@password", member.Password);
+                sqlCommand.Parameters.AddWithValue("@Id", id);
+
+                await sqlConnection.OpenAsync();
+                var result = await sqlCommand.ExecuteNonQueryAsync();
+                return result > 0;
+            }
+        }
+
+        public async Task<Member> Login(string nic, string password)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Member WHERE Nic=@Nic AND Password=@Password", sqlConnection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@Nic", nic);
+                    sqlCommand.Parameters.AddWithValue("@Password", password);
+
                     await sqlConnection.OpenAsync();
-                    var result= await sqlCommand.ExecuteNonQueryAsync();
-                    return result > 0;
+
+                    SqlDataReader sqlDataReader = await sqlCommand.ExecuteReaderAsync();
+
+                    if (sqlDataReader.Read())
+                    {
+
+                        return new Member
+                        {
+                            Nic = sqlDataReader["Nic"].ToString(),
+                            FirstName = sqlDataReader["FirstName"].ToString(),
+                            LastName = sqlDataReader["LastName"].ToString(),
+                            Email = sqlDataReader["Email"].ToString(),
+                            PhoneNumber = sqlDataReader["PhoneNumber"].ToString(),
+                            Password = sqlDataReader["Password"].ToString(),
+                            JoinDate = (DateTime)sqlDataReader["JoinDate"]
+                        };
+                    }
+                    else
+                    {
+
+                        return null;
+                    }
+                }
             }
         }
 

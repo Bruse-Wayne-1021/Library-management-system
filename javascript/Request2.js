@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         <td>${Request.requestedDate}</td>
         <td>
             <button onclick="AcceptRequest(${index})">Accept</button>
-            <button onclick="RejectRequest(${index})" class="Rejectbtn">Reject</button>
+         
         </td>
         `;
         requestTable.appendChild(row);
@@ -46,7 +46,7 @@ const AcceptRequest = async (index) => {
     const BorrowedBookhistory = "http://localhost:5116/api/Record";
 
     try {
-
+        // Fetch book requests
         const response = await fetch(BookRequestApiurl, {
             method: "GET",
             headers: {
@@ -60,9 +60,8 @@ const AcceptRequest = async (index) => {
 
         const Requests = await response.json();
         const SelectedRequest = Requests[index];
-        console.log(SelectedRequest.id);
-        console.log(SelectedRequest);
 
+        // Fetch borrowed books
         const borrowedBooksResponse = await fetch(BorrowedBooksApiUrl, {
             method: "GET",
             headers: {
@@ -75,27 +74,25 @@ const AcceptRequest = async (index) => {
         }
 
         const borrowedBooks = await borrowedBooksResponse.json();
-        console.log(borrowedBooks);
-
         const memberBorrowedBooks = borrowedBooks.filter(b => b.userNicNumber === SelectedRequest.userNicNumber);
+
+        // Borrow limit check
         if (memberBorrowedBooks.length >= 2) {
             alert("Member cannot borrow more than 2 books at once.");
             return;
         }
-
 
         if (memberBorrowedBooks.some(b => b.bookName === SelectedRequest.bookName)) {
             alert("Member cannot borrow the same book twice.");
             return;
         }
 
-
         const BorrowedDate = new Date();
         const dueDate = new Date(BorrowedDate);
         dueDate.setDate(BorrowedDate.getDate() + 7);
-        const formattedBorrowedDate = BorrowedDate.toISOString().split('T')[0]; // Format as YYYY-MM-DD
-        const formattedDueDate = dueDate.toISOString().split('T')[0];
 
+        const formattedBorrowedDate = BorrowedDate.toISOString().split('T')[0];
+        const formattedDueDate = dueDate.toISOString().split('T')[0];
 
         const data = {
             UserNicNumber: SelectedRequest.userNicNumber,
@@ -105,11 +102,9 @@ const AcceptRequest = async (index) => {
             duedate: formattedDueDate
         };
 
-
         const returnDate = new Date(BorrowedDate);
         returnDate.setDate(BorrowedDate.getDate() + 7);
         const formattedreturnDate = returnDate.toISOString().split('T')[0];
-
 
         const data2 = {
             UserFirstName: SelectedRequest.userFirstName,
@@ -121,8 +116,7 @@ const AcceptRequest = async (index) => {
             ReturnedDate: formattedreturnDate
         };
 
-        console.log(data);
-
+        // Add book to borrowed list
         const addBorrowedResponse = await fetch(BorrowedBooksApiUrl, {
             method: "POST",
             headers: {
@@ -132,79 +126,73 @@ const AcceptRequest = async (index) => {
         });
 
         if (addBorrowedResponse.ok) {
-
-
-            try {
-
-                const bookurl = "http://localhost:5116/api/Book/Get-all-books"
-                const bookResponse = await fetch(bookurl, {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
-        
-                if (!bookResponse.ok) {
-                    alert("Failed to fetch books.");
-                    return; // Stop further execution if GET fails
+            // Fetch all books
+            const bookResponse = await fetch("http://localhost:5116/api/Book/Get-all-books", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
                 }
-        
-                const books = await bookResponse.json();
-                console.log(books);
-        
-        
-                const SelectedRequest = Requests[index];
-                const updatedBook = books.find(book => book.isbn === SelectedRequest.isbn && book.BookCopies > 0);
-                console.log(updatedBook);
-                if (updatedBook) {
-                    updatedBook.BookCopies--;
-                    
-                    const UpdateUrl="http://localhost:5116/api/Book"
-                    const updateResponse = await fetch(`${UpdateUrl}/${updatedBook.isbn}`, {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(updatedBook)
-                    });
-        
-                    if (updateResponse.ok) {
-                        alert("Book copies decremented and updated in database.");
-                    } else {
-                        alert("Failed to update book copies in the database.");
-                    }
-                } else {
-                    alert("Book not found or no copies left.");
-                }
-        
-            } catch (error) {
-                console.log(error);
-                alert("Some issue in updating book stock: " + error);
-            }
-            try {
-                Requests.splice(index, 1);
+            });
 
-                const DeleteApiUrl = "http://localhost:5116/api/BookRequest";
-                const deleteRequestResponse = await fetch(`${DeleteApiUrl}/${SelectedRequest.id}`, {
-                    method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
-                console.log(deleteRequestResponse);
-
-                if (deleteRequestResponse.ok) {
-                    alert("Book request removed.");
-                } else {
-                    alert("Failed to remove the book request.");
-                    return;
-                }
-            } catch (error) {
-                console.log(error);
-                alert("Some issue in Delete method: " + error);
+            if (!bookResponse.ok) {
+                alert("Failed to fetch books.");
+                return;
             }
 
+            const books = await bookResponse.json();
+            console.log(books);
+            
+            console.log(SelectedRequest);
+            
+            const updatedBook = books.find(book => book.isbn === SelectedRequest.isbn && book.bookCopies > 0);
+            console.log(updatedBook);
+            
+            console.log(updatedBook.isbn);
+            
+            if (updatedBook) {
+                // Decrement book copies
+               //const copies= updatedBook.bookCopies--;
+               //console.log(copies);
+              // const num=1;
+                
+                console.log("Updated book copies:", updatedBook.bookCopies);
 
+                // Send PUT request to update book copies in the database
+                const updateResponse = await fetch(`http://localhost:5116/api/Book/${updatedBook.isbn}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(updatedBook.bookCopies--)
+                });
+
+                if (updateResponse.ok) {
+                    alert("Book copies decremented and updated in the database.");
+                } else {
+                    alert("Failed to update book copies in the database.");
+                }
+            } else {
+                alert("Book not found or no copies left.");
+            }
+
+            
+            Requests.splice(index, 1);
+
+        
+            const deleteRequestResponse = await fetch(`http://localhost:5116/api/BookRequest/${SelectedRequest.id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (deleteRequestResponse.ok) {
+                alert("Book request removed.");
+            } else {
+                alert("Failed to remove the book request.");
+            }
+
+            
             const createHistoryResponse = await fetch(BorrowedBookhistory, {
                 method: "POST",
                 headers: {
@@ -214,7 +202,7 @@ const AcceptRequest = async (index) => {
             });
 
             if (createHistoryResponse.ok) {
-                alert("ok")
+                alert("Borrowed book history created successfully.");
             } else {
                 throw new Error(`Failed to add to history. Status: ${createHistoryResponse.status}`);
             }
@@ -225,6 +213,7 @@ const AcceptRequest = async (index) => {
         console.error("Error: ", error);
         alert(`Error: ${error.message}`);
     }
+};
 
 
     //  Remove the accepted request
@@ -235,7 +224,7 @@ const AcceptRequest = async (index) => {
 
    
 
-};
+
 
 
 

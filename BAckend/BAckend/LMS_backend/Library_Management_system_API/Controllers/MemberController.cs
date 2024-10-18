@@ -60,7 +60,7 @@ namespace Library_Management_system_API.Controllers
         [HttpGet("get-all-members")]
         public async Task<IActionResult> GetAllMember()
         {
-            var member=await _memberRepository.GetAllMembersAsync();
+            var member = await _memberRepository.GetAllMembersAsync();
             return Ok(member);
         }
 
@@ -68,9 +68,9 @@ namespace Library_Management_system_API.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<IActionResult>DeleteMember(int id)
+        public async Task<IActionResult> DeleteMember(int id)
         {
-            var result=await _memberRepository.DeleteMembersAsync(id);
+            var result = await _memberRepository.DeleteMembersAsync(id);
             if (!result)
             {
                 return NotFound();
@@ -107,6 +107,21 @@ namespace Library_Management_system_API.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpGet("login")]
+
+        public async Task<IActionResult> LoginMember(string nic, string password)
+        {
+            try
+            {
+                var data = await _memberRepository.Login(nic, password);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 

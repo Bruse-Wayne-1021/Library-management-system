@@ -33,6 +33,22 @@ namespace Library_Management_system_API.Controllers
             var data = await _adminRepository.GetAdminAsync();
             return Ok(data);
         }
+
+
+        [HttpGet("LOGIN")]
+
+        public async Task<IActionResult> login(string nic, string password)
+        {
+            try
+            {
+                var data = await _adminRepository.LoginAdminasync(nic, password);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 
 

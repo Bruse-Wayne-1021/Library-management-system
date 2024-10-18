@@ -56,76 +56,90 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 
         window.processReturn = async (index) => {
-            const BorrowedBooksResponse = await fetch(borrowedBooksApiUrl, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            if (!BorrowedBooksResponse.ok) {
-                console.log("can't fetch from borrowed books");
-            }
-
-            const BrrowedBooks = await BorrowedBooksResponse.json();
-            // console.log(BrrowedBooks);
-
-            const returnbooks = BrrowedBooks[index];
-
-
-
-            const BookResponse = await fetch(booksApiUrl, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            if (!BookResponse.ok) {
-                console.log("Can't fetch data from books ");
-
-            }
-            const Books = await BookResponse.json();
-            // console.log(Books);
+            const borrowedBooksApiUrl = "http://localhost:5116/api/BorrowedBook";
+            const booksApiUrl = "http://localhost:5116/api/Book/get-all-books-with-images";
             
-            const UpdateBooks=Books.map(books=>{
-                if(books.BookName===returnbooks.Bookname){
-                    books.copies++
+            try {
+                // Fetch borrowed books
+                const borrowedBooksResponse = await fetch(borrowedBooksApiUrl, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                if (!borrowedBooksResponse.ok) {
+                    console.log("Can't fetch borrowed books");
+                    return;
                 }
-                return books;
-            })
-            for(let updatebook of UpdateBooks){
-                const updateRequest=await fetch(`${booksApiUrl}/${updatebook.id}`,{
-                    method:"PUT",
-                    headers:{
-                        "Content-Type":"application/json"
-                    },
-                    body: JSON.stringify(updatebook)
-                })
-                if(updateRequest.ok){
-                    alert("book has been updated")
+        
+                const borrowedBooks = await borrowedBooksResponse.json();
+                const returnBook = borrowedBooks[index];
+                console.log("Returning book:", returnBook);
+        
+                // Fetch all books to find the returned book
+                const bookResponse = await fetch(booksApiUrl, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                if (!bookResponse.ok) {
+                    console.log("Can't fetch books");
+                    return;
                 }
+        
+                const books = await bookResponse.json();
+                const bookToUpdate = books.find(book => book.isbn === returnBook.bookIsbn);
                 
-            }
-            // const returnbooks = BrrowedBooks[index];
-            BrrowedBooks.splice(index,1);
-            const deletedata=await fetch(`${borrowedBooksApiUrl}/${returnbooks.id}`,{
-                method:"DELETE",
-                headers:{
-                    "Content-Type":"application/json"
+                if (!bookToUpdate) {
+                    alert("Book not found.");
+                    return;
                 }
-            })
-            if(deletedata.ok){
-                alert("Book returned")
+        
+                // Increment book copies
+                
+                
+                console.log("Updated book copies:", bookToUpdate.bookCopies);
+        
+                // Update book in the database
+                const bookApiUrl = "http://localhost:5116/api/Book";
+                const updateResponse = await fetch(`${bookApiUrl}/${bookToUpdate.isbn}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(bookToUpdate.bookCopies++)
+                });
+        
+                if (updateResponse.ok) {
+                    alert("Book copies updated successfully.");
+                } else {
+                    console.log("Failed to update book copies.");
+                }
+        
+                // Remove the returned book from BorrowedBooks table
+                const deleteResponse = await fetch(`${borrowedBooksApiUrl}/id?id=${returnBook.id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+        
+                if (deleteResponse.ok) {
+                    alert("Book returned successfully.");
+                } else {
+                    console.error("Failed to return the book.");
+                }
+        
+                // Optionally, re-render the table or refresh the page here after removal
+                borrowedBooks.splice(index, 1); // Remove from the local array to reflect UI changes
+        
+            } catch (error) {
+                console.error("Error processing return:", error);
+                alert("Failed to process return.");
             }
-            
-            // console.log(UpdateBooks);
-            
-
-
-            
-
-
-        }
-
+        };
+        
 
     } catch (error) {
         console.log(error);

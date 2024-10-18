@@ -5,59 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management - Admin</title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
 </head>
 
 <body>
-    <div class="sidebar">
-        <h2>Admin Panel</h2>
-        <ul>
-            <li><a href="admin.html">Add Book</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="inventery_report.html">Inventry Report</a></li>
-            <li><a href="request.html">Request</a></li>
-            <li><a href="member_report.html">Member Report</a></li>
-            <li><a href="return.html">Return</a></li>
-            <li><a href="borrowing rreport.html">Borrowing Report</a></li>
-        </ul>
-    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="admin.html">Add Book</a></li>
+                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="inventery_report.html">Inventory Report</a></li>
+                <li class="nav-item"><a class="nav-link" href="request.html">Request</a></li>
+                <li class="nav-item"><a class="nav-link" href="member_report.html">Member Report</a></li>
+                <li class="nav-item"><a class="nav-link" href="return.html">Return</a></li>
+                <li class="nav-item"><a class="nav-link" href="borrowing rreport.html">Borrowing Records</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="main-content">
+    <div class="container mt-4">
         <header>
             <h1>Admin Dashboard</h1>
         </header>
-            <div id="imageDisplay">
 
-            </div>
         <section id="book-form">
             <h2>Add New Book</h2>
-            <form id="addBookForm">
-              
+            <form id="addBookForm" class="border p-4 shadow-sm">
                 <div class="form-group">
-                    <input type="text" id="bookName" placeholder="Book Name" required>
+                    <input type="text" id="bookName" class="form-control" placeholder="Book Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="isbn" placeholder="ISBN Number" required>
+                    <input type="text" id="isbn" class="form-control" placeholder="ISBN Number" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="publisher" placeholder="Publisher" required>
+                    <input type="text" id="publisher" class="form-control" placeholder="Publisher" required>
                 </div>
                 <div class="form-group">
-                    <input type="number" id="copies" placeholder="Number of Copies" required>
+                    <input type="number" id="copies" class="form-control" placeholder="Number of Copies" required>
                 </div>
                 <div class="form-group">
-                    <input type="file" id="coverUrl" placeholder="Cover Page URL" required>
+                    <input type="file" id="coverUrl" class="form-control" placeholder="Cover Page URL" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="genre" placeholder="Genre" required>
+                    <input type="text" id="genre" class="form-control" placeholder="Genre" required>
                 </div>
-                <button type="submit">Add Book</button>
+                <button type="submit" class="btn btn-primary">Add Book</button>
             </form>
         </section>
 
-        <section id="book-list">
+        <section id="book-list" class="mt-5">
             <h2>Book Inventory</h2>
-            <table id="booksTable">
+            <table id="booksTable" class="table table-striped">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -66,8 +71,7 @@
                         <th>Copies</th>
                         <th>Genre</th>
                         <th>Cover</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -76,37 +80,31 @@
             </table>
         </section>
 
-        <section id="member-management">
+        <section id="member-management" class="mt-5">
             <h2>Manage Members</h2>
-            <form id="addMemberForm">
+            <form id="addMemberForm" class="border p-4 shadow-sm">
                 <div class="form-group">
-                    <input type="text" id="firstName" placeholder="First Name" required>
+                    <input type="text" id="firstName" class="form-control" placeholder="First Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="lastName" placeholder="Last Name" required>
+                    <input type="text" id="lastName" class="form-control" placeholder="Last Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="nic" placeholder="NIC Number" required>
+                    <input type="text" id="nic" class="form-control" placeholder="NIC Number" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="Email" placeholder="Email" required>
+                    <input type="email" id="Email" class="form-control" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="number" id="phoneNumber" placeholder="phone Number" required>
+                    <input type="number" id="phoneNumber" class="form-control" placeholder="Phone Number" required>
                 </div>
-
-                
-                <!-- <div class="form-group">
-                    <input type="password" id=" password" placeholder="Enter Password" required>
-                </div> -->
                 <div class="form-group">
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
                 </div>
-
-                <button type="submit">Add Member</button>
+                <button type="submit" class="btn btn-primary">Add Member</button>
             </form>
 
-            <table id="membersTable">
+            <table id="membersTable" class="table table-striped mt-4">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -125,6 +123,10 @@
         </section>
     </div>
 
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../javascript/Admin2.js"></script>
 </body>
 

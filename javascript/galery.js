@@ -17,33 +17,22 @@ document.addEventListener("DOMContentLoaded", async (e) => {
 
         books = await bookresponse.json();
         console.log(books);
-        displayBooks(books); // Display all books initially
+        displayBooks(books); 
     } catch (error) {
         console.error(error);
         alert("Some issues occurred: " + error);
     }
 
-    // Display welcome message
-    let loggedinUserData = JSON.parse(localStorage.getItem('logedInUser'));
-    if (loggedinUserData) {
-        let displayName = document.getElementById('UserNames');
-        displayName.textContent = "Welcome, " + loggedinUserData.FirstName + " " + loggedinUserData.LastName;
-    }
+    // // Display welcome message
+    // let loggedinUserData = JSON.parse(localStorage.getItem('logedInUser'));
+    // if (loggedinUserData) {
+    //     let displayName = document.getElementById('UserNames');
+    //     displayName.textContent = "Welcome, " + loggedinUserData.FirstName + " " + loggedinUserData.LastName;
+    // }
 
-    // Add search functionality
-    searchInput.addEventListener('input', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        const filteredBooks = books.filter(book => 
-            book.title.toLowerCase().includes(searchTerm) || 
-            book.author.toLowerCase().includes(searchTerm) || 
-            book.genre.toLowerCase().includes(searchTerm)
-        );
-        displayBooks(filteredBooks);
-    });
-
-    // Function to display books in the gallery
+   
     function displayBooks(booksToDisplay) {
-        gallyDiv.innerHTML = ""; // Clear existing content
+        gallyDiv.innerHTML = ""; 
         booksToDisplay.forEach(book => {
             const card = document.createElement('div');
             card.classList.add('book-card');
@@ -61,7 +50,6 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     }
 });
 
-// Request book function remains unchanged
 let requestBook = async (isbn, bookName) => {
     let loggedinUserData = JSON.parse(localStorage.getItem('logedInUser'));
 

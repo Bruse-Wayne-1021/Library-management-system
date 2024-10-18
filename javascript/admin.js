@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     let base64Image = "";
 
-    // Image upload event
+
     document.getElementById('coverUrl').addEventListener('change', function(event) {
         const file = event.target.files[0];
         const reader = new FileReader();
@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         reader.onloadend = function(e) {
             base64Image = e.target.result; 
             document.getElementById('imageDisplay').src = base64Image;
-            document.getElementById('imageDisplay').style.display = "block";  // Show image preview
+            document.getElementById('imageDisplay').style.display = "block";  
         };
     });
 
-    // Form submission for adding a new book
+    
     document.getElementById('addBookForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
 
         try {
-            // Add book request
+            
             const bookResponse = await fetch('http://localhost:5116/api/Book/add-new-book', {
                 method: "POST",
                 headers: {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (bookResponse.ok) {
-                // Add image request
+                
                 const imageResponse = await fetch("http://localhost:5116/api/Bookimage", {
                     method: "POST",
                     headers: {
@@ -95,7 +95,7 @@ let displaybooks = async () => {
         console.log(books);
 
         BooktableBdy.innerHTML = "";
-        books.forEach((book, index) => {
+        books.forEach((book) => {
             const row = document.createElement('tr');
             row.innerHTML = `
              <td>${book.title}</td>
@@ -104,8 +104,7 @@ let displaybooks = async () => {
              <td>${book.bookCopies}</td>
              <td>${book.genre}</td>
              <td><img src="${book.images}" alt="Book cover" style="width:50px; height:75px;"></td>
-             <td><button onclick="EditBookDetails(${index})">Edit</button></td>
-             <td><button onclick="Deletebook(${index})">Delete</button></td>
+          
              `
 
             BooktableBdy.appendChild(row);
@@ -118,7 +117,7 @@ let displaybooks = async () => {
     }
 };
 
-// member registrtion
+
 document.getElementById('addMemberForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -158,7 +157,7 @@ document.getElementById('addMemberForm').addEventListener('submit', async (e) =>
 
         if (addMember.ok) {
             alert("Member registered successfully");
-            await displayMembers(); // Ensure this function exists if you're displaying the members afterward.
+            await displayMembers(); 
         } else {
             throw new Error("Error in member registration, please try again later.");
         }
@@ -167,7 +166,7 @@ document.getElementById('addMemberForm').addEventListener('submit', async (e) =>
     }
 });
 
-// display members in table
+
 
 let dispalyamembers = async () => {
     const memberurl = "http://localhost:5116/api/Member/get-all-members";
@@ -196,6 +195,7 @@ let dispalyamembers = async () => {
               <td>${member. nic}</td>
               <td>${member.email}</td>
               <td>${member. phoneNumber}</td>
+
             `
             MemTablebody.appendChild(row);
         })
