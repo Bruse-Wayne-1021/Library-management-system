@@ -73,6 +73,17 @@ namespace Library_Management_system_API.Controllers
         }
 
 
+        [HttpDelete("{isbn}")]
+        public async Task<IActionResult> DeleteBooks(int isbn)
+        {
+            var success = await _bookRepository.DeleteByIsbnAsync(isbn);
+            if (success)
+                return Ok(new { message = "Book deleted successfully." });
+            else
+                return BadRequest(new { message = "Unable to delete the book. Check for related records or constraints." });
+        }
+
+
 
 
 

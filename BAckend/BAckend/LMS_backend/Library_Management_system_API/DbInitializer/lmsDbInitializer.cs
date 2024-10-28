@@ -7,20 +7,18 @@ namespace Library_Management_system_API.DbInitializer
     public class lmsDbInitializer
     {
         private readonly string _connectionString;
-        private string _Database;
+        private string _database;
+
         public lmsDbInitializer(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DBConnection");
-            _Database = this.GetDataBaseName();
+            _database = GetDataBaseName();
         }
 
         public async Task<string> CreateTable()
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                SqlCommand command = new SqlCommand(@" 
-                 USE LMS_Database;
-
+            using (SqlCommand command = new SqlCommand(@"
                 -- Books table creation
                 IF NOT EXISTS (
                     SELECT * FROM sys.tables t 
@@ -34,42 +32,39 @@ namespace Library_Management_system_API.DbInitializer
                         Title NVARCHAR(50) NOT NULL,
                         Publisher NVARCHAR(50) NOT NULL,
                         BookCopies INT,
-                        Isbn int NOT NULL UNIQUE,
-                        
+                        Isbn INT NOT NULL UNIQUE
                     );
                 END
                     
                 IF NOT EXISTS ( 
-                        SELECT * FROM sys.tables t  
-                        JOIN sys.schemas s ON t.schema_id = s.schema_id 
-                     WHERE s.name = 'dbo' AND t.name = 'Admin' 
-                        )
-                            BEGIN 
+                    SELECT * FROM sys.tables t  
+                    JOIN sys.schemas s ON t.schema_id = s.schema_id 
+                    WHERE s.name = 'dbo' AND t.name = 'Admin'
+                )
+                BEGIN 
                     CREATE TABLE Admin 
-                        (
-                      AdminId INT PRIMARY KEY IDENTITY(1,1),
-                      AdminName NVARCHAR(50) NOT NULL,
-                      NIC NVARCHAR(50) NOT NULL,
-                      Password NVARCHAR(50) NOT NULL
-                      );
-                    END
+                    (
+                        AdminId INT PRIMARY KEY IDENTITY(1,1),
+                        AdminName NVARCHAR(50) NOT NULL,
+                        NIC NVARCHAR(50) NOT NULL,
+                        Password NVARCHAR(50) NOT NULL
+                    );
+                END
 
-              
                 IF NOT EXISTS (
                     SELECT * FROM sys.tables t 
                     JOIN sys.schemas s ON t.schema_id = s.schema_id
                     WHERE s.name = 'dbo' AND t.name = 'Images'
                 )
                 BEGIN
-                   CREATE TABLE Images (
-                    ImageId INT IDENTITY(1,1) PRIMARY KEY, 
-                    ImagePath NVARCHAR(MAX) NOT NULL,      
-                    Isbn INT NOT NULL,                      
-                    FOREIGN KEY (Isbn) REFERENCES Books(Isbn) 
+                    CREATE TABLE Images (
+                        ImageId INT IDENTITY(1,1) PRIMARY KEY, 
+                        ImagePath NVARCHAR(MAX) NOT NULL,      
+                        Isbn INT NOT NULL,                      
+                        FOREIGN KEY (Isbn) REFERENCES Books(Isbn)
                     );
                 END
 
-              
                 IF NOT EXISTS (
                     SELECT * FROM sys.tables t 
                     JOIN sys.schemas s ON t.schema_id = s.schema_id
@@ -78,19 +73,17 @@ namespace Library_Management_system_API.DbInitializer
                 BEGIN
                     CREATE TABLE Member
                     (
-                         
                         Nic NVARCHAR(50) PRIMARY KEY NOT NULL,
-                        Id int IDENTITY(1,1),
+                        Id INT IDENTITY(1,1),
                         FirstName NVARCHAR(50) NOT NULL,
                         LastName NVARCHAR(50) NOT NULL,
                         Email NVARCHAR(50),
                         PhoneNumber NVARCHAR(15) NOT NULL,
                         Password NVARCHAR(50) NOT NULL,
-                        JoinDate DATE NOT NULL,
+                        JoinDate DATE NOT NULL
                     );
                 END
 
-         
                 IF NOT EXISTS (
                     SELECT * FROM sys.tables t 
                     JOIN sys.schemas s ON t.schema_id = s.schema_id
@@ -112,7 +105,7 @@ namespace Library_Management_system_API.DbInitializer
                     );
                 END
                 
-               IF NOT EXISTS (
+                IF NOT EXISTS (
                     SELECT * FROM sys.tables t 
                     JOIN sys.schemas s ON t.schema_id = s.schema_id
                     WHERE s.name = 'dbo' AND t.name = 'BorrowedHistory'
@@ -125,73 +118,50 @@ namespace Library_Management_system_API.DbInitializer
                         UserFirstName NVARCHAR(50) NOT NULL,
                         UserLastName NVARCHAR(50) NOT NULL,
                         BorrowedDate DATE NOT NULL,
-                        ReturnedDate DATE NOT NULL,
-                        
+                        ReturnedDate DATE,
                         BookName NVARCHAR(50) NOT NULL,
                         BookIsbn INT NOT NULL
                     );
                 END;
-                IF NOT EXISTS (+
-                 SELECT * 
-                 FROM sys.tables t 
-                 JOIN sys.schemas s ON t.schema_id = s.schema_id
-                 WHERE s.name = 'dbo' AND t.name = 'BorrowedBooks'
+
+                IF NOT EXISTS (
+                    SELECT * FROM sys.tables t 
+                    JOIN sys.schemas s ON t.schema_id = s.schema_id
+                    WHERE s.name = 'dbo' AND t.name = 'BorrowedBooks'
                 )
                 BEGIN
-                 CREATE TABLE BorrowedBooks
-                 (
-                     Id INT PRIMARY KEY IDENTITY (1,1),
-                     UserNicNumber NVARCHAR(50) NOT NULL,
-                      Bookname NVARCHAR(50) NOT NULL,
-                      bookIsbn INT NOT NULL,
-                      BorrowedDate DATE NOT NULL,
-                     duedate DATE NOT NULL,
-                     FOREIGN KEY (UserNicNumber) REFERENCES Member(Nic),
-                     FOREIGN KEY (bookIsbn) REFERENCES Books(Isbn) 
-                     );
-                    END
-
-                     
-"
-
-
-
-                , connection);
-
+                    CREATE TABLE BorrowedBooks
+                    (
+                        Id INT PRIMARY KEY IDENTITY (1,1),
+                        UserNicNumber NVARCHAR(50) NOT NULL,
+                        Bookname NVARCHAR(50) NOT NULL,
+                        BookIsbn INT NOT NULL,
+                        BorrowedDate DATE NOT NULL,
+                        DueDate DATE NOT NULL,
+                        FOREIGN KEY (UserNicNumber) REFERENCES Member(Nic),
+                        FOREIGN KEY (BookIsbn) REFERENCES Books(Isbn) 
+                    );
+                END
+            ", connection))
+            {
                 await connection.OpenAsync();
                 try
                 {
-                    var result = await command.ExecuteNonQueryAsync();
-                    return _Database + "tables Created";
+                    await command.ExecuteNonQueryAsync();
+                    return $"{_database} tables created successfully.";
                 }
                 catch (Exception ex)
                 {
-                    return "";
+                    // Log the error (use a logging framework or write to console for simplicity)
+                    return $"Error creating tables: {ex.Message}";
                 }
-
-
             }
         }
 
-        public string GetDataBaseName()
+        private string GetDataBaseName()
         {
-            string[] parts = _connectionString.Split(';');
-
-            foreach (var part in parts)
-            {
-                if (part.Trim().StartsWith("DataBase=", StringComparison.OrdinalIgnoreCase))
-                {
-                    _Database = part.Substring("DataBase=".Length).Trim();
-                };
-
-            }
-            return _Database;
+            var builder = new SqlConnectionStringBuilder(_connectionString);
+            return builder.InitialCatalog; // This gets the database name
         }
     }
-
-    
 }
-
-
-
-//                    Password NVARCHAR(50) NOT NULL

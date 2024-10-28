@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     let base64Image = "";
 
-    // Image upload event
+  
     document.getElementById('coverUrl').addEventListener('change', function(event) {
         const file = event.target.files[0];
         const reader = new FileReader();
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
     });
 
-    // Form submission for adding a new book
+   
     document.getElementById('addBookForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -301,27 +301,28 @@ let dispalyamembers = async () => {
 
 
 const Deletebook = async (index) => {
-    const bookApi = "http://localhost:3000/book";
+    const bookApi = "http://localhost:5116/api/Book";
 
     try {
-        // Fetch the current books to get the ID of the book to be deleted
+       
         const response = await fetch(bookApi);
         const books = await response.json();
         
-        // Get the ID of the book to delete using the index
+     
         const bookToDelete = books[index];
+        console.log(bookToDelete);
 
         if (bookToDelete) {
-            const deleteResponse = await fetch(`${bookApi}/${bookToDelete.id}`, {
+            const deleteResponse = await fetch(`${bookApi}/${bookToDelete.isbn}`, {
                 method: "DELETE"
             });
 
             if (deleteResponse.ok) {
                 alert("Book deleted successfully");
-                // Refresh the book display
+                
                 await displaybooks();
             } else {
-                throw new Error("Failed to delete the book");
+                throw new Error("Can't Delelete book .Book already borrowed");
             }
         } else {
             alert("Book not found");

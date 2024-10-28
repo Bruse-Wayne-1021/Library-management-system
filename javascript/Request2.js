@@ -140,20 +140,21 @@ const AcceptRequest = async (index) => {
             }
 
             const books = await bookResponse.json();
-            console.log(books);
+          //  console.log(books);
             
-            console.log(SelectedRequest);
+          //  console.log(SelectedRequest);
             
             const updatedBook = books.find(book => book.isbn === SelectedRequest.isbn && book.bookCopies > 0);
-            console.log(updatedBook);
+          //  console.log(updatedBook);
             
-            console.log(updatedBook.isbn);
+           // console.log(updatedBook.isbn);
             
             if (updatedBook) {
-                // Decrement book copies
-               //const copies= updatedBook.bookCopies--;
-               //console.log(copies);
-              // const num=1;
+                
+               const copies= (updatedBook.bookCopies)-1;
+               console.log(copies);
+              
+           
                 
                 console.log("Updated book copies:", updatedBook.bookCopies);
 
@@ -163,7 +164,7 @@ const AcceptRequest = async (index) => {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(updatedBook.bookCopies--)
+                    body: JSON.stringify(copies)
                 });
 
                 if (updateResponse.ok) {
