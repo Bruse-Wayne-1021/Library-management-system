@@ -91,31 +91,7 @@ namespace Library_Management_system_API.Repository
             }
             return booksImage;
         }
-        // get books with images by id
-        //public async Task<BookImageResponse> GetBookImagesByid(int id)
-        //{
-        //    var images= new List<BookImageResponse>();
-        //    using (SqlConnection SQLconnection = new SqlConnection(_connectionString))
-        //    {
-        //        SqlCommand _sqlCommand = new SqlCommand("SELECT * FROM Books INNER JOIN Images  on Books.Id = Images.BookId;", SQLconnection);
-        //        await SQLconnection.OpenAsync();
-        //        SqlDataReader sqlDataReader = await _sqlCommand.ExecuteReaderAsync();
-        //        if (sqlDataReader.Read())
-        //        {
-        //            var bookimage=await _bookImageRepository.GetImageByidAsync(id);
-        //            return new BookImageResponse
-        //            {
-        //                Title = sqlDataReader["Title"].ToString(),
-        //                Publisher = sqlDataReader["Publisher"].ToString(),
-        //                BookCopies = (int)sqlDataReader["BookCopies"],
-        //                Isbn = (int)sqlDataReader["Isbn"],
-        //                Images = bookimage
-        //            };
-        //        }
-        //        return null;
-
-        //    }
-        //}
+   
 
         public async Task<bool> UpdateCopiesAsync(int isbn, int bookCopies)
         {
@@ -128,10 +104,52 @@ namespace Library_Management_system_API.Repository
 
                     await sqlConnection.OpenAsync();
                     var result = await sqlCommand.ExecuteNonQueryAsync();
-                    return result > 0; // Return true if the update was successful
+                    return result > 0; 
                 }
             }
         }
+
+
+        public async Task<bool> DeleteByIsbnAsync(int isbn)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                await sqlConnection.OpenAsync();
+                using (SqlTransaction transaction = sqlConnection.BeginTransaction())
+                {
+                    try
+                    {
+                        
+                        using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM Images WHERE Isbn = @Isbn", sqlConnection, transaction))
+                        {
+                            sqlCommand.Parameters.AddWithValue("@Isbn", isbn);
+                            await sqlCommand.ExecuteNonQueryAsync();
+                        }
+
+                      
+                        using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM Books WHERE Isbn = @Isbn", sqlConnection, transaction))
+                        {
+                            sqlCommand.Parameters.AddWithValue("@Isbn", isbn);
+                            var result = await sqlCommand.ExecuteNonQueryAsync();
+
+                          
+                            transaction.Commit();
+                            return result > 0;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        
+                        transaction.Rollback();
+                      
+                        Console.WriteLine(ex.Message);
+                        return false;
+                    }
+                }
+            }
+        }
+
+
 
 
 

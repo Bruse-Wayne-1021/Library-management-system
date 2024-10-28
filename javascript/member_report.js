@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
     try {
         const borrowedBooksApi = "http://localhost:5116/api/BorrowedBook";
-        const memberApi = "http://localhost:3000/member";
-        const books = "http://localhost:3000/book";
+        const memberApi = "http://localhost:5116/api/Member/get-all-members";
+        const books = "http://localhost:5116/api/Book/get-all-books-with-images";
         const TableView=document.querySelector('tbody');
 
         TableView.innerHTML="";
 
-        // fetch dat from borrowed books url
+       
         const Response = await fetch(borrowedBooksApi, {
             method: "GET",
             headers: {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         console.log(Members);
         
 
-        // fetch daa from Boooks url
+    
 
         const bookResonse = await fetch(books);
         const Books = await bookResonse.json();
@@ -40,26 +40,30 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         console.log(Books);
 
         Members.forEach(member => {
-             // Get borrowed books for the member
-            const BorrowedForMembers=BorroedBooks.filter(b=>b.UserNicNumber===member.Nic);
+           
+            const BorrowedForMembers=BorroedBooks.filter(b=>b.userNicNumber===member.nic);
+            console.log(BorrowedForMembers);
            
             
             BorrowedForMembers.forEach(borrow=>{
-                 // find appropirate member
-                 const bookDetails=Books.find(book=>book.BookName===borrow.Bookname);
+             
+                 const bookDetails=Books.find(book=>book.title===borrow.bookname);
                 
                  console.log(bookDetails);
                  console.log(BorrowedForMembers);
 
                  let row=document.createElement('tr');
                  row.innerHTML=`
-                <td>${member.FirstName}</td>
-                <td>${member.Nic}</td>
-                <td>${bookDetails.BookName}</td>
-                <td><img src="${bookDetails.coverUrl}" alt="${borrow.bookName}" style="width: 100px; height: auto;"></td>
+                <td>${member.firstName}</td>
+                <td>${member.nic}</td>
+                <td>${bookDetails.title}</td>
+                <td><img src="${bookDetails.images}" alt="${borrow.bookName}" style="width: 100px; height: auto;"></td>
                  `;
 
                  TableView.appendChild(row);
+
+
+                 
             })
         });
       

@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             const booksApiUrl = "http://localhost:5116/api/Book/get-all-books-with-images";
             
             try {
-                // Fetch borrowed books
+             
                 const borrowedBooksResponse = await fetch(borrowedBooksApiUrl, {
                     method: "GET",
                     headers: {
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 const returnBook = borrowedBooks[index];
                 console.log("Returning book:", returnBook);
         
-                // Fetch all books to find the returned book
+              
                 const bookResponse = await fetch(booksApiUrl, {
                     method: "GET",
                     headers: {
@@ -96,19 +96,20 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                     return;
                 }
         
-                // Increment book copies
+              
                 
                 
-                console.log("Updated book copies:", bookToUpdate.bookCopies);
+              // console.log("Updated book copies:", bookToUpdate.bookCopies);
+                let copies=(bookToUpdate.bookCopies)+1
         
-                // Update book in the database
+                
                 const bookApiUrl = "http://localhost:5116/api/Book";
                 const updateResponse = await fetch(`${bookApiUrl}/${bookToUpdate.isbn}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(bookToUpdate.bookCopies++)
+                    body: JSON.stringify(copies)
                 });
         
                 if (updateResponse.ok) {
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                     console.log("Failed to update book copies.");
                 }
         
-                // Remove the returned book from BorrowedBooks table
+                
                 const deleteResponse = await fetch(`${borrowedBooksApiUrl}/id?id=${returnBook.id}`, {
                     method: "DELETE",
                     headers: {
@@ -131,8 +132,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                     console.error("Failed to return the book.");
                 }
         
-                // Optionally, re-render the table or refresh the page here after removal
-                borrowedBooks.splice(index, 1); // Remove from the local array to reflect UI changes
+                
+                borrowedBooks.splice(index, 1); 
         
             } catch (error) {
                 console.error("Error processing return:", error);
