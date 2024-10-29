@@ -86,8 +86,8 @@ namespace Library_Management_system_API.Repository
                         LastName = reader["LastName"].ToString(),
                         Nic = reader["Nic"].ToString(),
                         Email = reader["Email"].ToString(),
-                        PhoneNumber = reader["PhoneNumber"].ToString()
-
+                        PhoneNumber = reader["PhoneNumber"].ToString(),
+                        JoinDate = ((DateTime)reader["JoinDate"])
                     });
                 }
                 return member;

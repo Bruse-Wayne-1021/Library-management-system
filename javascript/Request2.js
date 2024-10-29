@@ -75,8 +75,8 @@ const AcceptRequest = async (index) => {
 
         const borrowedBooks = await borrowedBooksResponse.json();
         const memberBorrowedBooks = borrowedBooks.filter(b => b.userNicNumber === SelectedRequest.userNicNumber);
-
-        // Borrow limit check
+        console.log(memberBorrowedBooks);
+       
         if (memberBorrowedBooks.length >= 2) {
             alert("Member cannot borrow more than 2 books at once.");
             return;

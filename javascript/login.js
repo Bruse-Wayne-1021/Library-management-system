@@ -33,9 +33,9 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         
             if (user) {
                 const userdataToStore = {
-                    FirstName: user.firstName,
-                    LastName: user.lastName,
-                    Nic: user.nic,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    nic: user.nic,
                     joinDate: user.joinDate,
                     id: user.id,
                     userRole: user.userRole,
@@ -52,7 +52,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
                 if (Userrole === "admin") {
                     window.location.href = "admin.html";
                 } else {
-                   // window.location.href = "gallery.html";
+                    window.location.href = "gallery.html";
                 }
             } else {
                 alert("Failed to store login data");
