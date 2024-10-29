@@ -19,6 +19,9 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
         const userdata = await response.json();
         console.log(userdata);
+
+
+
         
 
         
@@ -35,7 +38,11 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
                     Nic: user.nic,
                     joinDate: user.joinDate,
                     id: user.id,
-                    userRole: user.userRole
+                    userRole: user.userRole,
+                    phoneNumber:user.phoneNumber,
+                    password:user.password,
+                    email:user.email
+                      
                 };
         
                 localStorage.setItem('logedInUser', JSON.stringify(userdataToStore));
@@ -45,7 +52,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
                 if (Userrole === "admin") {
                     window.location.href = "admin.html";
                 } else {
-                    window.location.href = "gallery.html";
+                   // window.location.href = "gallery.html";
                 }
             } else {
                 alert("Failed to store login data");

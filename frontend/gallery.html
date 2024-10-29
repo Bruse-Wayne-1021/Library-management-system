@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/gallery.css">
     <title>Library Gallery</title>
 </head>
 
 <body>
-    <!-- Navbar -->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Library</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -26,10 +27,60 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./borrowebbooks.html">My books</a>
                     </li>
+                    <li>
+                        <button type="button" class="btn btn-outline-secondary me-2" data-bs-toggle="modal"
+                            data-bs-target="#userDetailsModal">
+                            User Details
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- User Details Modal -->
+    <div class="modal fade" id="userDetailsModal" tabindex="-1" aria-labelledby="userDetailsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="userDetailsForm">
+                        <div class="mb-3">
+                            <label for="userFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="userFirstName" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="userLastName" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userNic" class="form-label">NIC</label>
+                            <input type="text" class="form-control" id="userNic" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="userEmail" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userPhone" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="userPhone" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="userPassword" readonly>
+                        </div>
+                        <button type="button" id="editButton" class="btn btn-primary">Edit</button>
+                        <button type="submit" id="saveButton" class="btn btn-success d-none">Save</button>
+                        <button type="button" id="cancelButton" class="btn btn-secondary d-none">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container mt-4">
         <h1 class="text-center">Library Gallery</h1>

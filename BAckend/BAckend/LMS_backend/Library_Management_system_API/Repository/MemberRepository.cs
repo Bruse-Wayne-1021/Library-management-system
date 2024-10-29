@@ -110,24 +110,28 @@ namespace Library_Management_system_API.Repository
 
         //update user details 
 
-        public async Task<bool> UpdateMemebrAsync(int id, Member member)
+        public async Task<bool> UpdateMemberAsync(string nic, Member member)
         {
             using SqlConnection sqlConnection = new SqlConnection(_connectionString);
             {
-                SqlCommand sqlCommand = new SqlCommand("UPDATE Member SET FirstName=@FirstName,LastName=@LastName,Email=@Email,PhoneNumber=@PhoneNumber,password=@password WHERE Id = @Id", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(
+                    "UPDATE Member SET FirstName=@FirstName, LastName=@LastName, Email=@Email, PhoneNumber=@PhoneNumber, Password=@Password WHERE Nic = @Nic",
+                    sqlConnection
+                );
 
                 sqlCommand.Parameters.AddWithValue("@FirstName", member.FirstName);
                 sqlCommand.Parameters.AddWithValue("@LastName", member.LastName);
                 sqlCommand.Parameters.AddWithValue("@Email", member.Email);
                 sqlCommand.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
-                sqlCommand.Parameters.AddWithValue("@password", member.Password);
-                sqlCommand.Parameters.AddWithValue("@Id", id);
+                sqlCommand.Parameters.AddWithValue("@Password", member.Password);
+                sqlCommand.Parameters.AddWithValue("@Nic", nic); // Updated parameter name to match WHERE clause
 
                 await sqlConnection.OpenAsync();
                 var result = await sqlCommand.ExecuteNonQueryAsync();
                 return result > 0;
             }
         }
+
 
         public async Task<Member> Login(string nic, string password)
         {
@@ -165,6 +169,39 @@ namespace Library_Management_system_API.Repository
                 }
             }
         }
+
+
+
+        public async Task<Member> GetMemberByNicAsync(string nic)
+        {
+            using SqlConnection sqlConnection = new SqlConnection(_connectionString);
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Member WHERE Nic = @Nic", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@Nic", nic);
+
+                await sqlConnection.OpenAsync();
+
+                using SqlDataReader reader = await sqlCommand.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    return new Member
+                    {
+                        Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                        FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                        LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                        Email = reader.GetString(reader.GetOrdinal("Email")),
+                        PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
+                        Password = reader.GetString(reader.GetOrdinal("Password")),
+                        Nic = reader.GetString(reader.GetOrdinal("Nic"))
+                    };
+                }
+                else
+                {
+                    return null; // Member not found
+                }
+            }
+        }
+
 
 
 
