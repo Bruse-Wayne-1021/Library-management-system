@@ -39,17 +39,17 @@ namespace Library_Management_system_API.Controllers
             return Ok(requests);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateStatus(int id)
-        {
-            var result = await _bookRequestRepository.UpdateStatusAsync(id);
-            if (result)
-            {
-                return NoContent();
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> UpdateStatus(int id)
+        //{
+        //    var result = await _bookRequestRepository.UpdateStatusAsync(id);
+        //    if (result)
+        //    {
+        //        return NoContent();
+        //    }
 
-            return NotFound();
-        }
+        //    return NotFound();
+        //}
 
         [HttpDelete("{id}")]
 

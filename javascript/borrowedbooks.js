@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 .forEach(borrowedBook => {
     
     console.log("Borrowed Book:", borrowedBook);
+
     
     
     const bookData = books.find(book => {
@@ -56,13 +57,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         let row = document.createElement('tr');
         row.innerHTML = `
-            <td>${borrowedBook.bookname}</td>
-            <td>${bookData.isbn}</td>
-            <td>${bookData.publisher}</td>
-            <td>${borrowedBook.borrowedDate || 'N/A'}</td>
-            <td>${borrowedBook.duedate || 'N/A'}</td>
+            <td>${String(borrowedBook.bookname)}</td>
+            <td>${String(bookData.isbn)}</td>
+            <td>${String(bookData.publisher)}</td>
+            <td>${borrowedBook.borrowedDate ? new Date(borrowedBook.borrowedDate).toLocaleDateString() : 'N/A'}</td>
+            <td>${borrowedBook.duedate ? new Date(borrowedBook.duedate).toLocaleDateString() : 'N/A'}</td>
         `;
         tableView.appendChild(row);
+        
 
         
       

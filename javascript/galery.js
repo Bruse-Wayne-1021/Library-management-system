@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async (e) => {
     e.preventDefault();
 
-    let books = []; // Array to hold all books
+    let books = [];
     const gallyDiv = document.getElementById('gallery');
     const searchInput = document.getElementById('searchInput');
     const sortOptions = document.getElementById('sortOptions');
@@ -63,9 +63,9 @@ let requestBook = async (isbn, bookName) => {
     }
 
     let RequestData = {
-        UserFirstName: loggedinUserData.FirstName,
-        UserLastName: loggedinUserData.LastName,
-        UserNicNumber: loggedinUserData.Nic,
+        UserFirstName: loggedinUserData.firstName,
+        UserLastName: loggedinUserData.lastName,
+        UserNicNumber: loggedinUserData.nic,
         RequestedDate: new Date().toISOString(),  // Send in ISO format for DateTime
         Isbn: parseInt(isbn),  // Convert ISBN to integer if it isn't already
         BookName: bookName
@@ -99,57 +99,66 @@ let requestBook = async (isbn, bookName) => {
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    // Function to display logged-in user data in the modal
+
     function showUserDetails() {
         const loggedInUser = JSON.parse(localStorage.getItem('logedInUser'));
 
         if (loggedInUser) {
-            document.getElementById('userFirstName').value = loggedInUser.FirstName;
-            document.getElementById('userLastName').value = loggedInUser.LastName;
-            document.getElementById('userNic').value = loggedInUser.Nic;
+            document.getElementById('userFirstName').value = loggedInUser.firstName;
+            document.getElementById('userLastName').value = loggedInUser.lastName;
+            document.getElementById('userNic').value = loggedInUser.nic;
             document.getElementById('userEmail').value = loggedInUser.email;
             document.getElementById('userPhone').value = loggedInUser.phoneNumber;
             document.getElementById('userPassword').value = loggedInUser.password;
         }
     }
 
-    // Toggle editing mode for specific fields
+   
     function toggleEditMode(isEditMode) {
         document.getElementById('userFirstName').readOnly = !isEditMode;
+        document.getElementById('userLastName').readOnly=!isEditMode;
         document.getElementById('userPhone').readOnly = !isEditMode;
+        document.getElementById('userEmail').readOnly=!isEditMode;
         document.getElementById('userPassword').readOnly = !isEditMode;
+        
+        
 
         document.getElementById('editButton').classList.toggle('d-none', isEditMode);
         document.getElementById('saveButton').classList.toggle('d-none', !isEditMode);
         document.getElementById('cancelButton').classList.toggle('d-none', !isEditMode);
     }
 
-    // Event listener for Edit button
+  
     document.getElementById('editButton').addEventListener('click', () => {
         toggleEditMode(true);
     });
 
-    // Event listener for Save button
+    
     document.getElementById('userDetailsForm').addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const updatedUser = {
-          //  ...JSON.parse(localStorage.getItem('logedInUser')),
+        
+            nic:document.getElementById('userNic').value,
             firstName: document.getElementById('userFirstName').value,
             phoneNumber: document.getElementById('userPhone').value,
-            password: document.getElementById('userPassword').value
+            password: document.getElementById('userPassword').value,
+            lastName:document.getElementById('userLastName').value,
+            email:document.getElementById('userEmail').value,
+
+
         };
 
         console.log(updatedUser);
         console.log("Sending data to server:", JSON.stringify(updatedUser));
 
         const loggedInUser = JSON.parse(localStorage.getItem('logedInUser'));
-        const nic = loggedInUser.Nic;
-         // Ensure correct property name
+        const nic = loggedInUser.nic;
+      
          console.log(nic);
          
 
-        // Construct URL with ID as a query parameter
+      
         //const userUpdateUrl = `http://localhost:5116/api/Member/${nic}`;
 
         try {
@@ -174,12 +183,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // Event listener for Cancel button
     document.getElementById('cancelButton').addEventListener('click', () => {
         toggleEditMode(false);
         showUserDetails();
     });
 
-    // Initialize the modal with current user data
     showUserDetails();
 });
