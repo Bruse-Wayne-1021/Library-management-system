@@ -79,22 +79,20 @@ namespace Library_Management_system_API.Controllers
         }
 
         //update member
-
-        [HttpPut("id")]
-
-        public async Task<IActionResult> UpdateMembers(int id, Member member)
+        [HttpPut("{nic}")]
+        public async Task<IActionResult> UpdateMemberByNic(string nic, Member member)
         {
             try
             {
-                // First, check if the member exists
-                var existingMember = await _memberRepository.GetMemberByIdAsync(id);
+                // First, check if the member exists by NIC
+                var existingMember = await _memberRepository.GetMemberByNicAsync(nic);
                 if (existingMember == null)
                 {
                     return NotFound("Member not found.");
                 }
 
                 // If member exists, perform the update
-                var userUpdate = await _memberRepository.UpdateMemebrAsync(id, member);
+                var userUpdate = await _memberRepository.UpdateMemberAsync(nic, member);
                 if (userUpdate)
                 {
                     return Ok("Member updated successfully.");
