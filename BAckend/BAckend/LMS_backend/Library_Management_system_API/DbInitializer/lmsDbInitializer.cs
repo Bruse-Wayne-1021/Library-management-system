@@ -32,7 +32,8 @@ namespace Library_Management_system_API.DbInitializer
                         Title NVARCHAR(50) NOT NULL,
                         Publisher NVARCHAR(50) NOT NULL,
                         BookCopies INT,
-                        Isbn INT NOT NULL UNIQUE
+                        Isbn INT NOT NULL UNIQUE,
+                        Genres NVARCHAR(50) NOT NULL
                     );
                 END
                     
@@ -141,7 +142,22 @@ namespace Library_Management_system_API.DbInitializer
                         FOREIGN KEY (UserNicNumber) REFERENCES Member(Nic),
                         FOREIGN KEY (BookIsbn) REFERENCES Books(Isbn) 
                     );
-                END
+                END;
+
+                IF NOT EXISTS (
+                    SELECT * FROM sys.tables t 
+                    JOIN sys.schemas s ON t.schema_id = s.schema_id
+                    WHERE s.name = 'dbo' AND t.name = 'Genres'
+                )
+                BEGIN
+                    CREATE TABLE Genres
+                    (
+                        Id INT PRIMARY KEY IDENTITY(1,1),
+                        Genres NVARCHAR(50) NOT NULL,
+                        ISBN INT NOT NULL,
+                        FOREIGN KEY (ISBN) REFERENCES Books(Isbn) 
+                    );
+                END;
             ", connection))
             {
                 await connection.OpenAsync();

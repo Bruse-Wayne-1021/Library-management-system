@@ -21,7 +21,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="admin.html">Add Book</a></li>
-                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="RegisterMember.html">Add Member</a></li>
+                
                 <li class="nav-item"><a class="nav-link" href="inventery_report.html">Inventory Report</a></li>
                 <li class="nav-item"><a class="nav-link" href="request.html">Request</a></li>
                 <li class="nav-item"><a class="nav-link" href="member_report.html">Member Report</a></li>
@@ -44,10 +45,6 @@
             tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <!-- <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div> -->
                     <div class="modal-body">
                         <section id="book-form">
                             <h2>Add New Book</h2>
@@ -68,16 +65,23 @@
                                     <input type="file" id="coverUrl" class="form-control" placeholder="Cover Page URL" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="genre" class="form-control" placeholder="Genre" required>
+                                    <label for="genre">Genre</label>
+                                    <select id="genre" class="form-control" required>
+                                        <option value="">Select Genre</option>
+                                        <option value="Fiction">Fiction</option>
+                                        <option value="Non-Fiction">Non-Fiction</option>
+                                        <option value="Mystery">Mystery</option>
+                                        <option value="Fantasy">Fantasy</option>
+                                        <option value="Science Fiction">Science Fiction</option>
+                                        <option value="Biography">Biography</option>
+                                        <option value="History">History</option>
+                                        <option value="Romance">Romance</option>
+                                    </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Add Book</button>
                             </form>
                         </section>
                     </div>
-                    <!-- <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                            data-bs-toggle="modal">Open second modal</button>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -96,7 +100,8 @@
                         <th>Copies</th>
                         <th>Genre</th>
                         <th>Cover</th>
-
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>

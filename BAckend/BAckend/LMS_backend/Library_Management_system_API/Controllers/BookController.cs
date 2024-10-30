@@ -85,6 +85,26 @@ namespace Library_Management_system_API.Controllers
 
 
 
+        //[HttpPut("{isbn}")]
+        //public async Task<IActionResult> EditBookDetails(int isbn, [FromBody] Book book)
+        //{
+        //    if (isbn != book.Isbn)
+        //    {
+        //        return BadRequest("ISBN in the URL must match the ISBN in the book object.");
+        //    }
+
+        //    var result = await _bookRepository.EditBookDetailsAsync(book);
+        //    if (result)
+        //    {
+        //        return NoContent(); 
+        //    }
+
+        //    return NotFound($"Book with ISBN {isbn} not found.");
+        //}
+
+
+
+
 
 
 
