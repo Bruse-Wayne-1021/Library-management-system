@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         BrrowedBooks.forEach((borrow, index) => {
             const bookDetails = Books.find(b1 => b1.bookIsbn === borrow.isbn);
             //const memberDetails = members.find(m1 => m1.Nic === borrow.UserNicNumber);
-            // console.log(bookDetails);
+             console.log(bookDetails);
             // console.log(memberDetails);
 
 
@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             <td>${borrow.userNicNumber}</td>
             <td>${borrow.bookname}</td>
             <td>${borrow.bookIsbn}</td>
-            <td>${borrow.borrowDate}</td>
+            <td>${borrow.
+                borrowedDate}</td>
             <td>${borrow.duedate}</td>
             <td><img src="${bookDetails.images}" alt="${borrow.bookName}" style="width: 100px; height: auto;"></td>
             <td><button onclick="processReturn(${index})">Process Return</button></td>

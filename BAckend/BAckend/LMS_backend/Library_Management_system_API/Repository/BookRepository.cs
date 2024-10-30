@@ -23,13 +23,14 @@ namespace Library_Management_system_API.Repository
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand(
-                    "INSERT INTO Books (Title, Publisher, BookCopies, Isbn) " +
-                    "VALUES(@Title, @Publisher, @BookCopies, @Isbn); SELECT SCOPE_IDENTITY();", connection);
+                    "INSERT INTO Books (Title, Publisher, BookCopies, Isbn,Genres) " +
+                    "VALUES(@Title, @Publisher, @BookCopies, @Isbn,@Genre); SELECT SCOPE_IDENTITY();", connection);
 
                 sqlCommand.Parameters.AddWithValue("@Title", book.Title);
                 sqlCommand.Parameters.AddWithValue("@Publisher", book.Publisher);
                 sqlCommand.Parameters.AddWithValue("@BookCopies", book.BookCopies);
                 sqlCommand.Parameters.AddWithValue("@Isbn", book.Isbn);
+                sqlCommand.Parameters.AddWithValue("@Genre", book.Genre);
 
                 await connection.OpenAsync();
                 var id = await sqlCommand.ExecuteScalarAsync();
@@ -55,7 +56,10 @@ namespace Library_Management_system_API.Repository
                         Title = reader["Title"].ToString(),
                         Publisher = reader["Publisher"].ToString(),
                         BookCopies = (int)reader["BookCopies"],
-                        Isbn = (int)reader["Isbn"]
+                        Isbn = (int)reader["Isbn"],
+                        Genre = reader["Genres"].ToString()
+
+
                     });
                 }
                 return books;
@@ -85,12 +89,17 @@ namespace Library_Management_system_API.Repository
                         Publisher = reader["Publisher"].ToString(),
                         BookCopies = (int)reader["BookCopies"],
                         Isbn = (int)reader["Isbn"],
+                        Genre = reader["Genres"].ToString(),
+
                         Images = new List<string> { reader["ImagePath"].ToString() }
                     });
                 }
             }
             return booksImage;
         }
+
+
+
    
 
         public async Task<bool> UpdateCopiesAsync(int isbn, int bookCopies)
@@ -148,6 +157,28 @@ namespace Library_Management_system_API.Repository
                 }
             }
         }
+
+
+        // Method to edit book details
+        //public async Task<bool> EditBookDetailsAsync(Book book)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(_connectionString))
+        //    {
+        //        using (SqlCommand command = new SqlCommand(
+        //            "UPDATE Books SET Title = @Title, Publisher = @Publisher, BookCopies = @BookCopies, Genres = @Genre WHERE Isbn = @Isbn", connection))
+        //        {
+        //            command.Parameters.AddWithValue("@Title", book.Title);
+        //            command.Parameters.AddWithValue("@Publisher", book.Publisher);
+        //            command.Parameters.AddWithValue("@BookCopies", book.BookCopies);
+        //            command.Parameters.AddWithValue("@Genre", book.Genre);
+        //            command.Parameters.AddWithValue("@Isbn", book.Isbn);
+
+        //            await connection.OpenAsync();
+        //            var result = await command.ExecuteNonQueryAsync();
+        //            return result > 0;  
+        //        }
+        //    }
+        //}
 
 
 

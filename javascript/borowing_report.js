@@ -83,15 +83,16 @@ const DisplayBookHistory = async () => {
             // const returnedDate = BkHistory.returnedDate ? new Date(BkHistory.returnedDate).toLocaleDateString() : 'N/A';
 
             row.innerHTML = `
-                <td>${BkHistory.userNicNumber || 'N/A'}</td>
-                <td>${BkHistory.userFirstName || 'N/A'}</td>
-                <td>${BkHistory.userLastName || 'N/A'}</td>
-                <td>${BkHistory.bookName || 'N/A'}</td>
-                <td>${BkHistory.bookIsbn || 'N/A'}</td>
+                <td>${BkHistory.userNicNumber }</td>
+                <td>${BkHistory.userFirstName }</td>
+                <td>${BkHistory.userLastName }</td>
+                <td>${BkHistory.bookName }</td>
+                <td>${BkHistory.bookIsbn }</td>
                 <td>${BkHistory.borrowedDate}</td>
-                <td>${BkHistory.returnedDate}</td>
+               
             `;
 
+            //<td>${BkHistory.returnedDate}</td>
             HistoryTable.appendChild(row);
         });
 

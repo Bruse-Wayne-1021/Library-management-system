@@ -1,145 +1,188 @@
-// const { assert } = require("console");
-// const { json } = require("stream/consumers");
-
-
 document.addEventListener('DOMContentLoaded', async () => {
-    
+    const BookRequestApiurl = "http://localhost:5116/api/BookRequest";
 
-    const BookRequestApiurl = "ht";
+    try {
+        const response = await fetch(BookRequestApiurl, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
 
-    const response = await fetch(BookRequestApiurl, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
+        if (!response.ok) {
+            throw new Error("Failed to fetch book requests.");
         }
-    })
 
-    if (response.ok) {
-        alert("Book request fetch sucess")
+        const Requests = await response.json();
+        console.log(Requests);
+
+        const requestTable = document.querySelector('tbody');
+        requestTable.innerHTML = "";
+
+        Requests.forEach((Request, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${Request.userNicNumber}</td>
+            <td>${Request.userFirstName}</td>
+            <td>${Request.userLastName}</td>
+            <td>${Request.isbn}</td>
+            <td>${Request.bookName}</td>
+            <td>${Request.requestedDate}</td>
+            <td>
+                <button onclick="AcceptRequest(${index})">Accept</button>
+                <button onclick="RejectRequest(${index})">Reject</button>
+            </td>
+            `;
+            requestTable.appendChild(row);
+        });
+    } catch (error) {
+        console.error(error);
+        alert(`Error: ${error.message}`);
     }
-    const Requestes = await response.json();
-    console.log(Requestes);
-    
+});
 
-    const requestTable = document.querySelector('tbody');
-    requestTable.innerHTML = "";
-    Requestes.forEach((Request, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-        <td>${Request.UserNicNumber}</td>
-        <td>${Request.UserID}</td>
-        <td>${Request.UserFirstName}</td>
-        <td>${Request.Bookname}</td>
-        <td>
-            <button onclick="AcceptRequest(${index})">Accept</button>
-            <button>Reject</button>
-        </td>
-        `;
-        requestTable.appendChild(row)
-    });
-})
+const AcceptRequest = async (index) => {
+    const BookRequestApiurl = "http://localhost:5116/api/BookRequest";
+    const BorrowedBooksApiUrl = "http://localhost:5116/api/BorrowedBook";
+    const BorrowedBookhistory = "http://localhost:5116/api/Record";
 
+    try {
+        const response = await fetch(BookRequestApiurl);
+        const Requests = await response.json();
+        const SelectedRequest = Requests[index];
 
-let AcceptRequest = async (index) => {
-   
-    const BookRequestApiurl = "http://localhost:3000/BookRequest";
-    const response = await fetch(BookRequestApiurl, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
+        const borrowedBooksResponse = await fetch(BorrowedBooksApiUrl);
+        const borrowedBooks = await borrowedBooksResponse.json();
+        const memberBorrowedBooks = borrowedBooks.filter(b => b.userNicNumber === SelectedRequest.userNicNumber);
+        
+        if (memberBorrowedBooks.length >= 2) {
+            alert("Member cannot borrow more than 2 books at once.");
+            return;
         }
-    })
-    const Request = await response.json();
-    
 
-    const BorrowedBooks = "http://localhost:3000/borrowedBooks";
-
-    const ApiResponse = await fetch(BorrowedBooks, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
+        if (memberBorrowedBooks.some(b => b.bookName === SelectedRequest.bookName)) {
+            alert("Member cannot borrow the same book twice.");
+            return;
         }
-    });
 
-    const borrowedBooks = await ApiResponse.json();
-    const SelectedRequest = Request[index];
+        const BorrowedDate = new Date();
+        const dueDate = new Date(BorrowedDate);
+        dueDate.setDate(BorrowedDate.getDate() + 7);
 
-    const memberBorrowedBooks = borrowedBooks.filter(b => b.UserNicNumber === SelectedRequest.UserNicNumber);
-    if (memberBorrowedBooks.length >= 2) {
-        alert("Member cannot borrow more than 2 books at once.")
-        return
-    }
+        const formattedBorrowedDate = BorrowedDate.toISOString().split('T')[0];
+        const formattedDueDate = dueDate.toISOString().split('T')[0];
 
-    if (memberBorrowedBooks.some(b => b.Bookname === SelectedRequest.Bookname)) {
-        alert("Member cannot borrow the same book twice.")
-        return
-    }
+        const data = {
+            UserNicNumber: SelectedRequest.userNicNumber,
+            Bookname: SelectedRequest.bookName,
+            bookIsbn: SelectedRequest.isbn,
+            BorrowedDate: formattedBorrowedDate,
+            duedate: formattedDueDate
+        };
 
+        const data2 = {
+            UserFirstName: SelectedRequest.userFirstName,
+            UserLastName: SelectedRequest.userLastName,
+            UserNicNumber: SelectedRequest.userNicNumber,
+            Bookname: SelectedRequest.bookName,
+            BookIsbn: SelectedRequest.isbn,
+            BorrowedDate: formattedBorrowedDate,
+            ReturnedDate: formattedDueDate // Changed to formattedDueDate for correct return date
+        };
 
-    const data = {
-        UserNicNumber: SelectedRequest.UserNicNumber,
-        bookname: SelectedRequest.Bookname
-    };
+        const addBorrowedResponse = await fetch(BorrowedBooksApiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
 
-
-    const Requestes = await fetch(BorrowedBooks, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    if(Requestes.ok){
-        alert("ok")
-    }
-
-    Request.splice(index,1)
-    const fetchdata = await fetch(BookRequestApiurl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(Request)
-    })
-    if(fetchdata.ok){
-        alert("ok")
-    }
-
-    const bookapiurl="http://localhost:3000/book";
-    const bookResponse=await fetch(bookapiurl,{
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
+        if (!addBorrowedResponse.ok) {
+            throw new Error(`Failed to add borrowed book. Status: ${addBorrowedResponse.status}`);
         }
-    })
-    const books =await bookResponse.json();
-    if(bookResponse.ok){
-        console.log(" book ok")
-    }
 
+        const bookResponse = await fetch("http://localhost:5116/api/Book/Get-all-books");
+        const books = await bookResponse.json();
+        const updatedBook = books.find(book => book.isbn === SelectedRequest.isbn && book.bookCopies > 0);
+        
+        if (updatedBook) {
+                
+            const copies= (updatedBook.bookCopies)-1;
+            console.log(copies);
+           
+        
+             
+             console.log("Updated book copies:", updatedBook.bookCopies);
 
-    
+             // Send PUT request to update book copies in the database
+             const updateResponse = await fetch(`http://localhost:5116/api/Book/${updatedBook.isbn}`, {
+                 method: "PUT",
+                 headers: {
+                     "Content-Type": "application/json"
+                 },
+                 body: JSON.stringify(copies)
+             });
 
-    // let books = JSON.parse(localStorage.getItem('books')) || [];
-    books =books.map(book => {
-        if (book.Bookname === SelectedRequest.Bookname) {
-            book.copies--;
+             if (updateResponse.ok) {
+                 alert("Book copies decremented and updated in the database.");
+            }
+
+            alert("Book copies decremented and updated in the database.");
+
+            // Remove the accepted request
+            await fetch(`http://localhost:5116/api/BookRequest/${SelectedRequest.id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+            const createHistoryResponse = await fetch(BorrowedBookhistory, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data2)
+            });
+
+            if (!createHistoryResponse.ok) {
+                throw new Error(`Failed to add to history. Status: ${createHistoryResponse.status}`);
+            }
+
+            alert("Borrowed book history created successfully.");
+        } else {
+            alert("Book not found or no copies left.");
         }
-        return book;
-    });
-
-    const Bookresponse = await fetch(bookapiurl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(books)
-    })
-    if(Bookresponse.ok){
-        alert("ok")
+    } catch (error) {
+        console.error("Error: ", error);
+        alert(`Error: ${error.message}`);
     }
+};
 
+const RejectRequest = async (index) => {
+    const BookRequestApiurl = "http://localhost:5116/api/BookRequest";
 
-}
-// AcceptRequest();
+    try {
+        const response = await fetch(BookRequestApiurl);
+        const Requests = await response.json();
+        const SelectedRequest = Requests[index];
 
+        const deleteRequestResponse = await fetch(`${BookRequestApiurl}/${SelectedRequest.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!deleteRequestResponse.ok) {
+            throw new Error("Failed to reject book request.");
+        }
+
+        alert("Book request rejected.");
+        // Optionally, re-render the table here after removal
+    } catch (error) {
+        console.error(error);
+        alert(`Error: ${error.message}`);
+    }
+};
