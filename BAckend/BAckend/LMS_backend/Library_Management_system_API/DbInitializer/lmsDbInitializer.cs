@@ -50,6 +50,13 @@ namespace Library_Management_system_API.DbInitializer
                         NIC NVARCHAR(50) NOT NULL,
                         Password NVARCHAR(50) NOT NULL
                     );
+
+                      -- Insert sample admin data if table is empty
+                    IF NOT EXISTS (SELECT * FROM Admin)
+                    BEGIN
+                        INSERT INTO Admin (AdminName, NIC, Password) VALUES
+                        ('AdminUser', '123456789V', 'AdminPass123');
+                    END
                 END
 
                 IF NOT EXISTS (
