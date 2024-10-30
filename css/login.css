@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-     /* background-image: url(../image/6a20ef.jpg);  */
+      background-image: url(../image/cover\ image.jpg);  
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -17,12 +17,19 @@ body {
     max-width: 400px;
     width: 100%;
     position: relative;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    border: 2px solid rgba(255, 255, 255, .2);
 }
 
 .login-container h1 {
     margin-bottom: 20px;
     font-size: 24px;
-    color: #333;
+    color: #030303;
     text-align: center;
 }
 
@@ -32,8 +39,10 @@ body {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
 
 .login-container input[type="text"]:focus,
