@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\One store\\Desktop\\New folder (2)\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {}
+    "X:\\Updated LMS\\New folder\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\One store\\Desktop\\New folder (2)\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {
+    "X:\\Updated LMS\\New folder\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\One store\\Desktop\\New folder (2)\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
+        "projectUniqueName": "X:\\Updated LMS\\New folder\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
         "projectName": "Library_Management_system_API",
-        "projectPath": "C:\\Users\\One store\\Desktop\\New folder (2)\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
-        "packagesPath": "C:\\Users\\One store\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\One store\\Desktop\\New folder (2)\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\obj\\",
+        "projectPath": "X:\\Updated LMS\\New folder\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\Library_Management_system_API.csproj",
+        "packagesPath": "C:\\Users\\UT01261\\.nuget\\packages\\",
+        "outputPath": "X:\\Updated LMS\\New folder\\Library-management-system\\BAckend\\BAckend\\LMS_backend\\Library_Management_system_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\One store\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\UT01261\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

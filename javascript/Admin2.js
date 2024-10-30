@@ -105,13 +105,14 @@ let displaybooks = async () => {
              <td>${book.bookCopies}</td>
              <td>${book.genre}</td>
              <td><img src="${book.images}" alt="Book cover" style="width:50px; height:75px;"></td>
-             <td><button onclick="EditBookDetails(${index})">Edit</button></td>
+           
              <td><button onclick="Deletebook(${index})">Delete</button></td>
              `
 
             BooktableBdy.appendChild(row);
 
         });
+        // <td><button onclick="EditBookDetails(${index})">Edit</button></td>
 
     } catch (error) {
         // console.log(error)
